@@ -18,16 +18,30 @@ export default function Hero({ setActivePage }: HeroProps) {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-16 px-6 overflow-hidden bg-brand-black">
+    <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-16 px-6 overflow-hidden bg-gradient-black-pure">
       {/* Dynamic Background Image with Overlay & Mesh Grid */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80"
           alt="E-Tech Solutions Secure Cyber Datacenter Grid"
-          className="w-full h-full object-cover filter brightness-[0.11] contrast-125"
+          className="w-full h-full object-cover filter brightness-[0.22] contrast-110"
         />
         {/* Subtle Structural Work Grid Overlay */}
         <div className="absolute inset-0 bg-grid-mesh-gray opacity-70" />
+        
+        {/* White Gradient Laser Lines running vertically and horizontally */}
+        <div className="absolute top-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent overflow-hidden">
+          <div className="w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-scan-h-1" />
+        </div>
+        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent overflow-hidden">
+          <div className="w-1/4 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-scan-h-2" />
+        </div>
+        <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-white/10 to-transparent overflow-hidden">
+          <div className="w-full h-1/3 bg-gradient-to-b from-transparent via-white/50 to-transparent animate-scan-v-1" />
+        </div>
+        <div className="absolute top-0 left-3/4 w-[1px] h-full bg-gradient-to-b from-transparent via-white/5 to-transparent overflow-hidden">
+          <div className="w-full h-1/4 bg-gradient-to-b from-transparent via-white/40 to-transparent animate-scan-v-1 [animation-delay:3.5s]" />
+        </div>
         
         {/* Real Red Glowing Overlay Effects */}
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-brand-red/15 rounded-full filter blur-[120px] animate-pulse-slow" />
@@ -53,15 +67,15 @@ export default function Hero({ setActivePage }: HeroProps) {
           E-Tech Solutions delivers bespoke software builds, secure subnet routing, pfSense firewalls, compliant multi-platform licensing, and independent consultancy.
         </p>
 
-        <p className="text-xs sm:text-sm italic font-serif text-brand-red/85 tracking-wide max-w-2xl mb-10 border-l border-brand-red/30 pl-4 text-left sm:text-center">
+        <blockquote className="text-sm sm:text-base italic font-serif text-white tracking-wide max-w-2xl mb-10 border-l-2 border-brand-red pl-4 text-left sm:text-center bg-brand-charcoal/40 py-3.5 pr-4 rounded-r-md backdrop-blur-sm">
           "Pioneering premium ICT frameworks for Sri Lanka's leading governmental offices, dynamic corporate groups, and secure SME ecosystems since 2012."
-        </p>
+        </blockquote>
 
         {/* CTA Button Group */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <button
             onClick={() => handleCTA('contact')}
-            className="group bg-brand-red hover:bg-dark-red text-white text-sm font-bold px-7 py-4 rounded shadow-lg shadow-brand-red/20 transform hover:-translate-y-0.5 tracking-wide uppercase transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="group bg-brand-red hover:bg-[#ff1a22] text-white text-sm font-bold px-7 py-4 rounded shadow-xl shadow-brand-red/30 transform hover:-translate-y-0.5 tracking-wide uppercase transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>Request a Quote</span>
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -69,7 +83,7 @@ export default function Hero({ setActivePage }: HeroProps) {
           
           <button
             onClick={() => handleCTA('services')}
-            className="bg-brand-charcoal hover:bg-brand-dark-gray text-white border border-brand-dark-gray hover:border-brand-red/30 text-sm font-bold px-7 py-4 rounded tracking-wide uppercase transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-brand-red/50 text-sm font-bold px-7 py-4 rounded tracking-wide uppercase transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg backdrop-blur-sm"
           >
             Explore Our Services
           </button>

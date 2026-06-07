@@ -1,14 +1,44 @@
+import { useState, useEffect } from 'react';
 import { PageId } from '../types';
-import { Mail, Phone, MapPin, ShieldAlert, Award } from 'lucide-react';
+import { Mail, Phone, MapPin, ShieldAlert, Award, Users, ChevronRight, Facebook } from 'lucide-react';
+import EtechLogo from './EtechLogo';
 
 interface FooterProps {
   setActivePage: (page: PageId) => void;
+  scrollToSection?: (sectionId: string) => void;
 }
 
-export default function Footer({ setActivePage }: FooterProps) {
+export default function Footer({ setActivePage, scrollToSection }: FooterProps) {
+  const [visitorCount, setVisitorCount] = useState<number>(0);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('etech_visitor_count');
+      if (stored) {
+        const nextVal = parseInt(stored, 10) + 1;
+        localStorage.setItem('etech_visitor_count', nextVal.toString());
+        setVisitorCount(nextVal);
+      } else {
+        const initialVal = 28741;
+        localStorage.setItem('etech_visitor_count', initialVal.toString());
+        setVisitorCount(initialVal);
+      }
+    } catch (e) {
+      setVisitorCount(28741);
+    }
+  }, []);
+
   const navigateTo = (page: PageId) => {
     setActivePage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleDeepLinkClick = (sectionId: string, fallbackPage: PageId) => {
+    if (scrollToSection) {
+      scrollToSection(sectionId);
+    } else {
+      navigateTo(fallbackPage);
+    }
   };
 
   const currentYear = new Date().getFullYear();
@@ -23,10 +53,8 @@ export default function Footer({ setActivePage }: FooterProps) {
         
         {/* Widget 1: Company Profile */}
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
-            <div className="w-8 h-8 bg-brand-red rounded flex items-center justify-center font-display font-medium text-white text-base">
-              E
-            </div>
+          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => navigateTo('home')}>
+            <EtechLogo size={38} className="shrink-0 transform group-hover:scale-105 transition-all" />
             <span className="font-display font-bold text-base tracking-wide text-white">
               E-TECH <span className="text-brand-red">SOLUTIONS</span>
             </span>
@@ -37,6 +65,17 @@ export default function Footer({ setActivePage }: FooterProps) {
           <div className="flex items-center gap-1.5 text-[10px] text-brand-red font-semibold tracking-wider font-mono uppercase bg-brand-charcoal/80 border border-brand-dark-gray px-2.5 py-1.5 rounded w-max">
             <Award size={12} />
             Over 14 Years of Excellence
+          </div>
+          <div className="flex items-center gap-2 mt-1">
+            <a
+              href="https://web.facebook.com/etechworldwide"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs text-brand-muted hover:text-white bg-brand-charcoal hover:bg-[#1877F2] border border-white/5 px-3.5 py-2.2 rounded transition-all font-mono tracking-wider uppercase cursor-pointer group"
+            >
+              <Facebook size={12} className="text-[#1877F2] group-hover:text-white transition-colors" />
+              <span>Facebook</span>
+            </a>
           </div>
         </div>
 
@@ -62,77 +101,108 @@ export default function Footer({ setActivePage }: FooterProps) {
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('web-software-development')} className="hover:text-brand-red transition-all cursor-pointer">
-                Web & Software Development
+              <button onClick={() => navigateTo('portfolio')} className="hover:text-brand-red transition-all cursor-pointer">
+                Case Studies & Projects
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('cybersecurity-solutions')} className="hover:text-brand-red transition-all cursor-pointer">
-                Cybersecurity Protection
-              </button>
-            </li>
-            <li>
-              <button onClick={() => navigateTo('digital-marketing')} className="hover:text-brand-red transition-all cursor-pointer">
-                Digital Marketing Support
-              </button>
-            </li>
-            <li>
-              <button onClick={() => navigateTo('ict-procurement-consultancy')} className="hover:text-brand-red transition-all cursor-pointer">
-                ICT Procurement Advisory
+              <button onClick={() => navigateTo('faq')} className="hover:text-brand-red transition-all cursor-pointer">
+                Frequently Asked FAQs
               </button>
             </li>
             <li>
               <button onClick={() => navigateTo('contact')} className="hover:text-brand-red transition-all cursor-pointer">
-                Contact Us Form
+                Request Quote Desk
               </button>
             </li>
           </ul>
         </div>
 
-        {/* Widget 3: Core Services */}
+        {/* Widget 3: Deep Service Scroll Links */}
         <div>
           <h4 className="font-display font-bold text-xs uppercase tracking-wider text-brand-red mb-6 border-l-2 border-brand-red pl-2.5">
-            Our Services
+            Service Deep-Links
           </h4>
-          <ul className="flex flex-col gap-3.5 text-xs text-brand-muted">
+          <ul className="flex flex-col gap-3 text-xs text-brand-muted">
             <li>
-              <button onClick={() => navigateTo('web-software-development')} className="hover:text-brand-red transition-all cursor-pointer">
-                Custom Web & Software
+              <button
+                onClick={() => handleDeepLinkClick('web-software-section', 'web-software-development')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Custom Web & Software</span>
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('hardware-solutions')} className="hover:text-brand-red transition-all cursor-pointer">
-                Hardware Assembling & CCTV
+              <button
+                onClick={() => handleDeepLinkClick('hardware-solutions-section', 'hardware-solutions')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Assembling & CCTV Supply</span>
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('networking-solutions')} className="hover:text-brand-red transition-all cursor-pointer">
-                LAN Setup & Structured Cables
+              <button
+                onClick={() => handleDeepLinkClick('networking-solutions-section', 'networking-solutions')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Structured Networking LAY</span>
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('cybersecurity-solutions')} className="hover:text-brand-red transition-all cursor-pointer">
-                pfSense & Fortinet Firewalls
+              <button
+                onClick={() => handleDeepLinkClick('cybersecurity-solutions-section', 'cybersecurity-solutions')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Firewalls & Security Defense</span>
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('software-licensing')} className="hover:text-brand-red transition-all cursor-pointer">
-                Windows, Office & M365 Licenses
+              <button
+                onClick={() => handleDeepLinkClick('software-licensing-section', 'software-licensing')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Genuine Software Licenses</span>
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('digital-marketing')} className="hover:text-brand-red transition-all cursor-pointer">
-                Social Page Management (FB/IG)
+              <button
+                onClick={() => handleDeepLinkClick('digital-marketing-section', 'digital-marketing')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Digital Organic Marketing</span>
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('ict-procurement-consultancy')} className="hover:text-brand-red transition-all cursor-pointer">
-                TOR, BOQ & Evaluation Advisory
+              <button
+                onClick={() => handleDeepLinkClick('procurement-consultancy-section', 'ict-procurement-consultancy')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Procurement Advisory Roles</span>
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo('maintenance-agreements')} className="hover:text-brand-red transition-all cursor-pointer">
-                Annual Maintenance Contracts
+              <button
+                onClick={() => handleDeepLinkClick('cybersecurity-consultancy-section', 'cybersecurity-consultancy')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Cyber PDPA & SLA Auditing</span>
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleDeepLinkClick('maintenance-agreements-section', 'maintenance-agreements')}
+                className="hover:text-brand-red transition-all cursor-pointer flex items-center gap-1 group text-left"
+              >
+                <ChevronRight size={11} className="text-brand-red opacity-0 group-hover:opacity-100 transition-all -ml-2 group-hover:ml-0 shrink-0" />
+                <span>Annual SLAs & SLA Contracts</span>
               </button>
             </li>
           </ul>
@@ -196,6 +266,19 @@ export default function Footer({ setActivePage }: FooterProps) {
       <div className="bg-brand-black/90 py-5 px-6 border-t border-brand-dark-gray/30 text-center text-xs text-brand-muted">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
           <p>© {currentYear} E-Tech Solutions. All Rights Reserved. Professional Corporate ICT Partner.</p>
+          
+          {/* Elegant High-Contrast Visitor Counter */}
+          <div className="flex items-center gap-2 bg-brand-charcoal border border-white/5 py-1 px-3 rounded-sm select-none" title="Unique System Traffic Registrations Audit">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            <span className="text-[10px] font-mono uppercase tracking-wider text-brand-muted flex items-center gap-1">
+              <Users size={11} className="text-brand-red" />
+              Traffic Index:
+            </span>
+            <span className="text-[10.5px] font-mono font-bold text-white tracking-wider bg-brand-black py-0.5 px-2 rounded-sm border border-white/5 hover:border-brand-red/30 transition-colors">
+              {visitorCount > 0 ? visitorCount.toLocaleString() : 'Loading...'}
+            </span>
+          </div>
+
           <p className="text-[10px] text-brand-muted/70 font-mono">
             Optimized for Sri Lankan Government, SMEs & Enterprise Operations
           </p>

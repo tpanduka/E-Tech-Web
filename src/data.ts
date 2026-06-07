@@ -5,7 +5,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'web-software-development',
     title: 'Web & Software Development',
     shortDesc: 'Professional websites, web applications, mobile apps, dashboards, database systems, and business automation.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
     longDesc: 'E-Tech Solutions designs and develops professional websites, web applications, and mobile applications that help businesses build a strong digital presence and automate their operations. From simple business websites to advanced database-driven systems, we deliver scalable, secure, and user-friendly digital solutions tailored to real business requirements.',
     inclusions: [
       'Business & Corporate Websites',
@@ -29,7 +29,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'hardware-solutions',
     title: 'Hardware & Infrastructure Solutions',
     shortDesc: 'Desktop PC assembling, laptop supply, CCTV, servers, time attendance, and complete office setup.',
-    image: 'https://images.unsplash.com/photo-1591405351990-4726e33df58d?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=800&q=80',
     longDesc: 'E-Tech Solutions provides reliable hardware supply, installation, repair, and maintenance services. We support complete office ICT infrastructure including computers, laptops, servers, CCTV systems, time attendance devices, entrance control systems, and PABX communication systems.',
     inclusions: [
       'Desktop PC Assembling (Office, Workstation, Graphic)',
@@ -52,7 +52,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'networking-solutions',
     title: 'Secure Networking Solutions',
     shortDesc: 'LAN setup, structured cabling, enterprise Wi-Fi deployment, routers, switches, VLANs, and active management.',
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
     longDesc: 'We build stable, secure, and performance-oriented network environments for offices and institutions. Our networking services cover structured cabling, router and switch configuration, Wi-Fi deployment, VLAN setup, server room implementation, network troubleshooting, and long-term network maintenance.',
     inclusions: [
       'Corporate LAN / WAN Design & Implementation',
@@ -73,7 +73,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'cybersecurity-solutions',
     title: 'Cybersecurity & Threat Protection',
     shortDesc: 'Commercial and open-source firewalls, pfSense systems, endpoint antivirus, and network protection.',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80',
     longDesc: 'Cybersecurity is no longer optional. E-Tech Solutions helps organizations protect their digital assets through firewall solutions, endpoint protection, web filtering, email security, vulnerability assessment, compliance reviews, and security consultancy. We support both commercial firewall platforms and cost-effective open-source firewall deployments.',
     inclusions: [
       'Commercial Firewall Supply & Deployment (Fortinet, Sophos, etc.)',
@@ -93,7 +93,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'digital-marketing',
     title: 'Digital Marketing & Social Management',
     shortDesc: 'Branding, creative post designs, reels, Shorts, page setup, and complete monthly maintenance.',
-    image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     longDesc: 'We help businesses, professionals, and brands build, manage, and grow their online presence through social media marketing, content creation, photography, videography, creative design, and digital campaign support. Our team handles page creation, profile branding, posts, reels, YouTube content, TikTok videos, Instagram content, and ongoing social media maintenance.',
     inclusions: [
       'Facebook Business Page Creation & Branding Setup',
@@ -114,7 +114,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'creative-media-production',
     title: 'Creative Media Production',
     shortDesc: 'Photoshoots, promotional video shoots, event coverage, short-form editing, and high-impact graphics.',
-    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80',
     longDesc: 'Our creative media production services help businesses present their brand professionally across digital platforms. We provide photography, videography, video editing, social media creatives, promotional videos, thumbnails, reels, posters, and campaign visuals designed to strengthen digital visibility and customer engagement.',
     inclusions: [
       'Commercial Product Photography & Retouching',
@@ -134,7 +134,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'software-licensing',
     title: 'Software Licensing Support',
     shortDesc: 'Genuine Windows, Microsoft 365, Adobe, AutoCAD, and business software license advisory.',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80',
     longDesc: 'We assist clients in selecting, purchasing, renewing, and deploying genuine software licenses suitable for their business, technical, and compliance requirements. Our software licensing support helps organizations avoid licensing risks while improving productivity and operational continuity.',
     inclusions: [
       'Genuine Windows 10/11 Professional Operating System licenses',
@@ -175,7 +175,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'cybersecurity-consultancy',
     title: 'Cybersecurity Consultancy & Governance',
     shortDesc: 'PDPA compliance audits, CMMC 2.0 readiness assessments, vulnerability scans, and security policy design.',
-    image: 'https://images.unsplash.com/photo-1601597111158-2fceff270190?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1584438784894-089d6a128f3e?auto=format&fit=crop&w=800&q=80',
     longDesc: 'Our cybersecurity consultancy services help organizations identify risks, strengthen controls, and prepare for security and compliance requirements. We support PDPA readiness reviews, CMMC 2.0 self-assessment support, vulnerability assessments, security audits, firewall reviews, policy development, and cybersecurity awareness programs.',
     inclusions: [
       'Sri Lanka Personal Data Protection Act (PDPA) Compliance Audits',
@@ -196,7 +196,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: 'maintenance-agreements',
     title: 'Annual & Monthly Maintenance Agreements',
     shortDesc: 'Flexible SLAs covering preventive visits, priority emergency calls, network support, and remote assistance.',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80',
     longDesc: 'E-Tech Solutions provides flexible maintenance agreements to keep ICT systems reliable, secure, and operational. Our maintenance packages cover hardware, networking, servers, CCTV, firewall systems, endpoint protection, software support, preventive maintenance, remote troubleshooting, and on-site support.',
     inclusions: [
       'Customized Annual Maintenance Contract (AMC) Blueprints',
@@ -221,7 +221,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     category: 'Website Development',
     categoryKey: 'web',
     description: 'Developed a robust, high-performance online retail portal with SMS gateway and payment integration.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'p2',
@@ -229,7 +229,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     category: 'Business Software',
     categoryKey: 'web',
     description: 'Built a customized database management utility for a warehousing and distribution enterprise in Sri Lanka.',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'p3',
@@ -245,7 +245,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     category: 'Network Setup',
     categoryKey: 'network',
     description: 'Designed and organized structured cabling with 120 nodes, unified access points, and Server Rack layout.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'p5',
@@ -269,7 +269,7 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     category: 'Procurement Consultancy',
     categoryKey: 'procure',
     description: 'Prepared complete BOQ, TOR, compliance matrix indexes, and conducted technical evaluations for equipment.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'p8',

@@ -7,13 +7,13 @@
   --font-serif: "Playfair Display", Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-brand-red: #E50914;
-  --color-dark-red: #B0000B;
-  --color-brand-black: #050505;
-  --color-brand-charcoal: #111111;
-  --color-brand-dark-gray: #1A1A1A;
+  --color-brand-red: var(--brand-red);
+  --color-dark-red: var(--dark-red);
+  --color-brand-black: var(--black);
+  --color-brand-charcoal: var(--charcoal);
+  --color-brand-dark-gray: var(--dark-gray);
   --color-brand-light-gray: #F5F5F5;
-  --color-brand-muted: #B8B8B8;
+  --color-brand-muted: var(--text-muted);
   
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-glow: glow 2s ease-in-out infinite alternate;
@@ -21,10 +21,10 @@
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+    box-shadow: 0 0 10px rgba(var(--theme-glow-rgba), 0.4);
   }
   to {
-    box-shadow: 0 0 20px rgba(229, 9, 20, 0.8), 0 0 30px rgba(229, 9, 20, 0.4);
+    box-shadow: 0 0 20px rgba(var(--theme-glow-rgba), 0.8), 0 0 30px rgba(var(--theme-glow-rgba), 0.4);
   }
 }
 
@@ -37,14 +37,43 @@
   --light-gray: #F5F5F5;
   --white: #FFFFFF;
   --text-muted: #B8B8B8;
+  --theme-glow-rgba: 229, 9, 20; /* rgb form of #E50914 */
   
   scroll-behavior: smooth;
 }
 
+/* High-contrast Slate Blue Theme for enhanced readability */
+[data-theme="slate-blue"], .theme-slate-blue {
+  --brand-red: #38bdf8;         /* High-contrast Sky Blue */
+  --dark-red: #0284c7;          /* Sky Blue Dark */
+  --black: #0b0f19;             /* Luxury Slate background */
+  --charcoal: #1e293b;          /* Bright Slate Charcoal card */
+  --dark-gray: #475569;         /* High-visibility Border slate-600 */
+  --text-muted: #e2e8f0;        /* White-ish high contrast text slate-200 */
+  --theme-glow-rgba: 56, 189, 248; /* rgb form of #38bdf8 */
+}
+
 body {
-  background-color: var(--black);
+  background-color: #0c0d10;
   color: var(--white);
   font-family: var(--font-sans);
+}
+
+/* Premium White, Black and Ash Gradient backgrounds */
+.bg-gradient-white-ash {
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 50%, #f3f4f6 100%);
+}
+
+.bg-gradient-ash-medium {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 50%, #d1d5db 100%);
+}
+
+.bg-gradient-ash-dark {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 50%, #111827 100%);
+}
+
+.bg-gradient-black-pure {
+  background: linear-gradient(135deg, #121214 0%, #0c0c0e 50%, #050507 100%);
 }
 
 /* Custom Scrollbar */
@@ -64,7 +93,7 @@ body {
 
 /* Utility Animations & Grids */
 .glow-on-hover:hover {
-  box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+  box-shadow: 0 0 15px rgba(var(--theme-glow-rgba), 0.6);
   transition: all 0.3s ease-in-out;
 }
 
@@ -77,4 +106,53 @@ body {
   background-image: radial-gradient(rgba(229, 9, 20, 0.1) 1.5px, transparent 1.5px);
   background-size: 32px 32px;
 }
+
+/* White Gradient Laser Scanning Animations */
+@keyframes scan-line-h {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes scan-line-v {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scan-h-1 {
+  animation: scan-line-h 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-scan-h-2 {
+  animation: scan-line-h 11s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-scan-v-1 {
+  animation: scan-line-v 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* QR Code Scan Line Animation */
+@keyframes qr-scanner {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.animate-qr-scanner {
+  animation: qr-scanner 2.0s ease-in-out infinite;
+}
+
 

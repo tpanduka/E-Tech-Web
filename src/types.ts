@@ -13,7 +13,8 @@ export type PageId =
   | 'cybersecurity-consultancy'
   | 'maintenance-agreements'
   | 'portfolio'
-  | 'contact';
+  | 'contact'
+  | 'faq';
 
 export interface ServiceDetail {
   id: PageId;

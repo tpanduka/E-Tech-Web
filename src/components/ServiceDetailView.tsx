@@ -66,7 +66,7 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
         <img
           src={service.image}
           alt={service.title}
-          className="w-full h-full object-cover filter brightness-[0.2] contrast-110"
+          className="w-full h-full object-cover filter brightness-[0.45] contrast-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent" />
         <div className="absolute bottom-6 left-6 right-6 max-w-7xl mx-auto px-6">
@@ -90,7 +90,7 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
           <div className="bg-brand-charcoal/95 backdrop-blur-sm border border-brand-dark-gray rounded-sm p-6 sm:p-8">
             <div className="flex justify-between items-center mb-6 border-b border-brand-dark-gray pb-3">
               <h2 className="font-display font-semibold text-xs tracking-wider uppercase text-brand-red font-mono">
-                [01] SYSTEM SPECIFICATION & SCOPE
+                SYSTEM SPECIFICATION & SCOPE
               </h2>
               <span className="text-[10px] text-brand-muted/50 font-mono">CODE: {serviceId.toUpperCase().slice(0,6)}</span>
             </div>
