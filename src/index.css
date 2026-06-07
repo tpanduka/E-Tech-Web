@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-red: #E50914;
+  --color-dark-red: #B0000B;
+  --color-brand-black: #050505;
+  --color-brand-charcoal: #111111;
+  --color-brand-dark-gray: #1A1A1A;
+  --color-brand-light-gray: #F5F5F5;
+  --color-brand-muted: #B8B8B8;
+  
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.8), 0 0 30px rgba(229, 9, 20, 0.4);
+  }
+}
+
+:root {
+  --brand-red: #E50914;
+  --dark-red: #B0000B;
+  --black: #050505;
+  --charcoal: #111111;
+  --dark-gray: #1A1A1A;
+  --light-gray: #F5F5F5;
+  --white: #FFFFFF;
+  --text-muted: #B8B8B8;
+  
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-sans);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dark-gray);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-red);
+}
+
+/* Utility Animations & Grids */
+.glow-on-hover:hover {
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+
+.bg-grid-mesh-gray {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-grid-mesh-red {
+  background-image: radial-gradient(rgba(229, 9, 20, 0.1) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+

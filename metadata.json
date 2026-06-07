@@ -1,0 +1,6 @@
+{
+  "name": "E-Tech Solutions",
+  "description": "Sri Lankan ICT, cybersecurity, software development, digital marketing, and procurement consultancy website.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
