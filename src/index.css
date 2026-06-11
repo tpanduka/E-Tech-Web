@@ -31,13 +31,15 @@
 :root {
   --brand-red: #E50914;
   --dark-red: #B0000B;
-  --black: #050505;
-  --charcoal: #111111;
-  --dark-gray: #1A1A1A;
-  --light-gray: #F5F5F5;
-  --white: #FFFFFF;
-  --text-muted: #B8B8B8;
+  --black: #F8F9FA;             /* Crisp, ultra-bright page background */
+  --charcoal: #FFFFFF;          /* Pure white high-visibility cards */
+  --dark-gray: #E5E7EB;         /* Clean silver gray borders */
+  --light-gray: #F3F4F6;        /* Subtly darker highlights for sections */
+  --white: #111827;             /* Dynamic high-contrast heading text (charcoal-dark) */
+  --text-muted: #4B5563;        /* Readable dark zinc for secondary descriptions */
   --theme-glow-rgba: 229, 9, 20; /* rgb form of #E50914 */
+  --text-shadow-contrast: 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.95), 0px 1px 1.5px rgba(0, 0, 0, 0.05);
+  --p-shadow: 0.3px 0.3px 0px rgba(255, 255, 255, 0.9), 0px 0.5px 1px rgba(0, 0, 0, 0.02);
   
   scroll-behavior: smooth;
 }
@@ -49,14 +51,72 @@
   --black: #0b0f19;             /* Luxury Slate background */
   --charcoal: #1e293b;          /* Bright Slate Charcoal card */
   --dark-gray: #475569;         /* High-visibility Border slate-600 */
+  --white: #ffffff;             /* Crisp white text for deep blue accessibility */
   --text-muted: #e2e8f0;        /* White-ish high contrast text slate-200 */
   --theme-glow-rgba: 56, 189, 248; /* rgb form of #38bdf8 */
+  --text-shadow-contrast: 0px 1.2px 3px rgba(0, 0, 0, 0.8), 0px 2px 7px rgba(0, 0, 0, 0.5);
+  --p-shadow: 0px 0.5px 1.5px rgba(0, 0, 0, 0.65);
 }
 
 body {
-  background-color: #0c0d10;
+  background-color: var(--black);
   color: var(--white);
   font-family: var(--font-sans);
+  transition: background-color 450ms cubic-bezier(0.4, 0, 0.2, 1), color 450ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Readability pop across entire heading and subtext systems */
+h1, h2, h3, h4, h5, h6, .font-display, blockquote, label {
+  text-shadow: var(--text-shadow-contrast);
+}
+
+p, li span, .font-mono, td, th {
+  text-shadow: var(--p-shadow);
+}
+
+/* Resolve theme-independent dark sections getting washed out by light/midnight theme white text shadows */
+.bg-gradient-black-pure h1,
+.bg-gradient-black-pure h2,
+.bg-gradient-black-pure h3,
+.bg-gradient-black-pure h4,
+.bg-gradient-black-pure h5,
+.bg-gradient-black-pure h6,
+.bg-gradient-black-pure .font-display,
+.bg-gradient-black-pure blockquote,
+.bg-gradient-black-pure label,
+.bg-gradient-black-pure p,
+.bg-gradient-black-pure span,
+.bg-gradient-black-pure div,
+.bg-gradient-black-pure li,
+.bg-gradient-black-pure a,
+.bg-gradient-black-pure .font-mono {
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.95), 0px 0px 4px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Enable smooth cross-fade visual transition across all structural interface components and controls */
+html,
+body,
+nav,
+section,
+footer,
+div,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a,
+input,
+textarea,
+select,
+svg {
+  transition-property: color, background-color, border-color, box-shadow, text-decoration-color, fill, stroke;
+  transition-duration: 450ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Premium White, Black and Ash Gradient backgrounds */
@@ -73,7 +133,21 @@ body {
 }
 
 .bg-gradient-black-pure {
-  background: linear-gradient(135deg, #121214 0%, #0c0c0e 50%, #050507 100%);
+  background: linear-gradient(135deg, #121214 0%, #0c0c0e 50%, #050507 100%) !important;
+  color: #f8fafc !important;
+  
+  /* Strict theme-independent dark variable overrides */
+  --white: #f8fafc !important;
+  --text-muted: #94a3b8 !important;   /* Highly readable slate-400 */
+  --black: #09090b !important;
+  --charcoal: #18181b !important;    /* Zinc-900 for high visibility cards */
+  --dark-gray: #2d2d30 !important;   /* Defined borders */
+  --light-gray: #1e1e21 !important;
+}
+
+.bg-gradient-black-pure strong {
+  color: #ffffff !important;
+  font-weight: 700 !important;
 }
 
 /* Custom Scrollbar */

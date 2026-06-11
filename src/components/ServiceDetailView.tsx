@@ -40,25 +40,62 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
   };
 
   return (
-    <article className="pt-28 pb-16 bg-brand-black min-h-screen text-white relative overflow-hidden">
+    <article className="pt-40 md:pt-48 pb-16 bg-brand-black min-h-screen text-[var(--white)] relative overflow-hidden">
       {/* Structural Workspace Grid Background */}
       <div className="absolute inset-0 bg-grid-mesh-gray opacity-40 pointer-events-none" />
       
       {/* Top Breadcrumb Bar */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-4 border-b border-white/5 flex items-center justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-4 border-b border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex items-center gap-2 flex-wrap text-xs text-brand-muted font-mono uppercase tracking-wider">
+          <button
+            onClick={() => {
+              setActivePage('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="hover:text-brand-red transition-all cursor-pointer"
+          >
+            Home
+          </button>
+          <span className="text-white/20 select-none">/</span>
+          <button
+            onClick={() => {
+              setActivePage('home');
+              setTimeout(() => {
+                const element = document.getElementById('services-section');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.scrollTo({ top: 600, behavior: 'smooth' });
+                }
+              }, 100);
+            }}
+            className="hover:text-brand-red transition-all cursor-pointer"
+          >
+            Services
+          </button>
+          <span className="text-white/20 select-none">/</span>
+          <span className="text-[var(--white)] font-semibold truncate max-w-[280px]">
+            {service.title}
+          </span>
+        </div>
+        
         <button
           onClick={() => {
-            setActivePage('services');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setActivePage('home');
+            setTimeout(() => {
+              const element = document.getElementById('services-section');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              } else {
+                window.scrollTo({ top: 600, behavior: 'smooth' });
+              }
+            }, 100);
           }}
           className="flex items-center gap-2 text-xs text-brand-muted hover:text-brand-red font-mono uppercase tracking-wider transition-all cursor-pointer"
         >
           <ArrowLeft size={14} />
           Back to all services
         </button>
-        <span className="text-xs text-brand-muted font-mono uppercase tracking-widest text-[10px]">
-          SPEC INDEX // {serviceId.toUpperCase()}
-        </span>
       </div>
 
       {/* Visual Service Header */}
@@ -73,10 +110,10 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
           <span className="text-[10px] text-brand-red font-mono uppercase font-bold tracking-widest block mb-1">
             SECTOR CLASSIFICATION // ESTD 2012
           </span>
-          <h1 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-white tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase">
+          <h1 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-[var(--white)] tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase">
             {service.title}
           </h1>
-          <p className="text-xs sm:text-sm text-white/55 font-mono mt-2 flex items-center gap-1.5 uppercase tracking-wide">
+          <p className="text-xs sm:text-sm text-brand-muted font-mono mt-2 flex items-center gap-1.5 uppercase tracking-wide">
             <span className="w-1.5 h-1.5 bg-brand-red rounded-full" />
             SLA REGISTERED PLATFORM
           </p>
@@ -96,7 +133,7 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
             </div>
             
             {/* Elegant Serif Quotation / Paragraph introduction */}
-            <p className="text-base font-serif italic text-white/95 leading-relaxed mb-6 pl-4 border-l-2 border-brand-red/60">
+            <p className="text-base font-serif italic text-[var(--white)]/95 leading-relaxed mb-6 pl-4 border-l-2 border-brand-red/60">
               "We approach this tech vertical with structural rigor, sourcing genuine vendor components and configuring high-availability failovers under dynamic SLAs."
             </p>
 
@@ -122,7 +159,7 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
           {/* Related package bundles (SLA Package options) */}
           {relatedPackages.length > 0 && (
             <div>
-              <h2 className="font-display font-semibold text-xs uppercase tracking-widest text-white mb-6 font-mono flex items-center gap-2">
+              <h2 className="font-display font-semibold text-xs uppercase tracking-widest text-[var(--white)] mb-6 font-mono flex items-center gap-2">
                 <span className="w-1 h-3 bg-brand-red" />
                 SLA ARCHITECTURE CONFIGURATIONS
               </h2>
@@ -136,7 +173,7 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
                       <span className="text-[9px] text-brand-red font-mono uppercase font-bold tracking-widest mb-2 block">
                         CONFIG MATRIX // ETS-{pkg.id.slice(0,3).toUpperCase()}
                       </span>
-                      <h3 className="font-display font-semibold text-sm text-white mb-4 border-b border-brand-dark-gray pb-2 group-hover:text-brand-red transition-all uppercase tracking-tight">
+                      <h3 className="font-display font-semibold text-sm text-[var(--white)] mb-4 border-b border-brand-dark-gray pb-2 group-hover:text-brand-red transition-all uppercase tracking-tight">
                         {pkg.packageName}
                       </h3>
                       <ul className="flex flex-col gap-2.5 text-[11px] text-brand-muted mb-6 font-mono">
@@ -151,7 +188,7 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
                     <div>
                       <button
                         onClick={handleInquiry}
-                        className="w-full text-center bg-brand-black border border-brand-dark-gray hover:border-brand-red/50 hover:bg-brand-red/5 text-white py-2 rounded text-[11px] font-bold uppercase transition-all tracking-wider cursor-pointer mt-4"
+                        className="w-full text-center bg-brand-black border border-brand-dark-gray hover:border-brand-red/50 hover:bg-brand-red/5 text-[var(--white)] py-2 rounded text-[11px] font-bold uppercase transition-all tracking-wider cursor-pointer mt-4"
                       >
                         Request Quote for Tier
                       </button>
@@ -170,7 +207,7 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
             <span className="text-[10px] text-brand-red font-mono uppercase font-bold tracking-wide block mb-1">
               Procurement SLA Delivery
             </span>
-            <h3 className="font-display font-bold text-base text-white mb-4">
+            <h3 className="font-display font-bold text-base text-[var(--white)] mb-4">
               Ready to Initiate this Sector Setup?
             </h3>
             <p className="text-xs text-brand-muted leading-relaxed mb-6">
@@ -186,8 +223,8 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
             </button>
 
             <div className="border-t border-brand-dark-gray/60 py-4 mt-6 flex flex-col gap-2.5 text-xs text-brand-muted">
-              <span className="text-[11px] uppercase font-mono font-bold text-white/50 block">Consultation Support:</span>
-              <p>📞 Hotline Support: +94 752 121 000</p>
+              <span className="text-[11px] uppercase font-mono font-bold text-[var(--white)]/50 block">Consultation Support:</span>
+              <p>📞 Hotline Support: +94 72 212 1000</p>
               <p>🏠 Office HQ: Mirihana, Nugegoda</p>
               <p>🛡️ Genuine Vendor Licenses Compliant</p>
             </div>
@@ -197,7 +234,7 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
           <div className="bg-brand-charcoal/45 border border-brand-dark-gray rounded-xl p-5 flex gap-3">
             <ShieldAlert size={20} className="text-brand-red shrink-0 mt-0.5 animate-pulse-slow" />
             <div>
-              <span className="text-[10px] text-white/90 font-bold uppercase block mb-1">SLA Compliance Notice</span>
+              <span className="text-[10px] text-[var(--white)]/90 font-bold uppercase block mb-1">SLA Compliance Notice</span>
               <p className="text-[10px] text-brand-muted leading-relaxed">
                 All customized installations, server architectures, and commercial security deployments are backed by our signature SLA maintenance, subject to vendor licensing limits and regional technical rules.
               </p>

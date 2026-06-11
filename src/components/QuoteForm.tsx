@@ -90,12 +90,12 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
           <div className="w-16 h-16 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mb-6 border border-green-500/30">
             <CheckCircle2 size={32} />
           </div>
-          <h3 className="font-display font-bold text-2xl text-white mb-2">Inquiry Submitted Successfully!</h3>
+          <h3 className="font-display font-bold text-2xl text-[var(--white)] mb-2">Inquiry Submitted Successfully!</h3>
           <p className="text-sm text-brand-muted max-w-md leading-relaxed mb-6">
             Thank you, <strong>{formData.name}</strong>, from {formData.organization || 'your organization'}. Your request regarding <span className="text-brand-red font-semibold">“{formData.service}”</span> has been safely received by the E-Tech Solutions Engineering Desk.
           </p>
           <div className="bg-brand-black border border-brand-dark-gray rounded-sm p-4 max-w-sm text-left mb-6 font-mono text-[11px] leading-relaxed">
-            <p className="text-white font-semibold mb-1 flex items-center gap-1.5">
+            <p className="text-[var(--white)] font-semibold mb-1 flex items-center gap-1.5">
               <ShieldCheck size={12} className="text-brand-red" />
               SLA Priority Diagnostic Window:
             </p>
@@ -131,7 +131,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
               </h3>
               <span className="text-[10px] text-brand-muted/50 font-mono">FORM: ET-Q-26</span>
             </div>
-            <h2 className="font-display font-bold text-lg text-white uppercase tracking-tight">Request technical spec Advisory</h2>
+            <h2 className="font-display font-bold text-lg text-[var(--white)] uppercase tracking-tight">Request technical spec Advisory</h2>
             <p className="text-xs text-brand-muted mt-1 leading-relaxed">
               Submit your corporate indices. Our engineering and compliance leads will formulate technical specifications & outline estimations.
             </p>
@@ -155,7 +155,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-white focus:outline-none transition-all placeholder:text-white/20 font-mono text-xs"
+                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 font-mono text-xs"
                 placeholder="E.g. Shanaka Perera"
               />
             </div>
@@ -171,7 +171,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 name="organization"
                 value={formData.organization}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-white focus:outline-none transition-all placeholder:text-white/20 font-mono text-xs"
+                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 font-mono text-xs"
                 placeholder="E.g. Apex Enterprises (Pvt) Ltd"
               />
             </div>
@@ -190,7 +190,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 required
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-white focus:outline-none transition-all placeholder:text-white/20 font-mono text-xs"
+                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 font-mono text-xs"
                 placeholder="E.g. +94 777 123 456"
               />
             </div>
@@ -206,7 +206,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-white focus:outline-none transition-all placeholder:text-white/20 font-mono text-xs"
+                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 font-mono text-xs"
                 placeholder="E.g. info@apex.lk"
               />
             </div>
@@ -224,11 +224,11 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 required
                 value={formData.service}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray focus:border-brand-red/80 px-3 py-2.5 rounded-sm text-xs text-white focus:outline-none cursor-pointer font-mono"
+                className="bg-brand-black border border-brand-dark-gray focus:border-brand-red/80 px-3 py-2.5 rounded-sm text-xs text-[var(--white)] focus:outline-none cursor-pointer font-mono"
               >
-                <option value="" disabled>-- Select Service Sector --</option>
+                <option value="" disabled className="text-black">-- Select Service Sector --</option>
                 {servicesList.map((svc) => (
-                  <option key={svc.value} value={svc.value}>
+                  <option key={svc.value} value={svc.value} className="text-black">
                     {svc.label}
                   </option>
                 ))}
@@ -245,13 +245,13 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 name="budget"
                 value={formData.budget}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray focus:border-brand-red/80 px-3 py-2.5 rounded-sm text-xs text-white focus:outline-none cursor-pointer font-mono"
+                className="bg-brand-black border border-brand-dark-gray focus:border-brand-red/80 px-3 py-2.5 rounded-sm text-xs text-[var(--white)] focus:outline-none cursor-pointer font-mono"
               >
-                <option value="">Choosing estimate spec...</option>
-                <option value="SME/Starter">Starter / SME Tier (&lt; LKR 100k)</option>
-                <option value="Standard Business">Standard Business Tier (LKR 100k - LKR 500k)</option>
-                <option value="Enterprise Solution">Advanced Mid-Tier Enterprise (LKR 500k - LKR 2M)</option>
-                <option value="Consultancy/Global">Full Infrastructure / Consultancy Scale (&gt; LKR 2M)</option>
+                <option value="" className="text-black">Choosing estimate spec...</option>
+                <option value="SME/Starter" className="text-black">Starter / SME Tier (&lt; LKR 100k)</option>
+                <option value="Standard Business" className="text-black">Standard Business Tier (LKR 100k - LKR 500k)</option>
+                <option value="Enterprise Solution" className="text-black">Advanced Mid-Tier Enterprise (LKR 500k - LKR 2M)</option>
+                <option value="Consultancy/Global" className="text-black">Full Infrastructure / Consultancy Scale (&gt; LKR 2M)</option>
               </select>
             </div>
           </div>
@@ -269,7 +269,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                   onClick={() => handleContactMethodChange(method)}
                   className={`py-2 px-3 rounded-sm text-xs font-semibold border transition-all cursor-pointer font-mono text-[10px] uppercase tracking-wider ${
                     formData.contactMethod === method
-                      ? 'bg-brand-red/10 border-brand-red text-white'
+                      ? 'bg-brand-red/10 border-brand-red text-[var(--white)] font-bold'
                       : 'bg-brand-black border-brand-dark-gray text-brand-muted hover:border-white/10'
                   }`}
                 >
@@ -290,7 +290,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
               rows={4}
               value={formData.message}
               onChange={handleInputChange}
-              className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-white focus:outline-none transition-all placeholder:text-white/20 resize-none font-sans text-xs"
+              className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 resize-none font-sans text-xs"
               placeholder="State your technical constraints, required nodes count, desired delivery targets, or specifications."
             />
           </div>

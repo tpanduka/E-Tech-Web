@@ -12,6 +12,8 @@ export type PageId =
   | 'ict-procurement-consultancy'
   | 'cybersecurity-consultancy'
   | 'maintenance-agreements'
+  | 'lectures-awareness'
+  | 'smart-qr-patrol'
   | 'portfolio'
   | 'contact'
   | 'faq';

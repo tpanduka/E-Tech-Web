@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Phone, Shield, Mail, Globe, MapPin, Contrast, Facebook, Search } from 'lucide-react';
+import { 
+  Menu, X, ChevronDown, Phone, Shield, Mail, Globe, MapPin, Contrast, Facebook, Search,
+  Home, Info, Code, Cpu, Network, FileCode, FileText, Briefcase, Terminal, 
+  TrendingUp, Video, Layers, HelpCircle, ExternalLink, Award, QrCode
+} from 'lucide-react';
 import { PageId } from '../types';
 import EtechLogo from './EtechLogo';
 import { motion, AnimatePresence } from 'motion/react';
 import { SERVICES_DATA, PORTFOLIO_PROJECTS } from '../data';
+import { useLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
   activePage: PageId;
@@ -13,11 +18,46 @@ interface NavbarProps {
 }
 
 export default function Navbar({ activePage, setActivePage, theme, setTheme }: NavbarProps) {
+  const { language, setLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  const getServiceIcon = (id: string) => {
+    switch (id) {
+      case 'home': return <Home size={16} className="text-brand-red shrink-0" />;
+      case 'about': return <Info size={16} className="text-brand-red shrink-0" />;
+      case 'web-software-development': return <Code size={16} className="text-brand-red shrink-0" />;
+      case 'hardware-solutions': return <Cpu size={16} className="text-brand-red shrink-0" />;
+      case 'networking-solutions': return <Network size={16} className="text-brand-red shrink-0" />;
+      case 'cybersecurity-solutions': return <Shield size={16} className="text-brand-red shrink-0" />;
+      case 'software-licensing': return <FileCode size={16} className="text-brand-red shrink-0" />;
+      case 'maintenance-agreements': return <FileText size={16} className="text-brand-red shrink-0" />;
+      case 'ict-procurement-consultancy': return <Briefcase size={16} className="text-brand-red shrink-0" />;
+      case 'cybersecurity-consultancy': return <Terminal size={16} className="text-brand-red shrink-0" />;
+      case 'digital-marketing': return <TrendingUp size={16} className="text-brand-red shrink-0" />;
+      case 'creative-media-production': return <Video size={16} className="text-brand-red shrink-0" />;
+      case 'lectures-awareness': return <Award size={16} className="text-brand-red shrink-0" />;
+      case 'smart-qr-patrol': return <QrCode size={16} className="text-brand-red shrink-0" />;
+      case 'portfolio': return <Layers size={16} className="text-brand-red shrink-0" />;
+      case 'faq': return <HelpCircle size={16} className="text-brand-red shrink-0" />;
+      case 'contact': return <Mail size={16} className="text-brand-red shrink-0" />;
+      default: return <ChevronDown size={16} className="text-brand-red shrink-0" />;
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,17 +90,19 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
   };
 
   const serviceLinks = [
-    { name: 'Web & Software Development', id: 'web-software-development' },
-    { name: 'Hardware Solutions', id: 'hardware-solutions' },
-    { name: 'Networking Solutions', id: 'networking-solutions' },
-    { name: 'Cybersecurity Solutions', id: 'cybersecurity-solutions' },
-    { name: 'Software Licensing Support', id: 'software-licensing' },
-    { name: 'Maintenance Agreements (AMCs)', id: 'maintenance-agreements' }
+    { name: language === 'si' ? 'වෙබ් සහ මෘදුකාංග සංවර්ධනය' : 'Web & Software Development', id: 'web-software-development' },
+    { name: language === 'si' ? 'දෘඩාංග සහ CCTV විසඳුම්' : 'Hardware Solutions', id: 'hardware-solutions' },
+    { name: language === 'si' ? 'ජාලකරණ පද්ධති විසඳුම්' : 'Networking Solutions', id: 'networking-solutions' },
+    { name: language === 'si' ? 'සයිබර් ආරක්ෂණ විසඳුම්' : 'Cybersecurity Solutions', id: 'cybersecurity-solutions' },
+    { name: language === 'si' ? 'මෘදුකාංග බලපත්‍ර සහය' : 'Software Licensing Support', id: 'software-licensing' },
+    { name: language === 'si' ? 'නඩත්තු ගිවිසුම් (AMCs)' : 'Maintenance Agreements (AMCs)', id: 'maintenance-agreements' },
+    { name: language === 'si' ? 'ස්මාර්ට් QR මුර සංචාරය' : 'Smart QR Patrol Solution', id: 'smart-qr-patrol' }
   ];
 
   const consultancyLinks = [
-    { name: 'ICT Procurement Consultancy', id: 'ict-procurement-consultancy' },
-    { name: 'Cybersecurity Consultancy', id: 'cybersecurity-consultancy' }
+    { name: language === 'si' ? 'තොරතුරු තාක්ෂණ උපදේශනය' : 'ICT Procurement Consultancy', id: 'ict-procurement-consultancy' },
+    { name: language === 'si' ? 'සයිබර් ආරක්ෂණ විගණන' : 'Cybersecurity Consultancy', id: 'cybersecurity-consultancy' },
+    { name: language === 'si' ? 'දේශන සහ දැනුවත් කිරීමේ සේවා' : 'Lectures & Awareness Sessions', id: 'lectures-awareness' }
   ];
 
   const filteredServices = searchQuery.trim() === '' ? [] : SERVICES_DATA.filter(service => 
@@ -79,38 +121,38 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
   return (
     <header className="fixed top-0 left-0 w-full z-50">
       {/* Top Banner Contact Details */}
-      <div className="bg-brand-black/95 text-white text-[11px] border-b border-brand-dark-gray py-2 px-4 hidden sm:block font-sans">
+      <div className="bg-[#f8f9fa] text-stone-850 text-[11px] border-b border-neutral-200 py-2.5 px-4 hidden sm:block font-sans shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-4 text-brand-muted font-mono">
+          <div className="flex items-center gap-4 text-stone-600 font-mono bg-transparent">
             <span className="flex items-center gap-1.5">
-              <Phone size={11} className="text-brand-red" />
-              HOTLINE: +94 752 121 000
+              <Phone size={11} className="text-brand-red font-bold animate-pulse" />
+              <span className="font-semibold">{t.hotline}:</span> <span className="text-stone-900 font-bold hover:text-brand-red transition-colors">+94 72 212 1000</span>
             </span>
-            <span className="text-white/10">|</span>
+            <span className="text-stone-300">|</span>
             <span className="flex items-center gap-1.5">
-              <Mail size={11} className="text-brand-red" />
-              etechmultisolutions@gmail.com
+              <Mail size={11} className="text-brand-red font-bold" />
+              <span className="font-semibold">Email:</span> <span className="text-stone-900 font-bold hover:text-brand-red transition-colors">etechmultisolutions@gmail.com</span>
             </span>
           </div>
-          <div className="flex items-center gap-4 text-brand-muted font-mono">
+          <div className="flex items-center gap-4 text-stone-600 font-mono">
             <span className="flex items-center gap-1.5">
-              <MapPin size={11} className="text-brand-red" />
-              COLOMBO, LK
+              <MapPin size={11} className="text-brand-red font-bold" />
+              <span className="font-semibold">HQ:</span> <span className="text-stone-900 font-bold">{t.colomboLk}</span>
             </span>
-            <span className="text-white/10">|</span>
+            <span className="text-stone-300">|</span>
             <a
               href="https://web.facebook.com/etechworldwide"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-white text-brand-muted transition-colors tracking-wider text-[11px]"
+              className="flex items-center gap-1.5 hover:text-brand-red text-stone-900 font-bold transition-colors tracking-wider text-[11px]"
             >
-              <Facebook size={12} className="text-[#1877F2]" />
+              <Facebook size={12} className="text-[#1877F2] shrink-0" />
               FACEBOOK
             </a>
-            <span className="text-white/10">|</span>
-            <span className="flex items-center gap-1.5 text-brand-red font-semibold uppercase tracking-wider">
-              <Shield size={11} />
-              SLA CORE VERIFIED
+            <span className="text-stone-300">|</span>
+            <span className="flex items-center gap-1.5 text-brand-red font-bold uppercase tracking-wider">
+              <Shield size={11} className="text-brand-red animate-pulse" />
+              {t.slaVerified}
             </span>
           </div>
         </div>
@@ -119,7 +161,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
       {/* Main Bar */}
       <nav
         id="navbar"
-        className={`w-full py-4 px-6 border-b transition-all duration-300 ${
+        className={`w-full py-4 px-6 border-b transition-all duration-300 relative z-30 ${
           scrolled
             ? 'bg-brand-black/95 backdrop-blur-md border-brand-red/20 shadow-lg'
             : 'bg-brand-black/80 backdrop-blur-sm border-white/5'
@@ -134,10 +176,10 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
           >
             <EtechLogo size={42} className="transform group-hover:scale-105 transition-all" />
             <div>
-              <span className="font-display font-bold text-lg text-white tracking-tight flex items-center gap-1">
+              <span className="font-display font-bold text-lg text-[var(--white)] tracking-tight flex items-center gap-1">
                 E-TECH <span className="text-brand-red">SOLUTIONS</span>
               </span>
-              <p className="text-[10px] text-brand-muted tracking-wider uppercase font-mono mt-0.5">
+              <p className="text-[10px] text-[var(--text-muted)] tracking-wider uppercase font-mono mt-0.5">
                 ICT & Cybersecurity Partner
               </p>
             </div>
@@ -149,19 +191,19 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
               id="menu-home"
               onClick={() => navigateTo('home')}
               className={`font-medium text-sm transition-colors cursor-pointer ${
-                activePage === 'home' ? 'text-brand-red font-semibold' : 'text-white hover:text-brand-red/90'
+                activePage === 'home' ? 'text-brand-red font-semibold' : 'text-[var(--white)] hover:text-brand-red/90'
               }`}
             >
-              Home
+              {t.home}
             </button>
             <button
               id="menu-about"
               onClick={() => navigateTo('about')}
               className={`font-medium text-sm transition-colors cursor-pointer ${
-                activePage === 'about' ? 'text-brand-red font-semibold' : 'text-white hover:text-brand-red/90'
+                activePage === 'about' ? 'text-brand-red font-semibold' : 'text-[var(--white)] hover:text-brand-red/90'
               }`}
             >
-              About Us
+              {t.aboutUs}
             </button>
 
             {/* Unified Solutions & Services Dropdown */}
@@ -173,37 +215,38 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
                     'web-software-development', 'hardware-solutions', 'networking-solutions', 
                     'cybersecurity-solutions', 'software-licensing', 'maintenance-agreements',
                     'ict-procurement-consultancy', 'cybersecurity-consultancy',
-                    'digital-marketing', 'creative-media-production', 'services'
+                    'digital-marketing', 'creative-media-production', 'services', 'smart-qr-patrol', 'lectures-awareness'
                   ].includes(activePage)
                     ? 'text-brand-red font-semibold'
-                    : 'text-white hover:text-brand-red/90'
+                    : 'text-[var(--white)] hover:text-brand-red/90'
                 }`}
               >
-                Solutions & Services
+                {t.solutionsServices}
                 <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
               </button>
               <div
-                className="absolute top-full left-1/2 -translate-x-1/2 w-[640px] bg-brand-charcoal border border-brand-dark-gray rounded-md shadow-2xl p-6 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 grid grid-cols-3 gap-6"
+                className="absolute top-full left-1/2 -translate-x-1/2 w-[640px] bg-brand-charcoal border border-brand-dark-gray rounded-md shadow-2xl p-6 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 grid grid-cols-3 gap-6 z-50"
               >
                 {/* Column 1: Core Eng */}
                 <div className="flex flex-col gap-2">
                   <span className="text-[10px] font-mono font-bold text-brand-red uppercase tracking-wider">
-                    Core Engineering
+                    {t.coreEngineering}
                   </span>
                   <div className="flex flex-col gap-1 mt-1">
                     {[
-                      { name: 'Custom Web & Software', id: 'web-software-development' },
-                      { name: 'Hardware Supply & CCTV', id: 'hardware-solutions' },
-                      { name: 'Networking & Cabling', id: 'networking-solutions' },
-                      { name: 'Active Firewall Protection', id: 'cybersecurity-solutions' },
-                      { name: 'Software Licenses Supply', id: 'software-licensing' },
-                      { name: 'IT SLA Agreements (AMCs)', id: 'maintenance-agreements' }
+                      { name: language === 'si' ? 'වෙබ් සහ මෘදුකාංග සංවර්ධනය' : 'Custom Web & Software', id: 'web-software-development' },
+                      { name: language === 'si' ? 'දෘඩාංග සහ CCTV සැපයුම' : 'Hardware Supply & CCTV', id: 'hardware-solutions' },
+                      { name: language === 'si' ? 'ජාලකරණ පද්ධති විසඳුම්' : 'Networking & Cabling', id: 'networking-solutions' },
+                      { name: language === 'si' ? 'pfSense ක්‍රියාකාරී ෆයර්වෝල්' : 'Active Firewall Protection', id: 'cybersecurity-solutions' },
+                      { name: language === 'si' ? 'ස්මාර්ට් QR මුර සංචාරක පද්ධතිය' : 'Smart QR Patrol Solution', id: 'smart-qr-patrol' },
+                      { name: language === 'si' ? 'මෘදුකාංග බලපත්‍ර සැපයුම' : 'Software Licenses Supply', id: 'software-licensing' },
+                      { name: language === 'si' ? 'තාක්ෂණික නඩත්තු ගිවිසුම් (AMCs)' : 'IT SLA Agreements (AMCs)', id: 'maintenance-agreements' }
                     ].map((link) => (
                       <button
                         key={link.id}
                         onClick={() => navigateTo(link.id as PageId)}
                         className={`text-left text-xs py-1.5 rounded transition-colors ${
-                          activePage === link.id ? 'text-brand-red font-bold' : 'text-white/85 hover:text-brand-red'
+                          activePage === link.id ? 'text-brand-red font-bold' : 'text-[var(--white)]/85 hover:text-brand-red'
                         }`}
                       >
                         {link.name}
@@ -215,18 +258,19 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
                 {/* Column 2: Governance & Auditing */}
                 <div className="flex flex-col gap-2">
                   <span className="text-[10px] font-mono font-bold text-brand-red uppercase tracking-wider">
-                    Advisory & Audits
+                    {t.advisoryAudits}
                   </span>
                   <div className="flex flex-col gap-1 mt-1">
                     {[
-                      { name: 'IT Procurement Consultancy', id: 'ict-procurement-consultancy' },
-                      { name: 'Cybersecurity PDPA Audits', id: 'cybersecurity-consultancy' }
+                      { name: language === 'si' ? 'තොරතුරු තාක්ෂණ උපදේශනය' : 'IT Procurement Consultancy', id: 'ict-procurement-consultancy' },
+                      { name: language === 'si' ? 'සයිබර් ආරක්ෂණ විගණන' : 'Cybersecurity PDPA Audits', id: 'cybersecurity-consultancy' },
+                      { name: language === 'si' ? 'දේශන සහ දැනුවත් කිරීමේ සේවා' : 'Lectures & Awareness Sessions', id: 'lectures-awareness' }
                     ].map((link) => (
                       <button
                         key={link.id}
                         onClick={() => navigateTo(link.id as PageId)}
                         className={`text-left text-xs py-1.5 rounded transition-colors ${
-                          activePage === link.id ? 'text-brand-red font-bold' : 'text-white/85 hover:text-brand-red'
+                          activePage === link.id ? 'text-brand-red font-bold' : 'text-[var(--white)]/85 hover:text-brand-red'
                         }`}
                       >
                         {link.name}
@@ -238,18 +282,18 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
                 {/* Column 3: Growth media */}
                 <div className="flex flex-col gap-2">
                   <span className="text-[10px] font-mono font-bold text-brand-red uppercase tracking-wider">
-                    Media & Growth
+                    {t.mediaGrowth}
                   </span>
                   <div className="flex flex-col gap-1 mt-1">
                     {[
-                      { name: 'Online Digital Marketing', id: 'digital-marketing' },
-                      { name: 'Creative Video Shoots', id: 'creative-media-production' }
+                      { name: language === 'si' ? 'ඩිජිටල් අලෙවිකරණය' : 'Online Digital Marketing', id: 'digital-marketing' },
+                      { name: language === 'si' ? 'නිර්මාණාත්මක වීඩියෝ නිෂ්පාදනය' : 'Creative Video Shoots', id: 'creative-media-production' }
                     ].map((link) => (
                       <button
                         key={link.id}
                         onClick={() => navigateTo(link.id as PageId)}
                         className={`text-left text-xs py-1.5 rounded transition-colors ${
-                          activePage === link.id ? 'text-brand-red font-bold' : 'text-white/85 hover:text-brand-red'
+                          activePage === link.id ? 'text-brand-red font-bold' : 'text-[var(--white)]/85 hover:text-brand-red'
                         }`}
                       >
                         {link.name}
@@ -261,7 +305,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
                     onClick={() => navigateTo('services')}
                     className="text-left text-[11px] font-bold text-brand-red hover:underline"
                   >
-                    View All Integrations Summary →
+                    {t.viewAllServices}
                   </button>
                 </div>
               </div>
@@ -271,28 +315,28 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
               id="menu-portfolio"
               onClick={() => navigateTo('portfolio')}
               className={`font-medium text-sm transition-colors cursor-pointer ${
-                activePage === 'portfolio' ? 'text-brand-red font-semibold' : 'text-white hover:text-brand-red/90'
+                activePage === 'portfolio' ? 'text-brand-red font-semibold' : 'text-[var(--white)] hover:text-brand-red/90'
               }`}
             >
-              Portfolio
+              {t.portfolio}
             </button>
             <button
               id="menu-faq"
               onClick={() => navigateTo('faq')}
               className={`font-medium text-sm transition-colors cursor-pointer ${
-                activePage === 'faq' ? 'text-brand-red font-semibold' : 'text-white hover:text-brand-red/90'
+                activePage === 'faq' ? 'text-brand-red font-semibold' : 'text-[var(--white)] hover:text-brand-red/90'
               }`}
             >
-              FAQ
+              {t.faq}
             </button>
             <button
               id="menu-contact"
               onClick={() => navigateTo('contact')}
               className={`font-medium text-sm transition-colors cursor-pointer ${
-                activePage === 'contact' ? 'text-brand-red font-semibold' : 'text-white hover:text-brand-red/90'
+                activePage === 'contact' ? 'text-brand-red font-semibold' : 'text-[var(--white)] hover:text-brand-red/90'
               }`}
             >
-              Contact
+              {t.contact}
             </button>
 
             {/* Search Trigger Button */}
@@ -302,7 +346,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
               title="Search Services & Projects"
             >
               <Search size={13} className="text-brand-red group-hover:scale-110 transition-transform" />
-              <span>Search</span>
+              <span>{t.search}</span>
             </button>
 
             {/* Accessibility Theme Toggler single button */}
@@ -312,7 +356,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
               title={theme === 'midnight' ? 'Switch to Slate Blue Theme' : 'Switch to Midnight Black Theme'}
             >
               <Contrast size={13} className="text-brand-red group-hover:rotate-180 transition-transform duration-300" />
-              <span>{theme === 'midnight' ? 'Slate Blue' : 'Midnight'}</span>
+              <span>{theme === 'midnight' ? t.slateBlueLayout : t.midnightLayout}</span>
             </button>
 
             {/* Quick Quote Button */}
@@ -321,7 +365,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
               onClick={() => navigateTo('contact')}
               className="bg-brand-red hover:bg-dark-red text-white text-xs font-bold px-4 py-2.5 rounded-md shadow-md hover:shadow-brand-red/20 transform hover:-translate-y-0.5 transition-all cursor-pointer"
             >
-              Request a Quote
+              {t.requestQuote}
             </button>
           </div>
 
@@ -352,13 +396,16 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
       </nav>
 
       {/* Animated ICT Knowledge Marquee below the menu bar */}
-      <div className="bg-brand-black/95 text-white text-[10px] font-mono border-b border-brand-dark-gray/60 py-1.5 overflow-hidden flex items-center relative z-20 select-none">
+      <div 
+        className="bg-brand-black/95 text-[10px] font-mono border-b border-brand-dark-gray/60 py-1.5 overflow-hidden flex items-center relative z-20 select-none"
+        style={{ color: 'var(--white)' }}
+      >
         <div className="absolute left-0 top-0 bottom-0 px-3.5 bg-brand-red text-white font-bold text-[9.5px] tracking-wider flex items-center z-30 shadow-[4px_0_12px_rgba(0,0,0,0.7)] uppercase">
           ICT INTELLIGENCE TICKER
         </div>
         <div className="flex overflow-hidden w-full pl-56">
           <motion.div
-            className="flex gap-20 whitespace-nowrap uppercase tracking-wider text-white/90"
+            className="flex gap-20 whitespace-nowrap uppercase tracking-wider opacity-95"
             animate={{ x: ["0%", "-51.8%"] }}
             transition={{
               repeat: Infinity,
@@ -390,131 +437,234 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      <div
-        className={`lg:hidden fixed top-[140px] sm:top-[156px] left-0 w-full h-[calc(100vh-140px)] bg-brand-charcoal border-t border-brand-dark-gray p-6 flex flex-col gap-4 overflow-y-auto transition-all duration-300 ${
-          isOpen ? 'translate-x-0 opacity-100 visible' : 'translate-x-full opacity-0 invisible'
-        }`}
-      >
-        {/* Mobile Accessibility Bar */}
-        <div className="flex items-center justify-between bg-brand-black/90 p-3 rounded border border-white/5 mb-2">
-          <span className="text-[10px] font-mono text-brand-muted uppercase tracking-wider font-semibold flex items-center gap-1.5">
-            <Contrast size={12} className="text-brand-red" />
-            Accessibility Theme:
-          </span>
-          <div className="flex items-center gap-1 bg-brand-charcoal border border-white/5 p-1 rounded-md text-[10px] uppercase font-mono">
-            <button
-              onClick={() => setTheme('midnight')}
-              className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
-                theme === 'midnight'
-                  ? 'bg-brand-red text-white font-bold'
-                  : 'text-brand-muted hover:text-white'
-              }`}
-            >
-              Midnight
-            </button>
-            <button
-              onClick={() => setTheme('slate-blue')}
-              className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
-                theme === 'slate-blue'
-                  ? 'bg-brand-red text-slate-900 font-bold'
-                  : 'text-brand-muted hover:text-white'
-              }`}
-            >
-              Slate Blue
-            </button>
-          </div>
-        </div>
-        <button
-          onClick={() => navigateTo('home')}
-          className={`text-left font-display font-semibold text-lg border-b border-brand-dark-gray pb-2 ${activePage === 'home' ? 'text-brand-red' : 'text-white'}`}
-        >
-          Home
-        </button>
-        <button
-          onClick={() => navigateTo('about')}
-          className={`text-left font-display font-semibold text-lg border-b border-brand-dark-gray pb-2 ${activePage === 'about' ? 'text-brand-red' : 'text-white'}`}
-        >
-          About Us
-        </button>
-
-        {/* Services Dropdown Accordion */}
-        <div className="flex flex-col gap-2">
-          <span className="text-xs font-bold text-brand-red uppercase tracking-wide">Our Services</span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-3">
-            {serviceLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => navigateTo(link.id as PageId)}
-                className={`text-left text-sm py-1 font-medium ${activePage === link.id ? 'text-brand-red' : 'text-white/80'}`}
-              >
-                • {link.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Consultancy Accordion */}
-        <div className="flex flex-col gap-2 mt-2">
-          <span className="text-xs font-bold text-brand-red uppercase tracking-wide">Consulting and Compliance</span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-3">
-            {consultancyLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => navigateTo(link.id as PageId)}
-                className={`text-left text-sm py-1 font-medium ${activePage === link.id ? 'text-brand-red' : 'text-white/80'}`}
-              >
-                • {link.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <button
-          onClick={() => navigateTo('digital-marketing')}
-          className={`text-left font-display font-semibold text-lg border-b border-brand-dark-gray pb-2 ${activePage === 'digital-marketing' ? 'text-brand-red' : 'text-white'}`}
-        >
-          Digital Marketing
-        </button>
-        <button
-          onClick={() => navigateTo('creative-media-production')}
-          className={`text-left font-display font-semibold text-lg border-b border-brand-dark-gray pb-2 ${activePage === 'creative-media-production' ? 'text-brand-red' : 'text-white'}`}
-        >
-          Creative Media Production
-        </button>
-        <button
-          onClick={() => navigateTo('portfolio')}
-          className={`text-left font-display font-semibold text-lg border-b border-brand-dark-gray pb-2 ${activePage === 'portfolio' ? 'text-brand-red' : 'text-white'}`}
-        >
-          Portfolio / Projects
-        </button>
-        <button
-          onClick={() => navigateTo('faq')}
-          className={`text-left font-display font-semibold text-lg border-b border-brand-dark-gray pb-2 ${activePage === 'faq' ? 'text-brand-red' : 'text-white'}`}
-        >
-          FAQ
-        </button>
-        <button
-          onClick={() => navigateTo('contact')}
-          className={`text-left font-display font-semibold text-lg border-b border-brand-dark-gray pb-2 ${activePage === 'contact' ? 'text-brand-red' : 'text-white'}`}
-        >
-          Contact Us
-        </button>
-
-        <div className="mt-auto pt-6 flex flex-col gap-2 border-t border-brand-dark-gray text-xs text-brand-muted">
-          <p>📍 72/10, Edirisinghe Road, Mirihana, Nugegoda, Sri Lanka</p>
-          <p>📞 +94 112 819548 | 📱 +94 752 121 000</p>
-          <a
-            href="https://web.facebook.com/etechworldwide"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-brand-red hover:underline font-mono uppercase tracking-wider text-[10px] mt-1.5"
+      {/* Mobile Full-Screen Slider Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="lg:hidden fixed inset-0 z-[80] bg-brand-black/90 backdrop-blur-md flex justify-end"
           >
-            <Facebook size={12} className="text-[#1877F2]" />
-            Connect with us on Facebook
-          </a>
-        </div>
-      </div>
+            {/* Backdrop close clickable area */}
+            <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
+
+            {/* Slide-in Menu Drawer Card */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="relative w-full max-w-lg bg-brand-charcoal h-full shadow-[0_0_50px_rgba(0,0,0,0.85)] border-l border-brand-dark-gray/60 p-6 flex flex-col justify-between overflow-y-auto z-10"
+            >
+              <div>
+                {/* Header bar of drawer */}
+                <div className="flex items-center justify-between border-b border-brand-dark-gray/60 pb-5 mb-6">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 scale-90">
+                      <EtechLogo size={32} />
+                    </div>
+                    <div>
+                      <span className="font-display font-black text-xs uppercase tracking-wider text-[var(--white)] block">E-Tech Solutions</span>
+                      <span className="text-[8px] font-mono text-brand-red uppercase font-semibold">Security & ICT SLA System</span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="p-2.5 rounded-lg bg-brand-black/50 border border-white/5 text-[var(--white)] hover:text-brand-red transition-all cursor-pointer hover:border-brand-red/35"
+                    title="Close Menu"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                {/* Theme toggle & Primary Links */}
+                <div className="flex flex-col gap-3 bg-brand-black/95 p-3 rounded-xl border border-white/5 mb-5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10.5px] font-mono text-brand-muted uppercase tracking-wider font-bold flex items-center gap-1.5">
+                      <Contrast size={12} className="text-brand-red" />
+                      {t.interfaceMode}
+                    </span>
+                    <div className="flex items-center gap-1 bg-brand-charcoal border border-white/5 p-1 rounded-md text-[9px] uppercase font-mono font-bold">
+                      <button
+                        onClick={() => setTheme('midnight')}
+                        className={`px-2.5 py-1 rounded transition-all cursor-pointer ${
+                          theme === 'midnight'
+                            ? 'bg-brand-red text-white'
+                            : 'text-brand-muted hover:text-white'
+                        }`}
+                      >
+                        {t.midnightLayout}
+                      </button>
+                      <button
+                        onClick={() => setTheme('slate-blue')}
+                        className={`px-2.5 py-1 rounded transition-all cursor-pointer ${
+                          theme === 'slate-blue'
+                            ? 'bg-brand-red text-slate-900 animate-none'
+                            : 'text-brand-muted hover:text-white'
+                        }`}
+                      >
+                        {t.slateBlueLayout}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Core Navigation Channels */}
+                <div className="grid grid-cols-2 gap-2 mb-6">
+                  {[
+                    { name: t.home, id: 'home' },
+                    { name: t.aboutUs, id: 'about' },
+                    { name: t.portfolio, id: 'portfolio' },
+                    { name: t.faq, id: 'faq' }
+                  ].map((chan) => (
+                    <button
+                      key={chan.id}
+                      onClick={() => navigateTo(chan.id as PageId)}
+                      className={`flex items-center gap-2.5 p-3 rounded-lg border text-left transition-all cursor-pointer ${
+                        activePage === chan.id 
+                          ? 'bg-brand-red/10 border-brand-red/40 text-brand-red font-bold' 
+                          : 'bg-brand-black/30 border-white/5 text-[var(--white)]/70 hover:border-brand-red/25 hover:text-[var(--white)]'
+                      }`}
+                    >
+                      {getServiceIcon(chan.id)}
+                      <span className="text-xs uppercase font-mono font-semibold tracking-wide">{chan.name}</span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Scrollable List of Service Categories */}
+                <div className="space-y-5">
+                  {/* Category Group 1 */}
+                  <div>
+                    <span className="text-[10px] font-mono text-brand-red uppercase tracking-wider font-bold block mb-2.5 border-b border-brand-dark-gray/40 pb-1">
+                      {language === 'si' ? 'අපගේ සේවා ඒකාබද්ධතාවයන්' : 'Our Service Integrations'}
+                    </span>
+                    <div className="space-y-2">
+                      {serviceLinks.map((link) => (
+                        <button
+                          key={link.id}
+                          onClick={() => navigateTo(link.id as PageId)}
+                          className={`w-full flex items-center justify-between p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                            activePage === link.id
+                              ? 'bg-brand-red/15 border-brand-red/50 text-brand-red shadow-sm'
+                              : 'bg-brand-black/50 border-white/5 text-[var(--white)]/70 hover:border-brand-red/30'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="p-2 rounded-lg bg-brand-charcoal/90 border border-white/5 text-brand-red">
+                              {getServiceIcon(link.id)}
+                            </div>
+                            <div>
+                              <p className="text-xs font-display font-semibold leading-tight">{link.name}</p>
+                              <p className="text-[9px] text-brand-muted font-mono uppercase mt-0.5 tracking-wider">REF ID: {link.id.substring(0, 10)}</p>
+                            </div>
+                          </div>
+                          <span className="text-stone-600 group-hover:text-brand-red text-xs">➔</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Category Group 2 */}
+                  <div>
+                    <span className="text-[10px] font-mono text-brand-red uppercase tracking-wider font-bold block mb-2.5 border-b border-brand-dark-gray/40 pb-1">
+                      {language === 'si' ? 'සයිබර් උපදේශන සහ අනුකූලතා විගණන' : 'Cyber Advisory & Compliance Reviews'}
+                    </span>
+                    <div className="space-y-2">
+                      {consultancyLinks.map((link) => (
+                        <button
+                          key={link.id}
+                          onClick={() => navigateTo(link.id as PageId)}
+                          className={`w-full flex items-center justify-between p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                            activePage === link.id
+                              ? 'bg-brand-red/15 border-brand-red/50 text-brand-red shadow-sm'
+                              : 'bg-brand-black/50 border-white/5 text-[var(--white)]/70 hover:border-brand-red/30'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="p-2 rounded-lg bg-brand-charcoal/90 border border-white/5 text-brand-red">
+                              {getServiceIcon(link.id)}
+                            </div>
+                            <div>
+                              <p className="text-xs font-display font-semibold leading-tight">{link.name}</p>
+                              <p className="text-[9px] text-brand-muted font-mono uppercase mt-0.5 tracking-wider">Gov Compliance Core</p>
+                            </div>
+                          </div>
+                          <span className="text-stone-600 group-hover:text-brand-red text-xs">➔</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Additional Core Sectors */}
+                  <div>
+                    <span className="text-[10px] font-mono text-brand-red uppercase tracking-wider font-bold block mb-2.5 border-b border-brand-dark-gray/40 pb-1">
+                      {language === 'si' ? 'ඩිජිටල් මාධ්‍ය සහ ප්‍රවර්ධන' : 'Digital Media & Campaigns'}
+                    </span>
+                    <div className="grid grid-cols-1 gap-2">
+                      {[
+                        { name: 'Digital Marketing Support', id: 'digital-marketing' },
+                        { name: 'Creative Media Production', id: 'creative-media-production' }
+                      ].map((link) => (
+                        <button
+                          key={link.id}
+                          onClick={() => navigateTo(link.id as PageId)}
+                          className={`flex items-center gap-2.5 p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                            activePage === link.id
+                              ? 'bg-brand-red/15 border-brand-red/50 text-brand-red'
+                              : 'bg-brand-black/50 border-white/5 text-[var(--white)]/70 hover:border-brand-red/30'
+                          }`}
+                        >
+                          {getServiceIcon(link.id)}
+                          <span className="text-xs font-display font-medium leading-snug">{link.name}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer and physical coordinate strip */}
+              <div className="mt-8 pt-6 border-t border-brand-dark-gray/50 flex flex-col gap-4">
+                <div className="text-[11px] font-mono text-brand-muted space-y-2 text-left bg-brand-black/40 p-4 rounded-xl border border-white/5">
+                  <p className="flex items-center gap-2">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-red" />
+                    <span>HOTLINES: <strong>+94 72 212 1000</strong></span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-500" />
+                    <span>LANDLINE: <strong>+94 112 819548</strong></span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span>HQ OFFICE: <strong>Nugegoda, Sri Lanka</strong></span>
+                  </p>
+                </div>
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => navigateTo('contact')}
+                    className="flex-1 bg-brand-red hover:bg-red-700 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-lg transition-all text-center uppercase tracking-wider font-mono cursor-pointer"
+                  >
+                    Send Quotation Inquiry
+                  </button>
+                  <a
+                    href="https://web.facebook.com/etechworldwide"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-brand-black hover:bg-zinc-800 text-[#1877F2] border border-white/5 rounded-xl flex items-center justify-center transition-all cursor-pointer"
+                    title="Facebook"
+                  >
+                    <Facebook size={16} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Search Modal Overlay */}
       <AnimatePresence>
@@ -545,7 +695,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
                 <Search size={22} className="text-brand-red shrink-0" />
                 <input
                   type="text"
-                  placeholder="Type to search services, projects, or consulting scopes..."
+                  placeholder={t.searchPlaceholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   autoFocus

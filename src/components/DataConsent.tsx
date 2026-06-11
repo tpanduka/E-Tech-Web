@@ -7,23 +7,35 @@ export default function DataConsent() {
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('etech_cookie_consent');
-    if (!consent) {
-      // Small delay for natural entrance feel
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 1000);
-      return () => clearTimeout(timer);
+    try {
+      const consent = localStorage.getItem('etech_cookie_consent');
+      if (!consent) {
+        // Small delay for natural entrance feel
+        const timer = setTimeout(() => {
+          setIsVisible(true);
+        }, 1000);
+        return () => clearTimeout(timer);
+      }
+    } catch (err) {
+      console.warn('Storage blocked in sandboxed iframe:', err);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('etech_cookie_consent', 'accepted');
+    try {
+      localStorage.setItem('etech_cookie_consent', 'accepted');
+    } catch (err) {
+      console.warn('Unable to write to storage in sandbox:', err);
+    }
     setIsVisible(false);
   };
 
   const handleReject = () => {
-    localStorage.setItem('etech_cookie_consent', 'rejected');
+    try {
+      localStorage.setItem('etech_cookie_consent', 'rejected');
+    } catch (err) {
+      console.warn('Unable to write to storage in sandbox:', err);
+    }
     setIsVisible(false);
   };
 

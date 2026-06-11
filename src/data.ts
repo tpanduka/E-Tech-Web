@@ -174,22 +174,22 @@ export const SERVICES_DATA: ServiceDetail[] = [
   {
     id: 'cybersecurity-consultancy',
     title: 'Cybersecurity Consultancy & Governance',
-    shortDesc: 'PDPA compliance audits, CMMC 2.0 readiness assessments, vulnerability scans, and security policy design.',
-    image: 'https://images.unsplash.com/photo-1584438784894-089d6a128f3e?auto=format&fit=crop&w=800&q=80',
-    longDesc: 'Our cybersecurity consultancy services help organizations identify risks, strengthen controls, and prepare for security and compliance requirements. We support PDPA readiness reviews, CMMC 2.0 self-assessment support, vulnerability assessments, security audits, firewall reviews, policy development, and cybersecurity awareness programs.',
+    shortDesc: 'PDPA compliance audits, CMMC 2.0 readiness assessments, NIST SP 800-171 systems, and security policy design.',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
+    longDesc: 'Our cybersecurity consultancy services help organizations identify risks, strengthen controls, and satisfy critical compliance parameters. We provide thorough Sri Lanka Personal Data Protection Act (PDPA) audits and specialized CMMC 2.0 framework preparation. For contractors dealing with US clients and U.S. government defense bodies, we define boundaries, perform gap analyses, draft System Security Plans (SSP) aligned to NIST SP 800-171, and format defensible Plans of Action and Milestones (POA&M) with realistic remediation pathways.',
     inclusions: [
-      'Sri Lanka Personal Data Protection Act (PDPA) Compliance Audits',
-      'CMMC 2.0 Cybersecurity Maturity Self-Assessment Support',
-      'Network & Web Application Vulnerability Assessments',
-      'Comprehensive Cybersecurity Infrastructure Audits',
-      'Firewall Rules & Access Control List (ACL) Optimization Reviews',
-      'Endpoint Security Architecture Audits',
-      'Custom Information Security Policy Development (WISP)',
-      'Security Awareness Training Seminars for Office Staff',
-      'Digital Risk & Business Impact Analysis (BIA)',
-      'Administrative & Operational Security Gap Analysis',
-      'Compliance Documentation Writing & Policy Templates',
-      'Long-term Security Posture Improvement Roadmaps'
+      'CMMC 2.0 Level 1 (FCI) & Level 2 (CUI) Assessment Boundary Scoping',
+      'NIST SP 800-171 Control Mapping across all 14 Security Families',
+      'System Security Plan (SSP) Preparation and Data Flow Diagrams',
+      'Plan of Action and Milestones (POA&M) creation with Risk Ratings',
+      'Developing Compliance Control Matrix & Evidence Registers',
+      'Drafting CMMC-Compliant Policies (MFA, Access, Password, Incident)',
+      'Sri Lanka Personal Data Protection Act (PDPA) Gap Assessments',
+      'Network Subnet Segregation & Firewall Policy Optimization Reviews',
+      'Web Application Vulnerability Scanning & Risk Remediation reports',
+      'Administrative & Technical Operational Security Auditing',
+      'Employee Cybersecurity Hygiene & Awareness Coaching Sessions',
+      '9-Phase Phased Compliance Roadmap advisory from Discovery to Affirmation'
     ]
   },
   {
@@ -210,6 +210,42 @@ export const SERVICES_DATA: ServiceDetail[] = [
       'Firewall Gateway Rule Maintenance & Log Retention',
       'Endpoint Software Updates & Security patches',
       'Continuous Consultation & System inventory management'
+    ]
+  },
+  {
+    id: 'lectures-awareness',
+    title: 'Lectures & Awareness Sessions',
+    shortDesc: 'Qualified resource persons for ICT lectures, cybersecurity awareness, project management, networking, and productivity training.',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+    longDesc: 'E-Tech Solutions provides qualified resource persons and master trainers for ICT-related lectures, corporate workshops, and technology awareness sessions. We help organizations upskill their staff, educate students, and train technical teams on specialized areas including cybersecurity hygiene, standard office productivity tools, networking principles, project management methodologies, and artificial intelligence integration.',
+    inclusions: [
+      'Cybersecurity & Digital Hygiene Workshops',
+      'Enterprise Project Management (PMP/Agile) Lectures',
+      'Office Productivity and Automation (Office 365, G-Suite)',
+      'AI Tools & Generative Workflow Training',
+      'Strategic Tech Infrastructure Overviews',
+      'Networking Essentials & Secure Wireless Concepts',
+      'Tailored Corporate Tech Upskilling Programs',
+      'Educational Institute Guest Lectures & Seminars',
+      'Data Protection (PDPA) Compliance Awareness'
+    ]
+  },
+  {
+    id: 'smart-qr-patrol',
+    title: 'Smart QR Patrol Solution',
+    shortDesc: 'Unified web and mobile application monitoring field officers 24/7 with real-time tracking, QR checkpoints, and automated reports.',
+    image: 'https://images.unsplash.com/photo-1595079676339-1534801ad6cf?auto=format&fit=crop&w=800&q=80',
+    longDesc: 'The Smart QR Patrol Solution is a unified enterprise platform featuring a management web dashboard and an Android/iOS mobile application. Designed to monitor security and field officers 24/7, the system enables real-time GPS logging, automatic checkpoint check-ins via custom QR node scans, active incident reporting, and continuous tracking. Perfect for private security, site auditing, and corporate maintenance operations.',
+    inclusions: [
+      'Unified Admin Control Web Dashboard',
+      'Android & iOS Field Officer Mobile Apps',
+      'Real-time GPS Location Tracking & Time-stamping',
+      'Custom Checkpoint QR Code Tag Generation',
+      'Fail-safe Offline Scan Logging with Sync Support',
+      'Instant Incident Reporting with Photo Attachments',
+      'Automated Patrol Performance SLA Metrics & Reports',
+      '24/7 Continuous Subnet Monitoring Platform',
+      'Developer API & CRM Integration Readiness'
     ]
   }
 ];
@@ -400,6 +436,21 @@ export const PACKAGES_DATA: PackageItem[] = [
     ]
   },
   {
+    id: 'pkg-c3',
+    category: 'cybersecurity',
+    packageName: 'CMMC 2.0 Readiness Assessment',
+    features: [
+      'Discovery analysis of DoD clauses & regulatory obligations',
+      'Defining assessment boundaries for FCI & CUI information environments',
+      'Diagnostic gap assessment against all applicable Level 1 & Level 2 controls',
+      'Comprehensive NIST SP 800-171 control mapping across 14 security domains',
+      'Compilation of System Security Plan (SSP) & compliance diagrams',
+      'Development of Plan of Action and Milestones (POA&M) with rating indices',
+      'Creating CMMC Control Compliance Matrix & Evidence Registers',
+      'Drafting of 12 critical compliance deliverables for audit defensibility'
+    ]
+  },
+  {
     id: 'pkg-marketing',
     category: 'marketing',
     packageName: 'Business Social Media Package',
@@ -471,7 +522,7 @@ export const FAQS_DATA: FAQItem[] = [
   },
   {
     question: 'How can we request a quotation?',
-    answer: 'You can submit your requirements using our interactive "Request a Quote" form on the website, dial our hotlines at +94 752 121 000 / +94 777 889 734, or email us at etechmultisolutions@gmail.com. We typically respond within 24 hours with a comprehensive layout.'
+    answer: 'You can submit your requirements using our interactive "Request a Quote" form on the website, dial our hotlines at +94 72 212 1000 / +94 777 889 734, or email us at etechmultisolutions@gmail.com. We typically respond within 24 hours with a comprehensive layout.'
   }
 ];
 

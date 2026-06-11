@@ -44,7 +44,7 @@ export default function Footer({ setActivePage, scrollToSection }: FooterProps) 
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="footer" className="bg-brand-black text-white relative overflow-hidden border-t border-brand-red/10">
+    <footer id="footer" className="bg-brand-black text-[var(--white)] relative overflow-hidden border-t border-brand-red/10">
       {/* Decorative Red Accent Top Bar */}
       <div className="h-1 bg-gradient-to-r from-brand-red via-dark-red to-brand-black" />
 
@@ -55,7 +55,7 @@ export default function Footer({ setActivePage, scrollToSection }: FooterProps) 
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3 cursor-pointer group" onClick={() => navigateTo('home')}>
             <EtechLogo size={38} className="shrink-0 transform group-hover:scale-105 transition-all" />
-            <span className="font-display font-bold text-base tracking-wide text-white">
+            <span className="font-display font-bold text-base tracking-wide text-[var(--white)]">
               E-TECH <span className="text-brand-red">SOLUTIONS</span>
             </span>
           </div>
@@ -230,7 +230,7 @@ export default function Footer({ setActivePage, scrollToSection }: FooterProps) 
               <Phone size={14} className="text-brand-red shrink-0 mt-0.5" />
               <span>
                 Hotlines: <br />
-                +94 752 121 000 <br />
+                +94 72 212 1000 <br />
                 +94 777 889 734
               </span>
             </div>
@@ -247,13 +247,13 @@ export default function Footer({ setActivePage, scrollToSection }: FooterProps) 
       {/* Disclaimers & Legal Notes */}
       <div className="bg-brand-charcoal text-[11px] text-brand-muted py-6 px-6 border-t border-brand-dark-gray">
         <div className="max-w-7xl mx-auto flex flex-col gap-4 leading-relaxed">
-          <div className="flex items-start gap-2 text-white/50 text-[10px]">
+          <div className="flex items-start gap-2 text-[var(--white)]/60 text-[10px]">
             <ShieldAlert size={14} className="text-brand-red shrink-0 mt-0.5 animate-pulse-slow" />
             <p>
               <strong>General / Product SLA Disclaimer:</strong> E-Tech Solutions provides ICT products, services, consultancy, and implementation support based on client requirements. Product availability, licensing terms, warranty conditions, and third-party software terms may vary depending on vendor, distributor, and manufacturer policies. All software licensing services are subject to genuine licensing requirements and applicable terms of the respective software vendors.
             </p>
           </div>
-          <div className="flex items-start gap-2 text-white/50 text-[10px]">
+          <div className="flex items-start gap-2 text-[var(--white)]/60 text-[10px]">
             <ShieldAlert size={14} className="text-brand-red shrink-0 mt-0.5" />
             <p>
               <strong>Cybersecurity Advisory Disclaimer:</strong> Cybersecurity assessments, PDPA readiness reviews, CMMC 2.0 support, and vulnerability assessments are advisory and technical review services. Final compliance responsibility remains with the client organization unless otherwise agreed under a specific written contract.
@@ -274,7 +274,7 @@ export default function Footer({ setActivePage, scrollToSection }: FooterProps) 
               <Users size={11} className="text-brand-red" />
               Traffic Index:
             </span>
-            <span className="text-[10.5px] font-mono font-bold text-white tracking-wider bg-brand-black py-0.5 px-2 rounded-sm border border-white/5 hover:border-brand-red/30 transition-colors">
+            <span className="text-[10.5px] font-mono font-bold text-[var(--white)] tracking-wider bg-brand-black py-0.5 px-2 rounded-sm border border-white/5 hover:border-brand-red/30 transition-colors">
               {visitorCount > 0 ? visitorCount.toLocaleString() : 'Loading...'}
             </span>
           </div>
@@ -287,7 +287,7 @@ export default function Footer({ setActivePage, scrollToSection }: FooterProps) 
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/94752121000?text=Hello%20E-Tech%20Solutions,%20I'd%20like%20to%20query%20your%20services."
+        href="https://wa.me/94722121000?text=Hello%20E-Tech%20Solutions,%20I'd%20like%20to%20query%20your%20services."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#1ebd59] text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 animate-bounce hover:animate-none"
