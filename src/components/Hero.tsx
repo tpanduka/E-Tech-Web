@@ -3,7 +3,7 @@ import { ShieldCheck, Activity, Terminal, ArrowRight } from 'lucide-react';
 import AnimatedCounter from './AnimatedCounter';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'motion/react';
-import ParticleBackground from './ParticleBackground';
+import CyberTechBackground from './CyberTechBackground';
 import EtechLogo from './EtechLogo';
 
 interface HeroProps {
@@ -31,13 +31,13 @@ export default function Hero({ setActivePage }: HeroProps) {
         <img
           src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80"
           alt="E-Tech Solutions Secure Cyber Datacenter Grid"
-          className="w-full h-full object-cover filter brightness-[0.11] contrast-125"
+          className="w-full h-full object-cover filter brightness-[0.06] contrast-125"
         />
         {/* Subtle Structural Work Grid Overlay */}
-        <div className="absolute inset-0 bg-grid-mesh-gray opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 bg-grid-mesh-gray opacity-10 pointer-events-none" />
 
-        {/* Floating subtle connected network nodes particle effect */}
-        <ParticleBackground color="229, 9, 20" particleCount={65} />
+        {/* Floating advanced interactive cyber tech and circuit background */}
+        <CyberTechBackground />
         
         {/* Animated Background Orbs / Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

@@ -121,35 +121,38 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
   return (
     <header className="fixed top-0 left-0 w-full z-50">
       {/* Top Banner Contact Details */}
-      <div className="bg-[#f8f9fa] text-stone-850 text-[11px] border-b border-neutral-200 py-2.5 px-4 hidden sm:block font-sans shadow-sm">
+      <div className="bg-brand-charcoal text-[var(--white)] text-[11px] border-b border-brand-dark-gray py-2.5 px-4 hidden sm:block font-sans shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-4 text-stone-600 font-mono bg-transparent">
+          <div className="flex items-center gap-4 text-brand-muted font-mono bg-transparent">
             <span className="flex items-center gap-1.5">
               <Phone size={11} className="text-brand-red font-bold animate-pulse" />
-              <span className="font-semibold">{t.hotline}:</span> <span className="text-stone-900 font-bold hover:text-brand-red transition-colors">+94 72 212 1000</span>
+              <span className="font-semibold">{t.hotline}:</span> <span className="text-[var(--white)] font-bold hover:text-brand-red transition-colors">+94 72 212 1000</span>
             </span>
-            <span className="text-stone-300">|</span>
-            <span className="flex items-center gap-1.5">
+            <span className="text-brand-dark-gray">|</span>
+            <span className="flex items-center gap-1.5 flex-wrap">
               <Mail size={11} className="text-brand-red font-bold" />
-              <span className="font-semibold">Email:</span> <span className="text-stone-900 font-bold hover:text-brand-red transition-colors">etechmultisolutions@gmail.com</span>
+              <span className="font-semibold">Email:</span> 
+              <a href="mailto:info@etechmultisolutions.com" className="text-[var(--white)] font-bold hover:text-brand-red transition-colors">info@etechmultisolutions.com</a>
+              <span className="text-brand-dark-gray">/</span>
+              <a href="mailto:etechmultisolutions@gmail.com" className="text-[var(--white)] font-bold hover:text-brand-red transition-colors">etechmultisolutions@gmail.com</a>
             </span>
           </div>
-          <div className="flex items-center gap-4 text-stone-600 font-mono">
+          <div className="flex items-center gap-4 text-brand-muted font-mono">
             <span className="flex items-center gap-1.5">
               <MapPin size={11} className="text-brand-red font-bold" />
-              <span className="font-semibold">HQ:</span> <span className="text-stone-900 font-bold">{t.colomboLk}</span>
+              <span className="font-semibold">HQ:</span> <span className="text-[var(--white)] font-bold">{t.colomboLk}</span>
             </span>
-            <span className="text-stone-300">|</span>
+            <span className="text-brand-dark-gray">|</span>
             <a
               href="https://web.facebook.com/etechworldwide"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-brand-red text-stone-900 font-bold transition-colors tracking-wider text-[11px]"
+              className="flex items-center gap-1.5 hover:text-brand-red text-[var(--white)] font-bold transition-colors tracking-wider text-[11px]"
             >
               <Facebook size={12} className="text-[#1877F2] shrink-0" />
               FACEBOOK
             </a>
-            <span className="text-stone-300">|</span>
+            <span className="text-brand-dark-gray">|</span>
             <span className="flex items-center gap-1.5 text-brand-red font-bold uppercase tracking-wider">
               <Shield size={11} className="text-brand-red animate-pulse" />
               {t.slaVerified}
@@ -373,7 +376,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
           <div className="lg:hidden flex items-center gap-3">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="p-2 text-white hover:text-brand-red transition-colors"
+              className="p-2 text-[var(--white)] hover:text-brand-red transition-colors"
               title="Search Services and Projects"
             >
               <Search size={20} />
@@ -387,7 +390,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-white hover:text-brand-red transition-colors"
+              className="p-2 text-[var(--white)] hover:text-brand-red transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

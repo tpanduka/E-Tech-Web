@@ -22,7 +22,7 @@ import {
   Shield, Check, Phone, Mail, MapPin, ExternalLink, ArrowRight, ArrowUp,
   TrendingUp, Award, Building, HeartHandshake, Users, Info, HelpCircle,
   Laptop, Cpu, Network, CheckCircle2, ChevronDown, Camera, QrCode, Download,
-  Smartphone, Database
+  Smartphone, Database, ListPlus, CreditCard, ShieldAlert
 } from 'lucide-react';
 import { useLanguage } from './context/LanguageContext';
 
@@ -111,7 +111,7 @@ export default function App() {
   const triggerVCardDownload = () => {
     setDownloadingContact(true);
     try {
-      const vCardText = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:E-Tech Solutions\r\nORG:E-Tech Solutions Sri Lanka\r\nTEL;TYPE=WORK,VOICE:+94722121000\r\nTEL;TYPE=WORK,DESK:+94112819548\r\nEMAIL;TYPE=PREF,INTERNET:etechmultisolutions@gmail.com\r\nADR;TYPE=WORK:;;72/10, Edirisinghe Road, Mirihana;Nugegoda;;Colombo;Sri Lanka\r\nURL:https://etechmultisolutions.com\r\nEND:VCARD`;
+      const vCardText = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:E-Tech Solutions\r\nORG:E-Tech Solutions Sri Lanka\r\nTEL;TYPE=WORK,VOICE:+94722121000\r\nTEL;TYPE=WORK,DESK:+94112819548\r\nEMAIL;TYPE=PREF,INTERNET:info@etechmultisolutions.com\r\nEMAIL;TYPE=INTERNET:etechmultisolutions@gmail.com\r\nADR;TYPE=WORK:;;72/10, Edirisinghe Road, Mirihana;Nugegoda;;Colombo;Sri Lanka\r\nURL:https://etechmultisolutions.com\r\nEND:VCARD`;
       const blob = new Blob([vCardText], { type: 'text/vcard;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -225,7 +225,7 @@ export default function App() {
               <ParticleBackground color="229, 9, 20" particleCount={75} />
 
               {/* Glowing Ambient Lights */}
-              <div className="absolute top-1/4 left-1/4 w-[650px] h-[650px] bg-red-650/[0.06] rounded-full filter blur-[120px]" />
+              <div className="absolute top-1/4 left-1/4 w-[650px] h-[650px] bg-red-600/[0.06] rounded-full filter blur-[120px]" />
               <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-blue-900/[0.04] rounded-full filter blur-[140px]" />
               
               {/* Infinite scanning background scanner stripe */}
@@ -296,19 +296,19 @@ export default function App() {
               <div className="w-full grid grid-cols-2 gap-2 text-[10px] sm:text-xs font-mono text-zinc-400 mb-8 border-t border-[#1e2029]/80 pt-5">
                 <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
                   <Check size={11} className="text-brand-red shrink-0" />
-                  <span className="text-zinc-150">{t.pdpaReady}</span>
+                  <span className="text-zinc-200">{t.pdpaReady}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
                   <Check size={11} className="text-brand-red shrink-0" />
-                  <span className="text-zinc-150">{t.aesEncrypted}</span>
+                  <span className="text-zinc-200">{t.aesEncrypted}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
                   <Check size={11} className="text-brand-red shrink-0" />
-                  <span className="text-zinc-150">{t.tlsCertified}</span>
+                  <span className="text-zinc-200">{t.tlsCertified}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
                   <Check size={11} className="text-brand-red shrink-0" />
-                  <span className="text-zinc-150">{t.sandboxCompliant}</span>
+                  <span className="text-zinc-200">{t.sandboxCompliant}</span>
                 </div>
               </div>
 
@@ -507,7 +507,7 @@ export default function App() {
                           <span>{svc.title}</span>
                           <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-brand-red" />
                         </h3>
-                        <p className="text-[11px] text-zinc-350 leading-relaxed mt-2 line-clamp-3 font-sans">
+                        <p className="text-[11px] text-zinc-300 leading-relaxed mt-2 line-clamp-3 font-sans">
                           {svc.shortDesc}
                         </p>
                       </div>
@@ -1030,7 +1030,7 @@ export default function App() {
                           onClick={() => setLabTab(tab.id as any)}
                           className={`px-3.5 py-2 rounded text-xs sm:text-sm font-sans uppercase tracking-wider transition-all cursor-pointer ${
                             labTab === tab.id
-                              ? 'bg-red-650 text-white font-black shadow-md shadow-red-650/45 border border-red-500'
+                              ? 'bg-red-600 text-white font-black shadow-md shadow-red-600/45 border border-red-500'
                               : 'bg-zinc-900 border border-zinc-700 text-stone-200 hover:text-white hover:border-red-500 font-bold'
                           }`}
                         >
@@ -1053,10 +1053,10 @@ export default function App() {
                               Applies to standard defense suppliers handling <strong>Federal Contract Information (FCI)</strong>. Centers on basic safeguarding parameters.
                             </p>
                             <ul className="text-xs sm:text-sm text-white space-y-1.5 font-mono mb-4">
-                              <li className="font-semibold text-stone-150">• Info Type: FCI Only</li>
-                              <li className="font-semibold text-stone-150">• Practices: 17 Cyber Hygiene rules</li>
-                              <li className="font-semibold text-stone-150">• Scope: Limiting basic access controls</li>
-                              <li className="font-semibold text-stone-150">• Assessment: Annual Self-Assessment</li>
+                              <li className="font-semibold text-stone-300">• Info Type: FCI Only</li>
+                              <li className="font-semibold text-stone-300">• Practices: 17 Cyber Hygiene rules</li>
+                              <li className="font-semibold text-stone-300">• Scope: Limiting basic access controls</li>
+                              <li className="font-semibold text-stone-300">• Assessment: Annual Self-Assessment</li>
                             </ul>
                           </div>
                           <span className="text-[10px] font-mono uppercase tracking-wider text-green-400 font-extrabold bg-green-500/15 px-2.5 py-1 rounded w-max border border-green-500/30">Low-Risk Contracts</span>
@@ -1067,17 +1067,17 @@ export default function App() {
                           <div>
                             <span className="text-[11px] font-mono text-red-400 font-bold tracking-widest uppercase block mb-1">CMMC Level 2</span>
                             <h4 className="font-display font-black text-white text-lg mb-2">Advanced Compliance</h4>
-                            <p className="text-sm text-zinc-150 leading-relaxed mb-4">
+                            <p className="text-sm text-zinc-200 leading-relaxed mb-4">
                               Applies to contractors storing or transmitting <strong>Controlled Unclassified Information (CUI)</strong>. Aligns strictly under NIST SP 800-171 principles.
                             </p>
                             <ul className="text-xs sm:text-sm text-white space-y-1.5 font-mono mb-4 animate-pulse">
-                              <li className="font-semibold text-stone-150">• Info Type: CUI & Export-Controlled (ITAR)</li>
-                              <li className="font-semibold text-stone-150">• Practices: 110 Controls mapping</li>
-                              <li className="font-semibold text-stone-150">• Core Standard: NIST SP 800-171 Rev. 2</li>
-                              <li className="font-semibold text-stone-150">• Assessment: Self-Assessment & POA&M</li>
+                              <li className="font-semibold text-stone-300">• Info Type: CUI & Export-Controlled (ITAR)</li>
+                              <li className="font-semibold text-stone-300">• Practices: 110 Controls mapping</li>
+                              <li className="font-semibold text-stone-300">• Core Standard: NIST SP 800-171 Rev. 2</li>
+                              <li className="font-semibold text-stone-300">• Assessment: Self-Assessment & POA&M</li>
                             </ul>
                           </div>
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-red-400 font-extrabold bg-red-600/15 px-2.5 py-1 rounded w-max border border-red-550">ITAR & CUI Environment</span>
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-red-400 font-extrabold bg-red-600/15 px-2.5 py-1 rounded w-max border border-red-500">ITAR & CUI Environment</span>
                         </div>
 
                         <div className="border border-zinc-700 bg-zinc-900/90 p-5 rounded-lg flex flex-col justify-between">
@@ -1088,10 +1088,10 @@ export default function App() {
                               Applies to high-priority organizations working on critical defense programs facing advanced persistent threats (APTs).
                             </p>
                             <ul className="text-xs sm:text-sm text-white space-y-1.5 font-mono mb-4">
-                              <li className="font-semibold text-stone-150">• Info Type: High-Sensitivity CUI</li>
-                              <li className="font-semibold text-stone-150">• Practices: 110+ Enhanced rules</li>
-                              <li className="font-semibold text-stone-150">• Core Standard: NIST SP 800-172</li>
-                              <li className="font-semibold text-stone-150">• Assessment: Government-Led Audits</li>
+                              <li className="font-semibold text-stone-300">• Info Type: High-Sensitivity CUI</li>
+                              <li className="font-semibold text-stone-300">• Practices: 110+ Enhanced rules</li>
+                              <li className="font-semibold text-stone-300">• Core Standard: NIST SP 800-172</li>
+                              <li className="font-semibold text-stone-300">• Assessment: Government-Led Audits</li>
                             </ul>
                           </div>
                           <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-extrabold bg-amber-500/10 px-2.5 py-1 rounded w-max border border-amber-500/20">Government Audited Only</span>
@@ -1102,7 +1102,7 @@ export default function App() {
                     {/* families Tab */}
                     {labTab === 'families' && (
                       <div className="animate-fadeIn">
-                        <p className="text-sm sm:text-base text-stone-250 mb-5 leading-relaxed font-sans font-medium">
+                        <p className="text-sm sm:text-base text-stone-300 mb-5 leading-relaxed font-sans font-medium">
                           CMMC Level 2 contains 110 technical, administrative, and operational controls mapped across <strong>14 key NIST SP 800-171 Security Families</strong>. Every project involves evaluating:
                         </p>
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
@@ -1135,7 +1135,7 @@ export default function App() {
                     {/* roadmap Tab */}
                     {labTab === 'roadmap' && (
                       <div className="animate-fadeIn">
-                        <p className="text-sm sm:text-base text-stone-250 mb-5 leading-relaxed font-sans font-medium">
+                        <p className="text-sm sm:text-base text-stone-300 mb-5 leading-relaxed font-sans font-medium">
                           E-Tech Solutions guides organizations preparing for external review using our structured, <strong>9-Phase Phased Readiness Framework</strong>.
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-9 gap-4 text-left">
@@ -1168,7 +1168,7 @@ export default function App() {
                     {/* deliverables Tab */}
                     {labTab === 'deliverables' && (
                       <div className="animate-fadeIn">
-                        <p className="text-sm sm:text-base text-stone-250 mb-5 leading-relaxed font-sans font-medium">
+                        <p className="text-sm sm:text-base text-stone-300 mb-5 leading-relaxed font-sans font-medium">
                           For our CMMC 2.0 readiness engagements, E-Tech Solutions compiles and provides the following <strong>12 Crucial Compliance Deliverables</strong> as audit evidence:
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 font-mono text-xs sm:text-sm">
@@ -1187,13 +1187,277 @@ export default function App() {
                             '12. Client-Facing CMMC Readiness Summary'
                           ].map((deliv, idx) => (
                             <div key={idx} className="bg-[#0e0e11] border border-zinc-700/85 p-3.5 rounded-lg flex items-center gap-2.5">
-                              <div className="w-4 h-4 rounded-full bg-red-650/15 text-red-500 flex items-center justify-center shrink-0 border border-red-500/30">✓</div>
-                              <span className="text-zinc-150 leading-snug font-sans font-semibold">{deliv}</span>
+                              <div className="w-4 h-4 rounded-full bg-red-600/15 text-red-500 flex items-center justify-center shrink-0 border border-red-500/30">✓</div>
+                              <span className="text-zinc-200 leading-snug font-sans font-semibold">{deliv}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                     )}
+                  </div>
+                </div>
+
+                {/* CMMC Level 2 Self-Assessment Support Packages */}
+                <div className="mt-20">
+                  <div className="text-center mb-12">
+                    <span className="text-xs sm:text-sm text-red-500 font-sans uppercase font-extrabold tracking-widest block mb-1">
+                      [ CMMC LEVEL 2 SELF-ASSESSMENT SUPPORT PACKAGES ]
+                    </span>
+                    <h3 className="font-display font-black text-2xl sm:text-4xl text-white uppercase mt-1 tracking-tight">
+                      Corporate Readiness Advisory Plans
+                    </h3>
+                    <p className="text-sm text-stone-300 font-sans max-w-2xl mx-auto mt-3 leading-relaxed">
+                      Customized CMMC alignment frameworks tailored for USA-based defense supply chain partners and subcontractors preparing for mandated self-assessment attestation.
+                    </p>
+                  </div>
+
+                  {/* 3 Cards Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16">
+                    {/* Package 1: Essential Readiness Review */}
+                    <div className="bg-zinc-950/80 border border-zinc-800 rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-red/50 hover:shadow-[0_10px_30px_rgba(255,51,61,0.1)] transition-all duration-300 relative group">
+                      <div className="absolute top-0 left-0 w-full h-[3px] bg-zinc-800 group-hover:bg-brand-red/50 transition-all rounded-t-xl" />
+                      <div>
+                        <div className="mb-6">
+                          <span className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded w-max">
+                            Level 2 / Gap phase
+                          </span>
+                          <h4 className="font-display font-bold text-lg text-white uppercase mt-3 tracking-tight">Essential Readiness Review</h4>
+                          <p className="text-xs text-zinc-400 mt-1 font-sans">
+                            Best for small defense subcontractors with a tight scoped CUI environment.
+                          </p>
+                        </div>
+                        
+                        <div className="mb-6 font-mono border-y border-zinc-800 py-4">
+                          <span className="text-xs text-zinc-500 uppercase block">Fee Investment</span>
+                          <div className="flex items-baseline gap-1.5 mt-1">
+                            <span className="text-3xl font-bold text-white font-sans">$18,500</span>
+                            <span className="text-xs text-zinc-400 font-sans">USD</span>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          <span className="text-[10px] font-mono font-bold text-brand-red uppercase tracking-wide block">Included nodes & deliverables:</span>
+                          {[
+                            "CMMC requirement type confirmation support",
+                            "Kickoff meeting",
+                            "CUI / FCI scoping discussion",
+                            "High-level policy and evidence review",
+                            "Initial gap identification",
+                            "Preliminary readiness score estimate",
+                            "High-level POA&M guidance",
+                            "Management briefing",
+                            "Summary readiness report"
+                          ].map((inc, i) => (
+                            <div key={i} className="flex gap-2.5 items-start text-xs text-stone-200">
+                              <Check size={12} className="text-brand-red mt-0.5 shrink-0" />
+                              <span className="leading-snug">{inc}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => scrollToSection('quote-section')}
+                        className="w-full bg-zinc-950 hover:bg-brand-red border border-zinc-800 hover:border-brand-red py-3 rounded-lg text-xs font-bold font-mono uppercase text-white hover:text-white tracking-wider cursor-pointer shadow-md transition-all duration-300"
+                      >
+                        Request Essential Review
+                      </button>
+                    </div>
+
+                    {/* Package 2: Standard Self-Assessment Support (RECOMMENDED) */}
+                    <div className="bg-zinc-950/95 border-2 border-brand-red rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-[0_15px_45px_rgba(255,51,61,0.2)] transition-all duration-300 relative group transform lg:-translate-y-2 z-10">
+                      {/* Floating Badge */}
+                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-red border border-red-400 text-white font-mono font-black text-[9.5px] tracking-widest px-4 py-1.5 rounded-full uppercase shadow-md animate-pulse">
+                        Most Popular // Recommended
+                      </div>
+                      
+                      <div>
+                        <div className="mb-6 mt-2">
+                          <span className="text-[10px] font-mono font-bold tracking-widest text-[#ff333d] uppercase bg-brand-red/10 border border-brand-red/35 px-2.5 py-1 rounded w-max">
+                            Full self-assessment support
+                          </span>
+                          <h4 className="font-display font-black text-xl sm:text-2xl text-white uppercase mt-3 tracking-tight">Standard Self-Assessment</h4>
+                          <p className="text-xs text-zinc-300 mt-1 font-sans font-medium">
+                            Best for small-to-medium U.S. defense contractors needing active scoring.
+                          </p>
+                        </div>
+                        
+                        <div className="mb-6 font-mono border-y border-zinc-800 py-4 bg-brand-red/5 -mx-6 sm:-mx-8 px-6 sm:px-8">
+                          <span className="text-xs text-brand-red uppercase block font-semibold">Fee Investment</span>
+                          <div className="flex items-baseline gap-1.5 mt-1 font-sans">
+                            <span className="text-4xl font-extrabold text-white">$35,000</span>
+                            <span className="text-xs text-brand-red font-bold font-mono ml-1">USD</span>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          <span className="text-[10px] font-mono font-bold text-brand-red uppercase tracking-wide block">Included nodes & deliverables:</span>
+                          {[
+                            "Formal kickoff",
+                            "Assessment requirement confirmation",
+                            "CUI / FCI data flow mapping",
+                            "Scope confirmation",
+                            "Policy and procedure review",
+                            "Evidence collection guidance",
+                            "Review against 110 CMMC Level 2 / NIST SP 800-171 requirements",
+                            "Technical evidence validation",
+                            "Control assessment worksheet",
+                            "Scoring support",
+                            "Gap analysis",
+                            "POA&M preparation",
+                            "Final self-assessment support report",
+                            "SPRS submission and annual affirmation guidance",
+                            "Executive briefing"
+                          ].map((inc, i) => (
+                            <div key={i} className="flex gap-2.5 items-start text-xs text-white">
+                              <CheckCircle2 size={12} className="text-brand-red mt-0.5 shrink-0" />
+                              <span className="leading-snug font-medium">{inc}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => scrollToSection('quote-section')}
+                        className="w-full bg-brand-red hover:bg-neutral-900 border border-brand-red hover:border-zinc-800 py-3.5 rounded-lg text-xs font-black font-mono uppercase tracking-widest cursor-pointer shadow-lg shadow-brand-red/20 hover:shadow-brand-red/35 transition-all duration-300"
+                      >
+                        Start Standard Assessment Support
+                      </button>
+                    </div>
+
+                    {/* Package 3: Advanced Self-Assessment + Remediation Roadmap */}
+                    <div className="bg-zinc-950/80 border border-zinc-800 rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-red/50 hover:shadow-[0_10px_30px_rgba(255,51,61,0.1)] transition-all duration-300 relative group">
+                      <div className="absolute top-0 left-0 w-full h-[3px] bg-zinc-800 group-hover:bg-brand-red/50 transition-all rounded-t-xl" />
+                      <div>
+                        <div className="mb-6">
+                          <span className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded w-max">
+                            Advanced / Remediation
+                          </span>
+                          <h4 className="font-display font-bold text-lg text-white uppercase mt-3 tracking-tight">Advanced + Roadmap</h4>
+                          <p className="text-xs text-zinc-400 mt-1 font-sans">
+                            Best for complex, multi-site, high-risk, or documentation-weak setups.
+                          </p>
+                        </div>
+                        
+                        <div className="mb-6 font-mono border-y border-zinc-800 py-4">
+                          <span className="text-xs text-zinc-500 uppercase block">Fee Investment</span>
+                          <div className="flex items-baseline gap-1.5 mt-1">
+                            <span className="text-3xl font-bold text-white font-sans">$52,000</span>
+                            <span className="text-xs text-zinc-400 font-sans">USD</span>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          <span className="text-[10px] font-mono font-bold text-brand-red uppercase tracking-wide block">Everything in Standard plus:</span>
+                          {[
+                            "Extended CUI / FCI data flow analysis",
+                            "Multi-location scope review",
+                            "Third-party / MSP dependency review",
+                            "Advanced evidence quality review",
+                            "Risk register",
+                            "Detailed remediation roadmap",
+                            "30/60/90/180-day action plan",
+                            "Policy development plan",
+                            "Security awareness training plan",
+                            "Incident response tabletop exercise template",
+                            "Continuous compliance transition plan",
+                            "Extended executive briefing"
+                          ].map((inc, i) => (
+                            <div key={i} className="flex gap-2.5 items-start text-xs text-stone-200">
+                              <Check size={12} className="text-[#ff333d] mt-0.5 shrink-0" />
+                              <span className="leading-snug">{inc}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => scrollToSection('quote-section')}
+                        className="w-full bg-zinc-950 hover:bg-brand-red border border-zinc-800 hover:border-brand-red py-3 rounded-lg text-xs font-bold font-mono uppercase text-white hover:text-white tracking-wider cursor-pointer shadow-md transition-all duration-300"
+                      >
+                        Request Advanced CMMC Support
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Optional Add-On Services section */}
+                  <div className="border border-zinc-800 bg-zinc-950/40 rounded-xl p-6 sm:p-8 mb-10 relative animate-fadeIn">
+                    <div className="flex items-center gap-2.5 mb-6 border-b border-zinc-800 pb-3">
+                      <ListPlus size={18} className="text-brand-red shrink-0" />
+                      <h4 className="font-display font-bold text-base sm:text-lg text-white uppercase tracking-tight">
+                        Optional Add-On Advisory Modules
+                      </h4>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {[
+                        { title: "Additional Site/Location Review", price: "from USD 2,500 per site", desc: "Expanding boundary evaluation to auxiliary corporate nodes." },
+                        { title: "Additional Cloud/SaaS Platform Review", price: "from USD 1,500 per platform", desc: "Scoping FedRAMP status, cloud boundaries, and shared matrices." },
+                        { title: "SSP Preparation or Update Support", price: "from USD 4,000", desc: "Formulating complete System Security Plans following standard formats." },
+                        { title: "Policy Development Support", price: "from USD 5,000", desc: "Tailoring comprehensive InfoSec policy binders for NIST SP 800-171." },
+                        { title: "Vulnerability Assessment Coordination", price: "from USD 2,500", desc: "Coordinating technical vulnerability scans and network sweeps." },
+                        { title: "Incident Response Tabletop Exercise Facilitation", price: "from USD 2,500", desc: "Guided security team simulated containment drills with logs." },
+                        { title: "Staff Cybersecurity Awareness Training", price: "from USD 1,500", desc: "Security and CUI safeguarding training sessions for personnel." },
+                        { title: "Annual Affirmation Support", price: "from USD 4,000", desc: "Documentary verification and readiness for required annual attestation." },
+                        { title: "Monthly Compliance Monitoring", price: "from USD 2,000 / month", desc: "Ongoing POA&M review, patch monitoring, and evidentiary logs management." }
+                      ].map((addon, idx) => (
+                        <div key={idx} className="bg-zinc-900/40 border border-zinc-800 p-4 rounded-lg flex flex-col justify-between group hover:border-brand-red/30 transition-all duration-200">
+                          <div>
+                            <div className="flex justify-between items-start gap-2 mb-1.5 font-sans">
+                              <span className="text-xs font-bold text-white uppercase tracking-wide group-hover:text-brand-red transition-all">
+                                {addon.title}
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-zinc-400 leading-relaxed mb-3">
+                              {addon.desc}
+                            </p>
+                          </div>
+                          <span className="text-xs font-mono font-bold text-brand-red bg-brand-red/5 border border-brand-red/15 px-2.5 py-1 rounded w-max">
+                            {addon.price}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Payment terms section */}
+                  <div className="border border-zinc-800 bg-zinc-950/40 rounded-xl p-6 sm:p-8 mb-8 relative">
+                    <div className="flex items-center gap-2.5 mb-6 border-b border-zinc-800 pb-3">
+                      <CreditCard size={18} className="text-brand-red shrink-0" />
+                      <h4 className="font-display font-bold text-base sm:text-lg text-white uppercase tracking-tight">
+                        Advisory Engagement Payment Schedule
+                      </h4>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 relative">
+                      {[
+                        { pct: "40%", title: "Agreement Signing", desc: "Engagement initialization and compliance roadmap scheduling." },
+                        { pct: "25%", title: "Scoping & Evidence Request", desc: "Following data flow mapping diagnostics setup." },
+                        { pct: "25%", title: "Draft Gap Analysis", desc: "Upon submission of complete baseline reviews and worksheets." },
+                        { pct: "10%", title: "Final Report Submission", desc: "Upon closure and final readiness dossier handoff." }
+                      ].map((term, i) => (
+                        <div key={i} className="flex flex-col justify-between bg-zinc-900/40 border border-zinc-800 p-4 rounded-lg relative hover:border-brand-red/20 transition-all duration-200">
+                          <div>
+                            <div className="text-2xl font-black text-brand-red font-mono mb-1">{term.pct}</div>
+                            <span className="text-xs font-bold text-white block uppercase mb-1.5">{term.title}</span>
+                            <p className="text-[11px] text-zinc-400 leading-normal">{term.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Disclaimer block */}
+                  <div className="border border-brand-red/30 bg-brand-red/5 rounded-xl p-5 sm:p-6 flex items-start gap-3.5 relative">
+                    <ShieldAlert size={20} className="text-brand-red shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-[10px] font-mono font-extrabold text-brand-red uppercase tracking-wider block mb-1">
+                        REGULATORY ADVISORY & CONSULTANCY NOTICE
+                      </span>
+                      <p className="text-xs text-zinc-300 leading-relaxed">
+                        E-Tech Solutions provides consultancy support for CMMC Level 2 Self-Assessment readiness, evidence validation, scoring support, POA&M preparation, remediation planning, management reporting, and SPRS submission guidance. This service does not constitute a C3PAO certification assessment or official CMMC certification. The client remains responsible for final assessment approval, SPRS submission, official affirmation, and compliance representations.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1275,7 +1539,7 @@ export default function App() {
                       <h4 className="font-display font-semibold text-zinc-100 mb-2 text-sm">
                         {pt.title}
                       </h4>
-                      <p className="text-xs text-zinc-350 leading-relaxed">
+                      <p className="text-xs text-zinc-300 leading-relaxed">
                         {pt.desc}
                       </p>
                     </div>
@@ -1458,8 +1722,9 @@ export default function App() {
                       <Mail className="text-red-500 shrink-0" size={24} />
                       <div>
                         <h4 className="font-display font-extrabold text-xs uppercase tracking-wider text-red-500">Primary Email channels</h4>
-                        <p className="text-sm text-stone-100 mt-1 font-mono font-medium">
-                          etechmultisolutions@gmail.com
+                        <p className="text-sm text-stone-100 mt-1 font-mono font-medium flex flex-col gap-1">
+                          <a href="mailto:info@etechmultisolutions.com" className="hover:text-red-500 transition-colors">info@etechmultisolutions.com</a>
+                          <a href="mailto:etechmultisolutions@gmail.com" className="hover:text-red-500 transition-colors">etechmultisolutions@gmail.com</a>
                         </p>
                       </div>
                     </div>
@@ -1477,7 +1742,7 @@ export default function App() {
                     <div className="w-full h-48 bg-black border border-zinc-700/80 rounded-lg relative flex flex-col items-center justify-center text-center p-4 overflow-hidden">
                       {/* Grid background */}
                       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-                      <div className="w-10 h-10 rounded-full bg-red-650/20 border border-red-500 flex items-center justify-center animate-pulse mb-3">
+                      <div className="w-10 h-10 rounded-full bg-red-600/20 border border-red-500 flex items-center justify-center animate-pulse mb-3">
                         <MapPin className="text-red-500" size={20} />
                       </div>
                       <span className="text-xs sm:text-sm text-white font-bold font-display">72/10, Edirisinghe Road, Mirihana</span>
@@ -1819,8 +2084,9 @@ export default function App() {
                     <Mail className="text-brand-red shrink-0" size={24} />
                     <div>
                       <h4 className="font-display font-semibold text-xs tracking-wider uppercase text-brand-red">Official Emails</h4>
-                      <p className="text-xs text-brand-muted mt-1">
-                        etechmultisolutions@gmail.com
+                      <p className="text-xs text-brand-muted mt-1 flex flex-col gap-0.5">
+                        <a href="mailto:info@etechmultisolutions.com" className="hover:text-brand-red transition-colors">info@etechmultisolutions.com</a>
+                        <a href="mailto:etechmultisolutions@gmail.com" className="hover:text-brand-red transition-colors">etechmultisolutions@gmail.com</a>
                       </p>
                     </div>
                   </div>
@@ -1902,8 +2168,8 @@ export default function App() {
                         qrMode === 'tel' 
                           ? 'tel:+94722121000' 
                           : qrMode === 'mail' 
-                          ? 'mailto:etechmultisolutions@gmail.com?subject=ICT%20Consultation%20Inquiry' 
-                          : `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:E-Tech Solutions\r\nORG:E-Tech Solutions Sri Lanka\r\nTEL;TYPE=WORK,VOICE:+94722121000\r\nTEL;TYPE=WORK,DESK:+94112819548\r\nEMAIL;TYPE=PREF,INTERNET:etechmultisolutions@gmail.com\r\nADR;TYPE=WORK:;;72/10, Edirisinghe Road, Mirihana;Nugegoda;;Colombo;Sri Lanka\r\nURL:https://etechmultisolutions.com\r\nEND:VCARD`
+                          ? 'mailto:info@etechmultisolutions.com?subject=ICT%20Consultation%20Inquiry' 
+                          : `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:E-Tech Solutions\r\nORG:E-Tech Solutions Sri Lanka\r\nTEL;TYPE=WORK,VOICE:+94722121000\r\nTEL;TYPE=WORK,DESK:+94112819548\r\nEMAIL;TYPE=PREF,INTERNET:info@etechmultisolutions.com\r\nEMAIL;TYPE=INTERNET:etechmultisolutions@gmail.com\r\nADR;TYPE=WORK:;;72/10, Edirisinghe Road, Mirihana;Nugegoda;;Colombo;Sri Lanka\r\nURL:https://etechmultisolutions.com\r\nEND:VCARD`
                       )}`}
                       alt={`QR Code for E-Tech ${qrMode}`}
                       className="w-36 h-36 object-contain relative z-10"
@@ -1932,7 +2198,7 @@ export default function App() {
                       <span>{downloadingContact ? 'Exporting...' : 'Save .vcf Card'}</span>
                     </button>
                     <a
-                      href={qrMode === 'tel' ? 'tel:+94722121000' : qrMode === 'mail' ? 'mailto:etechmultisolutions@gmail.com?subject=ICT%20Consultation%20Inquiry' : 'https://etechmultisolutions.com'}
+                      href={qrMode === 'tel' ? 'tel:+94722121000' : qrMode === 'mail' ? 'mailto:info@etechmultisolutions.com?subject=ICT%20Consultation%20Inquiry' : 'https://etechmultisolutions.com'}
                       className="bg-brand-black hover:bg-brand-dark-gray text-white text-xs font-bold py-2 px-3 rounded border border-white/5 hover:border-brand-red/30 flex items-center justify-center gap-1.5 transition-all cursor-pointer w-full text-center"
                     >
                       <ExternalLink size={12} className="text-brand-red shrink-0" />

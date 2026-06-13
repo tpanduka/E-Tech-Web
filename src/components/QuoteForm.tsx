@@ -73,7 +73,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
 
     setIsSubmitting(true);
 
-    // Simulate sending inquiry to etechmultisolutions@gmail.com
+    // Simulate sending inquiry to info@etechmultisolutions.com / etechmultisolutions@gmail.com
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -95,7 +95,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
             Thank you, <strong>{formData.name}</strong>, from {formData.organization || 'your organization'}. Your request regarding <span className="text-brand-red font-semibold">“{formData.service}”</span> has been safely received by the E-Tech Solutions Engineering Desk.
           </p>
           <div className="bg-zinc-950 border border-zinc-800 rounded-sm p-4 max-w-sm text-left mb-6 font-mono text-[11px] leading-relaxed">
-            <p className="text-zinc-150 font-semibold mb-1 flex items-center gap-1.5">
+            <p className="text-zinc-200 font-semibold mb-1 flex items-center gap-1.5">
               <ShieldCheck size={12} className="text-brand-red" />
               SLA Priority Diagnostic Window:
             </p>
@@ -270,7 +270,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                   className={`py-2 px-3 rounded-sm text-xs font-semibold border transition-all cursor-pointer font-mono text-[10px] uppercase tracking-wider ${
                     formData.contactMethod === method
                       ? 'bg-brand-red/20 border-brand-red text-white font-bold'
-                      : 'bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-750 hover:text-zinc-200'
+                      : 'bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
                   }`}
                 >
                   {method}

@@ -522,7 +522,7 @@ export const FAQS_DATA: FAQItem[] = [
   },
   {
     question: 'How can we request a quotation?',
-    answer: 'You can submit your requirements using our interactive "Request a Quote" form on the website, dial our hotlines at +94 72 212 1000 / +94 777 889 734, or email us at etechmultisolutions@gmail.com. We typically respond within 24 hours with a comprehensive layout.'
+    answer: 'You can submit your requirements using our interactive "Request a Quote" form on the website, dial our hotlines at +94 72 212 1000 / +94 777 889 734, or email us at info@etechmultisolutions.com or etechmultisolutions@gmail.com. We typically respond within 24 hours with a comprehensive layout.'
   }
 ];
 
