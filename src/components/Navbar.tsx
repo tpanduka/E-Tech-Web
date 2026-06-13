@@ -121,20 +121,20 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
   return (
     <header className="fixed top-0 left-0 w-full z-50">
       {/* Top Banner Contact Details */}
-      <div className="bg-brand-charcoal text-[var(--white)] text-[11px] border-b border-brand-dark-gray py-2.5 px-4 hidden sm:block font-sans shadow-sm">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div className="bg-brand-charcoal text-[var(--white)] text-[11px] border-b border-brand-dark-gray py-2 px-4 hidden lg:block font-sans shadow-sm">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-3">
           <div className="flex items-center gap-4 text-brand-muted font-mono bg-transparent">
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5 whitespace-nowrap">
               <Phone size={11} className="text-brand-red font-bold animate-pulse" />
-              <span className="font-semibold">{t.hotline}:</span> <span className="text-[var(--white)] font-bold hover:text-brand-red transition-colors">+94 72 212 1000</span>
+              <span className="font-semibold">{t.hotline}:</span> <span className="text-[var(--white)] font-bold hover:text-brand-red transition-colors whitespace-nowrap">+94 72 212 1000</span>
             </span>
             <span className="text-brand-dark-gray">|</span>
-            <span className="flex items-center gap-1.5 flex-wrap">
+            <span className="flex items-center gap-1.5 flex-wrap whitespace-nowrap">
               <Mail size={11} className="text-brand-red font-bold" />
               <span className="font-semibold">Email:</span> 
-              <a href="mailto:info@etechmultisolutions.com" className="text-[var(--white)] font-bold hover:text-brand-red transition-colors">info@etechmultisolutions.com</a>
+              <a href="mailto:info@etechmultisolutions.com" className="text-[var(--white)] font-bold hover:text-brand-red transition-colors whitespace-nowrap">info@etechmultisolutions.com</a>
               <span className="text-brand-dark-gray">/</span>
-              <a href="mailto:etechmultisolutions@gmail.com" className="text-[var(--white)] font-bold hover:text-brand-red transition-colors">etechmultisolutions@gmail.com</a>
+              <a href="mailto:etechmultisolutions@gmail.com" className="text-[var(--white)] font-bold hover:text-brand-red transition-colors whitespace-nowrap">etechmultisolutions@gmail.com</a>
             </span>
           </div>
           <div className="flex items-center gap-4 text-brand-muted font-mono">
@@ -170,19 +170,19 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }: N
             : 'bg-brand-black/80 backdrop-blur-sm border-white/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="max-w-7xl mx-auto flex justify-between items-center gap-2">
           {/* Logo */}
           <div
             id="nav-logo"
             onClick={() => navigateTo('home')}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer group shrink-0 min-w-0"
           >
-            <EtechLogo size={42} className="transform group-hover:scale-105 transition-all" />
-            <div>
-              <span className="font-display font-bold text-lg text-[var(--white)] tracking-tight flex items-center gap-1">
+            <EtechLogo size={36} className="sm:w-[42px] sm:h-[42px] transform group-hover:scale-105 transition-all shrink-0" />
+            <div className="min-w-0">
+              <span className="font-display font-bold text-sm sm:text-base md:text-lg text-[var(--white)] tracking-tight flex items-center gap-1 whitespace-nowrap">
                 E-TECH <span className="text-brand-red">SOLUTIONS</span>
               </span>
-              <p className="text-[10px] text-[var(--text-muted)] tracking-wider uppercase font-mono mt-0.5">
+              <p className="text-[9px] sm:text-[10px] text-[var(--text-muted)] tracking-wider uppercase font-mono mt-0.5 truncate max-w-[130px] sm:max-w-none">
                 ICT & Cybersecurity Partner
               </p>
             </div>

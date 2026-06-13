@@ -18,16 +18,27 @@ import ClientSuccessCarousel from './components/ClientSuccessCarousel';
 import AnimatedCounter from './components/AnimatedCounter';
 import ParticleBackground from './components/ParticleBackground';
 import EtechLogo from './components/EtechLogo';
+import ComplianceChatbot from './components/ComplianceChatbot';
 import {
   Shield, Check, Phone, Mail, MapPin, ExternalLink, ArrowRight, ArrowUp,
   TrendingUp, Award, Building, HeartHandshake, Users, Info, HelpCircle,
   Laptop, Cpu, Network, CheckCircle2, ChevronDown, Camera, QrCode, Download,
-  Smartphone, Database, ListPlus, CreditCard, ShieldAlert
+  Smartphone, Database, ListPlus, CreditCard, ShieldAlert, MessageSquare
 } from 'lucide-react';
 import { useLanguage } from './context/LanguageContext';
 
 export default function App() {
   const { language, setLanguage, t } = useLanguage();
+  
+  const triggerComplianceChat = () => {
+    if (typeof window !== 'undefined') {
+      const triggerBtn = document.getElementById('compliance-chatbot-trigger') as HTMLButtonElement | null;
+      if (triggerBtn) {
+        triggerBtn.click();
+      }
+    }
+  };
+
   const [theme, setTheme] = useState<'midnight' | 'slate-blue'>(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -68,6 +79,13 @@ export default function App() {
     }
     return false;
   });
+
+  const [gatewayBg, setGatewayBg] = useState('https://lh3.googleusercontent.com/d/16aYZ-_wWlFtsl73Kg910jD4Sin7vKV3k');
+  const handleGatewayBgError = () => {
+    if (gatewayBg === 'https://lh3.googleusercontent.com/d/16aYZ-_wWlFtsl73Kg910jD4Sin7vKV3k') {
+      setGatewayBg('https://docs.google.com/uc?export=view&id=16aYZ-_wWlFtsl73Kg910jD4Sin7vKV3k');
+    }
+  };
 
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -204,14 +222,15 @@ export default function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, y: -45, scale: 0.98 }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[1000] bg-[#040406] text-white flex flex-col items-center justify-center p-4 sm:p-6 overflow-y-auto compliance-gateway-dark"
+            className="fixed inset-0 z-[1000] bg-[#040406] text-white flex flex-col items-center justify-start md:justify-center p-3 sm:p-6 overflow-y-auto compliance-gateway-dark py-10 md:py-16"
           >
             {/* Immersive High-Fidelity Cybersecurity & Server Grid Fullscreen Background */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80"
+                src={gatewayBg}
                 alt="Secure Enterprise Cyber Datacenter Grid"
-                className="absolute inset-0 w-full h-full object-cover filter brightness-[0.15] contrast-[1.12] saturate-[0.8] scale-105"
+                className="absolute inset-0 w-full h-full object-cover filter brightness-[0.25] contrast-[1.15] saturate-[0.85] scale-105"
+                onError={handleGatewayBgError}
                 referrerPolicy="no-referrer"
               />
               {/* Overlay Vignette with dark cinematic edges */}
@@ -236,7 +255,7 @@ export default function App() {
               />
             </div>
 
-            <div className="relative z-10 w-full max-w-xl bg-gradient-to-b from-[#14141a] to-[#09090c] border border-[#20222a] rounded-2xl p-6 sm:p-9 shadow-[0_0_80px_rgba(0,0,0,0.95)] backdrop-blur-md overflow-hidden flex flex-col items-center text-center">
+            <div className="relative z-10 w-full max-w-xl bg-gradient-to-b from-[#14141a] to-[#09090c] border border-[#20222a] rounded-2xl p-5 xs:p-6 sm:p-8 md:p-9 shadow-[0_0_80px_rgba(0,0,0,0.95)] backdrop-blur-md overflow-hidden flex flex-col items-center text-center">
               
               {/* Corner brackets aesthetic accents */}
               <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-brand-red/35" />
@@ -245,38 +264,38 @@ export default function App() {
               <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-brand-red/35" />
 
               {/* E-Tech Solutions Official Logo & Pulsating active system shield */}
-              <div className="flex items-center gap-6 mb-6">
-                <EtechLogo size={70} className="filter drop-shadow-[0_4px_12px_rgba(229,9,20,0.25)] hover:after:duration-300" />
-                <div className="h-10 w-[1px] bg-[#1e2029]/80" />
+              <div className="flex items-center gap-4 sm:gap-6 mb-4 sm:mb-6">
+                <EtechLogo size={56} className="sm:w-[70px] sm:h-[70px] filter drop-shadow-[0_4px_12px_rgba(229,9,20,0.25)] hover:after:duration-300" />
+                <div className="h-8 sm:h-10 w-[1px] bg-[#1e2029]/80" />
                 <div className="relative">
                   <motion.div
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                    className="w-14 h-14 rounded-full bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red relative"
+                    className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red relative"
                   >
-                    <Shield size={24} className="animate-pulse" />
+                    <Shield size={20} className="sm:w-6 sm:h-6 animate-pulse" />
                   </motion.div>
-                  <div className="absolute -bottom-1 -right-1 bg-emerald-500 text-slate-950 p-1 rounded-full border border-[#070709]">
-                    <Check size={10} className="stroke-[3]" />
+                  <div className="absolute -bottom-1 -right-1 bg-emerald-500 text-slate-950 p-0.5 sm:p-1 rounded-full border border-[#070709]">
+                    <Check size={8} className="sm:w-2.5 sm:h-2.5 stroke-[3]" />
                   </div>
                 </div>
               </div>
 
               {/* Security Header */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[9px] font-bold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[9px] font-bold uppercase tracking-wider mb-3 sm:mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
                 <span>{t.environmentVerified}</span>
               </div>
 
-              <h1 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight leading-tight mb-2">
+              <h1 className="font-display font-black text-xl xs:text-2xl sm:text-3xl text-white uppercase tracking-tight leading-tight mb-2">
                 {t.complianceGateway}
               </h1>
               
-              <p className="text-[10px] font-mono tracking-widest text-brand-red uppercase font-semibold mb-5">
+              <p className="text-[9px] sm:text-[10px] font-mono tracking-widest text-brand-red uppercase font-semibold mb-3 sm:mb-5">
                 {t.pdpaActiveGuard}
               </p>
 
-              <div className="bg-[#0b0c11] rounded-xl border border-[#1e2029] p-5 text-left text-xs sm:text-sm leading-relaxed text-zinc-100 space-y-4 mb-6">
+              <div className="bg-[#0b0c11] rounded-xl border border-[#1e2029] p-4 sm:p-5 text-left text-[11px] sm:text-xs md:text-sm leading-relaxed text-zinc-100 space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                 <p className="text-zinc-200">
                   {language === 'si' ? (
                     <span>ඊ-ටෙක් සොලියුෂන්ස් (<strong className="text-white font-bold">E-Tech Solutions</strong>) නිල ඩිජිටල් වේදිකාව වෙත සාදරයෙන් පිළිගනිමු. ඩිජිටල් පාලනය සහ දත්ත සුරක්ෂිතතාවය සඳහා අපගේ කැපවීම සමඟ ඒකාබද්ධ වීමට:</span>
@@ -284,38 +303,38 @@ export default function App() {
                     <span>Welcome to the official digital platform of <strong className="text-white font-bold">E-Tech Solutions</strong>. To align with our commitment to digital governance and data safety:</span>
                   )}
                 </p>
-                <p className="border-l-2 border-brand-red pl-3 text-zinc-100 bg-brand-red/[0.04] py-1">
+                <p className="border-l-2 border-brand-red pl-3 text-zinc-100 bg-brand-red/[0.04] py-1 text-[11px] sm:text-xs leading-normal">
                   {t.gatewayPdpaHighlight}
                 </p>
-                <p className="text-zinc-200">
+                <p className="text-zinc-200 text-[10px] sm:text-xs">
                   {t.gatewayNoScrapers}
                 </p>
               </div>
 
               {/* Verified Specs Checklist */}
-              <div className="w-full grid grid-cols-2 gap-2 text-[10px] sm:text-xs font-mono text-zinc-400 mb-8 border-t border-[#1e2029]/80 pt-5">
-                <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
-                  <Check size={11} className="text-brand-red shrink-0" />
-                  <span className="text-zinc-200">{t.pdpaReady}</span>
+              <div className="w-full grid grid-cols-2 gap-2 text-[9px] sm:text-[10px] md:text-xs font-mono text-zinc-400 mb-5 sm:mb-8 border-t border-[#1e2029]/80 pt-4 sm:pt-5">
+                <div className="flex items-center gap-1.5 bg-[#0c0d12] border border-[#1a1b21] p-2 rounded-lg">
+                  <Check size={10} className="text-brand-red shrink-0" />
+                  <span className="text-zinc-200 truncate">{t.pdpaReady}</span>
                 </div>
-                <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
-                  <Check size={11} className="text-brand-red shrink-0" />
-                  <span className="text-zinc-200">{t.aesEncrypted}</span>
+                <div className="flex items-center gap-1.5 bg-[#0c0d12] border border-[#1a1b21] p-2 rounded-lg">
+                  <Check size={10} className="text-brand-red shrink-0" />
+                  <span className="text-zinc-200 truncate">{t.aesEncrypted}</span>
                 </div>
-                <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
-                  <Check size={11} className="text-brand-red shrink-0" />
-                  <span className="text-zinc-200">{t.tlsCertified}</span>
+                <div className="flex items-center gap-1.5 bg-[#0c0d12] border border-[#1a1b21] p-2 rounded-lg">
+                  <Check size={10} className="text-brand-red shrink-0" />
+                  <span className="text-zinc-200 truncate">{t.tlsCertified}</span>
                 </div>
-                <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
-                  <Check size={11} className="text-brand-red shrink-0" />
-                  <span className="text-zinc-200">{t.sandboxCompliant}</span>
+                <div className="flex items-center gap-1.5 bg-[#0c0d12] border border-[#1a1b21] p-2 rounded-lg">
+                  <Check size={10} className="text-brand-red shrink-0" />
+                  <span className="text-zinc-200 truncate">{t.sandboxCompliant}</span>
                 </div>
               </div>
 
               {/* Action buttons */}
               <button
                 onClick={handleVerifyPdpa}
-                className="w-full relative group overflow-hidden bg-brand-red hover:bg-red-700 text-white font-mono text-xs sm:text-sm font-bold py-4 px-6 rounded-xl shadow-[0_0_30px_rgba(229,9,20,0.3)] hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] transition-all cursor-pointer uppercase tracking-wider"
+                className="w-full relative group overflow-hidden bg-brand-red hover:bg-red-700 text-white font-mono text-xs sm:text-sm font-bold py-3.5 px-4 sm:px-6 rounded-xl shadow-[0_0_30px_rgba(229,9,20,0.3)] hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] transition-all cursor-pointer uppercase tracking-wider"
               >
                 <span>{t.verifyAndEnter}</span>
               </button>
@@ -340,9 +359,10 @@ export default function App() {
             {/* Suitable Live Fullscreen Cyber Network Grid Background for the entire Landing Page */}
             <div className="fixed inset-0 z-0 pointer-events-none">
               <img
-                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"
+                src={gatewayBg}
                 alt="Cyber Infrastructure Mesh Grid Background"
                 className="w-full h-full object-cover transition-all duration-700 select-none opacity-5 filter brightness-[0.88] contrast-[1.02]"
+                onError={handleGatewayBgError}
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-brand-black/95 via-brand-black/90 to-brand-black/95" />
@@ -983,12 +1003,21 @@ export default function App() {
                         </div>
                       ))}
                     </div>
-                    <button
-                      onClick={() => handleServiceClick('cybersecurity-consultancy')}
-                      className="mt-6 text-xs text-brand-red font-bold hover:underline tracking-wider uppercase flex items-center gap-1 cursor-pointer w-max"
-                    >
-                      Explore Inclusions & Related Package Tiers →
-                    </button>
+                    <div className="flex flex-wrap gap-4 mt-6">
+                      <button
+                        onClick={() => handleServiceClick('cybersecurity-consultancy')}
+                        className="text-xs bg-brand-red hover:bg-red-700 text-white font-bold py-3 px-5 rounded-lg tracking-wider uppercase flex items-center gap-1.5 cursor-pointer shadow-lg shadow-red-600/15"
+                      >
+                        Explore Package Tiers →
+                      </button>
+                      <button
+                        onClick={triggerComplianceChat}
+                        className="text-xs bg-zinc-900 hover:bg-zinc-805 text-white border border-zinc-700 hover:border-brand-red font-bold py-3 px-5 rounded-lg tracking-wider uppercase flex items-center gap-2 cursor-pointer transition-all duration-200"
+                      >
+                        <MessageSquare size={13} className="text-brand-red shrink-0" />
+                        <span>Consult AI Counselor</span>
+                      </button>
+                    </div>
                   </div>
                   <div className="lg:col-span-5 relative">
                     <div className="border border-brand-dark-gray p-1.5 rounded-xl bg-brand-charcoal/80 overflow-hidden shadow-2xl">
@@ -2220,7 +2249,7 @@ export default function App() {
 
         {/* DETAILED SERVICE VIEW REPRESENTING SECONDARY PAGES */}
         {!['home', 'about', 'services', 'portfolio', 'contact'].includes(activePage) && (
-          <ServiceDetailView serviceId={activePage} setActivePage={setActivePage} />
+          <ServiceDetailView serviceId={activePage} setActivePage={setActivePage} language={language} />
         )}
 
       </main>
@@ -2231,7 +2260,10 @@ export default function App() {
       {/* 21. Data Protection Consent Banner */}
       <DataConsent />
 
-      {/* 22. Animated Scroll To Top Button */}
+      {/* 22. AI-powered Compliance Chatbot Assistance */}
+      <ComplianceChatbot language={language} />
+
+      {/* 23. Animated Scroll To Top Button */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
