@@ -16,6 +16,8 @@ import QuoteForm from './components/QuoteForm';
 import ServiceDetailView from './components/ServiceDetailView';
 import ClientSuccessCarousel from './components/ClientSuccessCarousel';
 import AnimatedCounter from './components/AnimatedCounter';
+import ParticleBackground from './components/ParticleBackground';
+import EtechLogo from './components/EtechLogo';
 import {
   Shield, Check, Phone, Mail, MapPin, ExternalLink, ArrowRight, ArrowUp,
   TrendingUp, Award, Building, HeartHandshake, Users, Info, HelpCircle,
@@ -202,7 +204,7 @@ export default function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, y: -45, scale: 0.98 }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[1000] bg-[#040406] text-white flex flex-col items-center justify-center p-4 sm:p-6 overflow-y-auto"
+            className="fixed inset-0 z-[1000] bg-[#040406] text-white flex flex-col items-center justify-center p-4 sm:p-6 overflow-y-auto compliance-gateway-dark"
           >
             {/* Immersive High-Fidelity Cybersecurity & Server Grid Fullscreen Background */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -214,13 +216,16 @@ export default function App() {
               />
               {/* Overlay Vignette with dark cinematic edges */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#040406] via-transparent to-[#040406] opacity-95" />
-              <div className="absolute inset-0 bg-brand-black/85" />
+              <div className="absolute inset-0 bg-[#040406]/92" />
               
               {/* Structural grid mesh pattern on top of image */}
               <div className="absolute inset-0 bg-grid-mesh-gray opacity-45 pointer-events-none" />
 
+              {/* Floating modern cyber particles */}
+              <ParticleBackground color="229, 9, 20" particleCount={75} />
+
               {/* Glowing Ambient Lights */}
-              <div className="absolute top-1/4 left-1/4 w-[650px] h-[650px] bg-brand-red/[0.06] rounded-full filter blur-[120px]" />
+              <div className="absolute top-1/4 left-1/4 w-[650px] h-[650px] bg-red-650/[0.06] rounded-full filter blur-[120px]" />
               <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-blue-900/[0.04] rounded-full filter blur-[140px]" />
               
               {/* Infinite scanning background scanner stripe */}
@@ -231,7 +236,7 @@ export default function App() {
               />
             </div>
 
-            <div className="relative z-10 w-full max-w-xl bg-gradient-to-b from-[#111115] to-[#070709] border border-brand-dark-gray/65 rounded-2xl p-6 sm:p-9 shadow-[0_0_80px_rgba(0,0,0,0.95)] backdrop-blur-md overflow-hidden flex flex-col items-center text-center">
+            <div className="relative z-10 w-full max-w-xl bg-gradient-to-b from-[#14141a] to-[#09090c] border border-[#20222a] rounded-2xl p-6 sm:p-9 shadow-[0_0_80px_rgba(0,0,0,0.95)] backdrop-blur-md overflow-hidden flex flex-col items-center text-center">
               
               {/* Corner brackets aesthetic accents */}
               <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-brand-red/35" />
@@ -239,17 +244,21 @@ export default function App() {
               <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-brand-red/35" />
               <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-brand-red/35" />
 
-              {/* Pulsating animated compliance shield */}
-              <div className="relative mb-6">
-                <motion.div
-                  animate={{ scale: [1, 1.08, 1] }}
-                  transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                  className="w-16 h-16 rounded-full bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red relative"
-                >
-                  <Shield size={28} className="animate-pulse" />
-                </motion.div>
-                <div className="absolute -bottom-1 -right-1 bg-emerald-500 text-slate-950 p-1 rounded-full border border-[#070709]">
-                  <Check size={12} className="stroke-[3]" />
+              {/* E-Tech Solutions Official Logo & Pulsating active system shield */}
+              <div className="flex items-center gap-6 mb-6">
+                <EtechLogo size={70} className="filter drop-shadow-[0_4px_12px_rgba(229,9,20,0.25)] hover:after:duration-300" />
+                <div className="h-10 w-[1px] bg-[#1e2029]/80" />
+                <div className="relative">
+                  <motion.div
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+                    className="w-14 h-14 rounded-full bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red relative"
+                  >
+                    <Shield size={24} className="animate-pulse" />
+                  </motion.div>
+                  <div className="absolute -bottom-1 -right-1 bg-emerald-500 text-slate-950 p-1 rounded-full border border-[#070709]">
+                    <Check size={10} className="stroke-[3]" />
+                  </div>
                 </div>
               </div>
 
@@ -267,35 +276,39 @@ export default function App() {
                 {t.pdpaActiveGuard}
               </p>
 
-              <div className="bg-brand-black/90 rounded-xl border border-white/5 p-5 text-left text-xs sm:text-sm leading-relaxed text-stone-300 space-y-4 mb-6">
-                <p>
-                  {t.gatewayWelcome.replace('E-Tech Solutions', '')}<strong>E-Tech Solutions</strong>:
+              <div className="bg-[#0b0c11] rounded-xl border border-[#1e2029] p-5 text-left text-xs sm:text-sm leading-relaxed text-zinc-100 space-y-4 mb-6">
+                <p className="text-zinc-200">
+                  {language === 'si' ? (
+                    <span>ඊ-ටෙක් සොලියුෂන්ස් (<strong className="text-white font-bold">E-Tech Solutions</strong>) නිල ඩිජිටල් වේදිකාව වෙත සාදරයෙන් පිළිගනිමු. ඩිජිටල් පාලනය සහ දත්ත සුරක්ෂිතතාවය සඳහා අපගේ කැපවීම සමඟ ඒකාබද්ධ වීමට:</span>
+                  ) : (
+                    <span>Welcome to the official digital platform of <strong className="text-white font-bold">E-Tech Solutions</strong>. To align with our commitment to digital governance and data safety:</span>
+                  )}
                 </p>
-                <p className="border-l-2 border-brand-red pl-3 text-stone-200 bg-brand-red/[0.02] py-1">
+                <p className="border-l-2 border-brand-red pl-3 text-zinc-100 bg-brand-red/[0.04] py-1">
                   {t.gatewayPdpaHighlight}
                 </p>
-                <p>
+                <p className="text-zinc-200">
                   {t.gatewayNoScrapers}
                 </p>
               </div>
 
               {/* Verified Specs Checklist */}
-              <div className="w-full grid grid-cols-2 gap-2 text-[10px] sm:text-xs font-mono text-zinc-400 mb-8 border-t border-brand-dark-gray/40 pt-5">
-                <div className="flex items-center gap-2 bg-brand-black/45 p-2 rounded border border-white/5">
-                  <Check size={11} className="text-brand-red" />
-                  <span>{t.pdpaReady}</span>
+              <div className="w-full grid grid-cols-2 gap-2 text-[10px] sm:text-xs font-mono text-zinc-400 mb-8 border-t border-[#1e2029]/80 pt-5">
+                <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
+                  <Check size={11} className="text-brand-red shrink-0" />
+                  <span className="text-zinc-150">{t.pdpaReady}</span>
                 </div>
-                <div className="flex items-center gap-2 bg-brand-black/45 p-2 rounded border border-white/5">
-                  <Check size={11} className="text-brand-red" />
-                  <span>{t.aesEncrypted}</span>
+                <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
+                  <Check size={11} className="text-brand-red shrink-0" />
+                  <span className="text-zinc-150">{t.aesEncrypted}</span>
                 </div>
-                <div className="flex items-center gap-2 bg-brand-black/45 p-2 rounded border border-white/5">
-                  <Check size={11} className="text-brand-red" />
-                  <span>{t.tlsCertified}</span>
+                <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
+                  <Check size={11} className="text-brand-red shrink-0" />
+                  <span className="text-zinc-150">{t.tlsCertified}</span>
                 </div>
-                <div className="flex items-center gap-2 bg-brand-black/45 p-2 rounded border border-white/5">
-                  <Check size={11} className="text-brand-red" />
-                  <span>{t.sandboxCompliant}</span>
+                <div className="flex items-center gap-2 bg-[#0c0d12] border border-[#1a1b21] p-2.5 rounded-lg">
+                  <Check size={11} className="text-brand-red shrink-0" />
+                  <span className="text-zinc-150">{t.sandboxCompliant}</span>
                 </div>
               </div>
 
@@ -353,36 +366,36 @@ export default function App() {
                     </span>
                     <span className="h-[1px] w-8 bg-brand-red/45" />
                   </div>
-                  <h2 className="font-display font-bold text-3xl sm:text-4xl text-white mb-6 tracking-tight">
+                  <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--white)] mb-6 tracking-tight">
                     {language === 'si' ? 'ශ්‍රී ලංකාව පුරා ඩිජිටල් වර්ධනය සහ ආරක්ෂාව සැලසීම' : 'Driving Digital Growth and Security Across Sri Lanka'}
                   </h2>
                   
                   {/* Brand quotation pairing */}
-                  <p className="text-base sm:text-lg font-serif italic text-zinc-100 max-w-2xl mx-auto leading-relaxed mb-8 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+                  <p className="text-base sm:text-lg font-serif italic text-stone-700 dark:text-zinc-200 max-w-2xl mx-auto leading-relaxed mb-8">
                     {language === 'si'
                       ? '"2012 වසරේ සිට, ඊ-ටෙක් සොලියුෂන්ස් ආයතනය ශ්‍රී ලංකාවේ ප්‍රමුඛතම තොරතුරු තාක්ෂණ සහ සයිබර් ආරක්ෂණ හවුල්කරුවෙකු ලෙස කටයුතු කරයි. අපි ව්‍යාපාරික පද්ධති සුරක්ෂිතව, කාර්යක්ෂමව සහ විශ්වාසදායකව පවත්වාගෙන යාමට සහය වන්නෙමු."'
                       : '"Since 2012, E-Tech Solutions has served as an integrated IT and cybersecurity partner. We deliver reliable, secure, and compliant solutions that protect digital assets and build long-term business resilience."'}
                   </p>
 
                   {/* High-Impact Animated Stats Grid on Scroll */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12 py-8 bg-brand-charcoal/45 border border-brand-dark-gray/40 rounded-xl backdrop-blur-sm shadow-sm relative z-20">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12 py-8 bg-white/45 dark:bg-zinc-900/40 border border-brand-dark-gray/40 rounded-xl backdrop-blur-sm shadow-sm relative z-20">
                     <div className="flex flex-col items-center justify-center">
                       <span className="text-4xl sm:text-5xl font-display font-black text-brand-red tracking-tight flex items-center justify-center text-center">
                         <AnimatedCounter end={14} />+
                       </span>
-                      <span className="text-xs font-sans uppercase text-stone-200 tracking-wider mt-2 font-bold">{language === 'si' ? 'වසරක පළපුරුද්ද' : 'Years of Experience'}</span>
+                      <span className="text-xs font-sans uppercase text-stone-700 dark:text-stone-200 tracking-wider mt-2 font-bold">{language === 'si' ? 'වසරක පළපුරුද්ද' : 'Years of Experience'}</span>
                     </div>
                     <div className="flex flex-col items-center justify-center border-y sm:border-y-0 sm:border-x border-brand-dark-gray/30 py-6 sm:py-0">
                       <span className="text-4xl sm:text-5xl font-display font-black text-brand-red tracking-tight flex items-center justify-center text-center">
                         <AnimatedCounter end={450} />+
                       </span>
-                      <span className="text-xs font-sans uppercase text-stone-200 tracking-wider mt-2 font-bold">{language === 'si' ? 'සාර්ථක ව්‍යාපෘති' : 'Successful Projects'}</span>
+                      <span className="text-xs font-sans uppercase text-stone-700 dark:text-stone-200 tracking-wider mt-2 font-bold">{language === 'si' ? 'සාර්ථක ව්‍යාපෘති' : 'Successful Projects'}</span>
                     </div>
                     <div className="flex flex-col items-center justify-center">
                       <span className="text-4xl sm:text-5xl font-display font-black text-brand-red tracking-tight flex items-center justify-center text-center">
                         <AnimatedCounter end={20} />+
                       </span>
-                      <span className="text-xs font-sans uppercase text-stone-200 tracking-wider mt-2 font-bold">{language === 'si' ? 'කර්මාන්තයන්' : 'Industries Supported'}</span>
+                      <span className="text-xs font-sans uppercase text-stone-700 dark:text-stone-200 tracking-wider mt-2 font-bold">{language === 'si' ? 'කර්මාන්තයන්' : 'Industries Supported'}</span>
                     </div>
                   </div>
 
@@ -401,7 +414,7 @@ export default function App() {
                         <h3 className="font-display font-bold text-white mb-2 text-sm tracking-tight uppercase group-hover:text-brand-red transition-colors">
                           {language === 'si' ? 'විශ්වාසනීය ව්‍යාපාරික සදාචාරය' : 'Solid Business Trust'}
                         </h3>
-                        <p className="text-xs text-brand-muted leading-relaxed font-sans">
+                        <p className="text-xs text-zinc-300 leading-relaxed font-sans">
                           {language === 'si' 
                             ? 'අව්‍යාජ මෘදුකාංග බලපත්‍ර සැපයීම සහ විනිවිදභාවයෙන් යුතු ප්‍රසම්පාදන සේවාවන් හරහා උපරිම විශ්වාසයක් ලබා දීම.'
                             : 'Strictly aligning with genuine software licensing guidelines, transparent procurement advisories, and industry standards.'}
@@ -421,7 +434,7 @@ export default function App() {
                         <h3 className="font-display font-bold text-white mb-2 text-sm tracking-tight uppercase group-hover:text-brand-red transition-colors">
                           {language === 'si' ? 'පූර්ණ සයිබර් ආරක්ෂණය' : 'Integrated Cybersecurity'}
                         </h3>
-                        <p className="text-xs text-brand-muted leading-relaxed font-sans">
+                        <p className="text-xs text-zinc-300 leading-relaxed font-sans">
                           {language === 'si' 
                             ? 'අපගේ සෑම විසඳුමකදීම සයිබර් ආරක්ෂණ ෆයර්වෝල් පද්ධති සහ දත්ත ආරක්ෂණ නීති (PDPA) කෙරෙහි දැඩි අවධානයක් යොමු කෙරේ.'
                             : 'Every network and software frame is fortified with custom pfSense firewalls, vulnerability checks, and local data protection compliance.'}
@@ -441,7 +454,7 @@ export default function App() {
                         <h3 className="font-display font-bold text-white mb-2 text-sm tracking-tight uppercase group-hover:text-brand-red transition-colors">
                           {language === 'si' ? 'අඛණ්ඩ තාක්ෂණික සහයෝගය' : 'Contracted Maintenance'}
                         </h3>
-                        <p className="text-xs text-brand-muted leading-relaxed font-sans">
+                        <p className="text-xs text-zinc-300 leading-relaxed font-sans">
                           {language === 'si' 
                             ? 'Annual Maintenance Contracts (AMC) මගින් අපගේ ගනුදෙනුකරුවන් සඳහා කඩිනම් සහ නොකඩවා ක්‍රියාත්මක වන සේවා සහය සහතික කරමු.'
                             : 'Offering direct Annual Maintenance Contracts (AMCs) to guarantee regular hardware tune-ups, prompt support, and network upkeep.'}
@@ -461,10 +474,10 @@ export default function App() {
                 <span className="text-xs sm:text-sm text-red-500 font-sans uppercase font-extrabold tracking-wider block mb-2">
                   {language === 'si' ? 'අපගේ ප්‍රධාන සේවා සහ විසඳුම්' : 'OUR CORE SERVICES // TAILORED SYSTEM INTEGRATIONS'}
                 </span>
-                <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white mb-4 tracking-tight uppercase">
+                <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[var(--white)] mb-4 tracking-tight uppercase">
                   {language === 'si' ? 'විශ්වාසදායක තාක්ෂණික විසඳුම්' : 'Professional Technology Solutions'}
                 </h1>
-                <p className="text-base font-serif italic text-zinc-200 max-w-2xl mx-auto mb-12 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+                <p className="text-base font-serif italic text-stone-700 dark:text-zinc-200 max-w-2xl mx-auto mb-12">
                   {language === 'si' 
                     ? '"වෘත්තීය මට්ටමේ ජාලකරණය, කාර්යක්ෂම pfSense ෆයර්වෝල්ස්, උසස් මෘදුකාංග පාලනය සහ පද්ධති නඩත්තු සේවාවන් කඩිනමින් සපයන්නෙමු."'
                     : '"From bespoke software solutions to secure networking frameworks and proactive hardware support — engineered with precision for modern business environments."'}
@@ -490,18 +503,18 @@ export default function App() {
                             {language === 'si' ? 'සේවාව' : 'SERVICE'} 0{sIdx + 1}
                           </div>
                         </div>
-                        <h3 className="font-display font-semibold text-xs tracking-wider uppercase text-[var(--white)] group-hover:text-brand-red transition-colors flex items-center justify-between pb-2 border-b border-brand-dark-gray/40">
+                        <h3 className="font-display font-semibold text-xs tracking-wider uppercase text-zinc-100 group-hover:text-brand-red transition-colors flex items-center justify-between pb-2 border-b border-brand-dark-gray/40">
                           <span>{svc.title}</span>
                           <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-brand-red" />
                         </h3>
-                        <p className="text-[11px] text-brand-muted leading-relaxed mt-2 line-clamp-3 font-sans">
+                        <p className="text-[11px] text-zinc-350 leading-relaxed mt-2 line-clamp-3 font-sans">
                           {svc.shortDesc}
                         </p>
                       </div>
                       
                       <div className="mt-4 pt-3 border-t border-brand-dark-gray/40 flex justify-between items-center text-[10px] uppercase font-mono tracking-wider font-semibold">
                         <span className="text-brand-red/90 font-bold">9+ Core inclusions</span>
-                        <span className="text-brand-muted group-hover:text-brand-red transition-all">SLA Specs →</span>
+                        <span className="text-zinc-400 group-hover:text-brand-red transition-all">SLA Specs →</span>
                       </div>
                     </div>
                   ))}
@@ -989,8 +1002,8 @@ export default function App() {
                 </div>
 
                 {/* CMMC 2.0 & PDPA Compliance Interactive Lab */}
-                <div className="border border-brand-dark-gray/60 bg-brand-charcoal/40 rounded-xl p-6 sm:p-8 backdrop-blur-sm">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-brand-dark-gray/40 pb-5 mb-6 gap-4">
+                <div className="border border-zinc-800 bg-zinc-950/95 rounded-xl p-6 sm:p-8 relative overflow-hidden shadow-2xl transition-all duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-zinc-800 pb-5 mb-6 gap-4">
                     <div>
                       <span className="text-xs sm:text-sm text-[#ff333d] font-sans uppercase font-extrabold tracking-wider block mb-1">
                         {language === 'si' ? 'අන්තර්ක්‍රියාකාරී අනුකූලතා පරීක්ෂණ' : 'Interactive Compliance Board'}
@@ -1015,10 +1028,10 @@ export default function App() {
                         <button
                           key={tab.id}
                           onClick={() => setLabTab(tab.id as any)}
-                          className={`px-3.5 py-2 rounded text-xs font-sans uppercase tracking-wider transition-all cursor-pointer ${
+                          className={`px-3.5 py-2 rounded text-xs sm:text-sm font-sans uppercase tracking-wider transition-all cursor-pointer ${
                             labTab === tab.id
-                              ? 'bg-brand-red text-white font-bold shadow-md shadow-brand-red/25'
-                              : 'bg-zinc-900 border border-white/10 text-stone-200 hover:text-white hover:border-brand-red'
+                              ? 'bg-red-650 text-white font-black shadow-md shadow-red-650/45 border border-red-500'
+                              : 'bg-zinc-900 border border-zinc-700 text-stone-200 hover:text-white hover:border-red-500 font-bold'
                           }`}
                         >
                           {tab.label}
@@ -1032,56 +1045,56 @@ export default function App() {
                     {/* levels Tab */}
                     {labTab === 'levels' && (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fadeIn">
-                        <div className="border border-white/5 bg-brand-charcoal/85 p-5 rounded-lg flex flex-col justify-between">
+                        <div className="border border-zinc-700 bg-zinc-900/90 p-5 rounded-lg flex flex-col justify-between">
                           <div>
-                            <span className="text-[10px] font-mono text-brand-muted font-bold tracking-widest uppercase block mb-1">CMMC Level 1</span>
-                            <h4 className="font-display font-bold text-brand-red text-base mb-2">Foundational Readiness</h4>
-                            <p className="text-[13px] text-brand-muted leading-relaxed mb-4">
+                            <span className="text-[11px] font-mono text-stone-300 font-bold tracking-widest uppercase block mb-1">CMMC Level 1</span>
+                            <h4 className="font-display font-black text-red-500 text-lg mb-2">Foundational Readiness</h4>
+                            <p className="text-sm text-stone-100 leading-relaxed mb-4">
                               Applies to standard defense suppliers handling <strong>Federal Contract Information (FCI)</strong>. Centers on basic safeguarding parameters.
                             </p>
-                            <ul className="text-[13px] text-white/80 space-y-1.5 font-mono mb-4">
-                              <li>• Info Type: FCI Only</li>
-                              <li>• Practices: 17 Cyber Hygiene rules</li>
-                              <li>• Scope: Limiting basic access controls</li>
-                              <li>• Assessment: Annual Self-Assessment</li>
+                            <ul className="text-xs sm:text-sm text-white space-y-1.5 font-mono mb-4">
+                              <li className="font-semibold text-stone-150">• Info Type: FCI Only</li>
+                              <li className="font-semibold text-stone-150">• Practices: 17 Cyber Hygiene rules</li>
+                              <li className="font-semibold text-stone-150">• Scope: Limiting basic access controls</li>
+                              <li className="font-semibold text-stone-150">• Assessment: Annual Self-Assessment</li>
                             </ul>
                           </div>
-                          <span className="text-[9px] font-mono uppercase tracking-wider text-green-500 font-bold bg-green-500/10 px-2 py-1 rounded w-max">Low-Risk Contracts</span>
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-green-400 font-extrabold bg-green-500/15 px-2.5 py-1 rounded w-max border border-green-500/30">Low-Risk Contracts</span>
                         </div>
 
-                        <div className="border border-brand-red/40 bg-brand-charcoal/95 p-5 rounded-lg flex flex-col justify-between relative shadow-lg">
-                          <div className="absolute top-3 right-3 bg-brand-red text-white text-[8px] font-mono font-bold px-2 py-0.5 rounded uppercase tracking-widest animate-pulse">Our Core Focus</div>
+                        <div className="border border-red-500/80 bg-zinc-900/95 p-5 rounded-lg flex flex-col justify-between relative shadow-lg">
+                          <div className="absolute top-3 right-3 bg-red-600 text-white text-[9px] font-mono font-bold px-2 py-1 rounded uppercase tracking-widest animate-pulse border border-red-400">Our Core Focus</div>
                           <div>
-                            <span className="text-[10px] font-mono text-brand-red font-bold tracking-widest uppercase block mb-1">CMMC Level 2</span>
-                            <h4 className="font-display font-bold text-white text-base mb-2">Advanced Compliance</h4>
-                            <p className="text-[13px] text-brand-muted leading-relaxed mb-4">
+                            <span className="text-[11px] font-mono text-red-400 font-bold tracking-widest uppercase block mb-1">CMMC Level 2</span>
+                            <h4 className="font-display font-black text-white text-lg mb-2">Advanced Compliance</h4>
+                            <p className="text-sm text-zinc-150 leading-relaxed mb-4">
                               Applies to contractors storing or transmitting <strong>Controlled Unclassified Information (CUI)</strong>. Aligns strictly under NIST SP 800-171 principles.
                             </p>
-                            <ul className="text-[13px] text-white/90 space-y-1.5 font-mono mb-4">
-                              <li>• Info Type: CUI & Export-Controlled (ITAR)</li>
-                              <li>• Practices: 110 Controls mapping</li>
-                              <li>• Core Standard: NIST SP 800-171 Rev. 2</li>
-                              <li>• Assessment: Self-Assessment & POA&M</li>
+                            <ul className="text-xs sm:text-sm text-white space-y-1.5 font-mono mb-4 animate-pulse">
+                              <li className="font-semibold text-stone-150">• Info Type: CUI & Export-Controlled (ITAR)</li>
+                              <li className="font-semibold text-stone-150">• Practices: 110 Controls mapping</li>
+                              <li className="font-semibold text-stone-150">• Core Standard: NIST SP 800-171 Rev. 2</li>
+                              <li className="font-semibold text-stone-150">• Assessment: Self-Assessment & POA&M</li>
                             </ul>
                           </div>
-                          <span className="text-[9px] font-mono uppercase tracking-wider text-brand-red font-bold bg-brand-red/15 px-2 py-1 rounded w-max">ITAR & CUI Environment</span>
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-red-400 font-extrabold bg-red-600/15 px-2.5 py-1 rounded w-max border border-red-550">ITAR & CUI Environment</span>
                         </div>
 
-                        <div className="border border-white/5 bg-brand-charcoal/85 p-5 rounded-lg flex flex-col justify-between">
+                        <div className="border border-zinc-700 bg-zinc-900/90 p-5 rounded-lg flex flex-col justify-between">
                           <div>
-                            <span className="text-[10px] font-mono text-brand-muted font-bold tracking-widest uppercase block mb-1">CMMC Level 3</span>
-                            <h4 className="font-display font-bold text-brand-red text-base mb-2">Expert Security</h4>
-                            <p className="text-[13px] text-brand-muted leading-relaxed mb-4">
+                            <span className="text-[11px] font-mono text-stone-300 font-bold tracking-widest uppercase block mb-1">CMMC Level 3</span>
+                            <h4 className="font-display font-black text-red-500 text-lg mb-2">Expert Security</h4>
+                            <p className="text-sm text-stone-100 leading-relaxed mb-4">
                               Applies to high-priority organizations working on critical defense programs facing advanced persistent threats (APTs).
                             </p>
-                            <ul className="text-[13px] text-white/80 space-y-1.5 font-mono mb-4">
-                              <li>• Info Type: High-Sensitivity CUI</li>
-                              <li>• Practices: 110+ Enhanced rules</li>
-                              <li>• Core Standard: NIST SP 800-172</li>
-                              <li>• Assessment: Government-Led Audits</li>
+                            <ul className="text-xs sm:text-sm text-white space-y-1.5 font-mono mb-4">
+                              <li className="font-semibold text-stone-150">• Info Type: High-Sensitivity CUI</li>
+                              <li className="font-semibold text-stone-150">• Practices: 110+ Enhanced rules</li>
+                              <li className="font-semibold text-stone-150">• Core Standard: NIST SP 800-172</li>
+                              <li className="font-semibold text-stone-150">• Assessment: Government-Led Audits</li>
                             </ul>
                           </div>
-                          <span className="text-[9px] font-mono uppercase tracking-wider text-amber-500 font-bold bg-amber-500/10 px-2 py-1 rounded w-max">Government Audited Only</span>
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-extrabold bg-amber-500/10 px-2.5 py-1 rounded w-max border border-amber-500/20">Government Audited Only</span>
                         </div>
                       </div>
                     )}
@@ -1089,7 +1102,7 @@ export default function App() {
                     {/* families Tab */}
                     {labTab === 'families' && (
                       <div className="animate-fadeIn">
-                        <p className="text-[13px] text-brand-muted mb-4">
+                        <p className="text-sm sm:text-base text-stone-250 mb-5 leading-relaxed font-sans font-medium">
                           CMMC Level 2 contains 110 technical, administrative, and operational controls mapped across <strong>14 key NIST SP 800-171 Security Families</strong>. Every project involves evaluating:
                         </p>
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
@@ -1099,7 +1112,7 @@ export default function App() {
                             { code: 'AU', name: 'Audit & Accountability', desc: 'System log generation & reviews' },
                             { code: 'CM', name: 'Config Management', desc: 'Hardware & software baselines' },
                             { code: 'IA', name: 'Identification', desc: 'User identity policies & MFA' },
-                            { code: 'IR', name: 'Incident Response', desc: 'Threat containment & reporting' },
+                            { code: 'IR', name: 'Incident Response', desc: 'Threat containment & reporting font-sans' },
                             { code: 'MA', name: 'Maintenance', desc: 'Repair logs & technician rules' },
                             { code: 'MP', name: 'Media Protection', desc: 'Removable USB / disk security' },
                             { code: 'PE', name: 'Physical Protection', desc: 'Restricting server room entry' },
@@ -1109,10 +1122,10 @@ export default function App() {
                             { code: 'SC', name: 'System Protection', desc: 'Network routing & encryption' },
                             { code: 'SI', name: 'Information Integrity', desc: 'Antivirus, EDR, and patch alerts' }
                           ].map((fam) => (
-                            <div key={fam.code} className="bg-brand-black/60 border border-white/5 p-3 rounded hover:border-brand-red/25 transition-all text-center flex flex-col justify-center min-h-[100px]">
-                              <span className="text-[13px] font-mono font-extrabold text-brand-red block mb-1">{fam.code}</span>
-                              <span className="text-[13px] text-white font-semibold truncate block" title={fam.name}>{fam.name}</span>
-                              <span className="text-[11px] text-brand-muted mt-1 leading-snug line-clamp-2">{fam.desc}</span>
+                            <div key={fam.code} className="bg-[#0e0e11] border border-zinc-700/80 p-3.5 rounded-lg hover:border-[#ff333d]/50 transition-all text-center flex flex-col justify-center min-h-[110px]">
+                              <span className="text-sm font-mono font-black text-red-500 block mb-1">{fam.code}</span>
+                              <span className="text-xs sm:text-sm text-white font-bold truncate block" title={fam.name}>{fam.name}</span>
+                              <span className="text-xs text-stone-300 mt-1 leading-snug line-clamp-2">{fam.desc}</span>
                             </div>
                           ))}
                         </div>
@@ -1122,7 +1135,7 @@ export default function App() {
                     {/* roadmap Tab */}
                     {labTab === 'roadmap' && (
                       <div className="animate-fadeIn">
-                        <p className="text-[13px] text-brand-muted mb-6">
+                        <p className="text-sm sm:text-base text-stone-250 mb-5 leading-relaxed font-sans font-medium">
                           E-Tech Solutions guides organizations preparing for external review using our structured, <strong>9-Phase Phased Readiness Framework</strong>.
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-9 gap-4 text-left">
@@ -1137,14 +1150,14 @@ export default function App() {
                             { num: '08', title: 'Affirmation', desc: 'Secure stakeholder reviews and formal management affirmation.' },
                             { num: '09', title: 'Monitoring', desc: 'Establish annual reviews, reassessment logs, and patches.' }
                           ].map((step, idx) => (
-                            <div key={step.num} className="bg-brand-black/40 border border-white/5 p-3.5 rounded relative hover:border-brand-red/20 transition-all flex flex-col justify-between">
+                            <div key={step.num} className="bg-[#0e0e11] border border-zinc-700/80 p-4 rounded-lg relative hover:border-[#ff333d]/40 transition-all flex flex-col justify-between">
                               <div>
                                 <div className="flex justify-between items-center mb-2">
-                                  <span className="text-xs font-mono font-bold text-brand-red">{step.num}</span>
-                                  {idx < 8 && <span className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 text-brand-muted/30 font-bold select-none text-[10px]">→</span>}
+                                  <span className="text-xs sm:text-sm font-mono font-bold text-red-500">{step.num}</span>
+                                  {idx < 8 && <span className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 text-stone-500/50 font-bold select-none text-[10px]">→</span>}
                                 </div>
-                                <h5 className="text-[13px] font-bold text-white uppercase tracking-wider block mb-1">{step.title}</h5>
-                                <p className="text-[11px] text-brand-muted leading-relaxed">{step.desc}</p>
+                                <h5 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider block mb-1 font-sans">{step.title}</h5>
+                                <p className="text-[11px] sm:text-xs text-stone-300 leading-relaxed font-sans">{step.desc}</p>
                               </div>
                             </div>
                           ))}
@@ -1155,10 +1168,10 @@ export default function App() {
                     {/* deliverables Tab */}
                     {labTab === 'deliverables' && (
                       <div className="animate-fadeIn">
-                        <p className="text-[13px] text-brand-muted mb-4">
+                        <p className="text-sm sm:text-base text-stone-250 mb-5 leading-relaxed font-sans font-medium">
                           For our CMMC 2.0 readiness engagements, E-Tech Solutions compiles and provides the following <strong>12 Crucial Compliance Deliverables</strong> as audit evidence:
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 font-mono text-[13px]">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 font-mono text-xs sm:text-sm">
                           {[
                             '1. CMMC 2.0 Technical Overview Document',
                             '2. Client Scoped Information Request File',
@@ -1173,9 +1186,9 @@ export default function App() {
                             '11. Management Self-Attestation Questionnaire',
                             '12. Client-Facing CMMC Readiness Summary'
                           ].map((deliv, idx) => (
-                            <div key={idx} className="bg-brand-black/60 border border-white/5 p-3 rounded flex items-center gap-2.5">
-                              <div className="w-4 h-4 rounded-full bg-brand-red/10 text-brand-red flex items-center justify-center shrink-0 border border-brand-red/20">✓</div>
-                              <span className="text-zinc-300 leading-snug">{deliv}</span>
+                            <div key={idx} className="bg-[#0e0e11] border border-zinc-700/85 p-3.5 rounded-lg flex items-center gap-2.5">
+                              <div className="w-4 h-4 rounded-full bg-red-650/15 text-red-500 flex items-center justify-center shrink-0 border border-red-500/30">✓</div>
+                              <span className="text-zinc-150 leading-snug font-sans font-semibold">{deliv}</span>
                             </div>
                           ))}
                         </div>
@@ -1240,10 +1253,10 @@ export default function App() {
                   <span className="text-[11px] text-brand-red font-sans uppercase font-bold tracking-widest block mb-2">
                     {language === 'si' ? 'අපව තෝරාගත යුත්තේ ඇයි' : 'WHY E-TECH SOLUTIONS // PROVEN COMPLIANCE & EXPERTISE'}
                   </span>
-                  <h2 className="font-display font-bold text-3xl text-white">
+                  <h2 className="font-display font-bold text-3xl text-[var(--white)]">
                     {language === 'si' ? 'ශ්‍රී ලංකාවේ ප්‍රමුඛතම ව්‍යාපාර ඊ-ටෙක් තෝරා ගන්නේ ඇයි' : 'Why Growing Businesses Choose E-Tech Solutions'}
                   </h2>
-                  <p className="text-base text-zinc-200 max-w-2xl mx-auto mt-2 font-medium">
+                  <p className="text-base text-stone-700 dark:text-zinc-200 max-w-2xl mx-auto mt-2 font-medium">
                     {language === 'si'
                       ? 'අපි තාක්ෂණික විශේෂඥභාවය, ප්‍රායෝගික පළපුරුද්ද, සයිබර් ආරක්ෂාව සහ ව්‍යාපාරික අවශ්‍යතා මනාව හඳුනාගෙන පරිපූර්ණ තොරතුරු තාක්ෂණ විසඳුම් ලබා දෙන්නෙමු.'
                       : 'We combine deeply compliance-focused IT standards, rigorous cybersecurity checkups, and transparent service metrics to optimize your network infrastructure.'}
@@ -1259,10 +1272,10 @@ export default function App() {
                       <div className="w-8 h-8 rounded-full bg-brand-red/15 text-brand-red text-xs font-sans font-bold flex items-center justify-center mb-4 border border-brand-red/25">
                         {String(i + 1).padStart(2, '0')}
                       </div>
-                      <h4 className="font-display font-semibold text-[var(--white)] mb-2 text-sm">
+                      <h4 className="font-display font-semibold text-zinc-100 mb-2 text-sm">
                         {pt.title}
                       </h4>
-                      <p className="text-xs text-brand-muted leading-relaxed">
+                      <p className="text-xs text-zinc-350 leading-relaxed">
                         {pt.desc}
                       </p>
                     </div>
@@ -1290,7 +1303,7 @@ export default function App() {
                   {INDUSTRIES_SERVED.map((ind, i) => (
                     <span
                       key={i}
-                      className="bg-brand-charcoal text-white border border-zinc-700/80 px-4 py-2.5 text-xs rounded-full hover:border-[#ff1a22] hover:bg-brand-red/15 hover:text-white transition-all text-center inline-block font-sans font-bold shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-default"
+                      className="bg-zinc-900 text-zinc-100 border border-zinc-700 px-4 py-2.5 text-xs rounded-full hover:border-[#ff1a22] hover:bg-brand-red/15 hover:text-white transition-all text-center inline-block font-sans font-bold shadow-[0_4px_12px_rgba(0,0,0,0.5)] cursor-default"
                     >
                       {ind}
                     </span>
@@ -1306,10 +1319,10 @@ export default function App() {
                   <span className="text-xs sm:text-sm text-red-500 font-sans uppercase font-extrabold tracking-wider block mb-2">
                     {language === 'si' ? 'නිමි ව්‍යාපෘති' : 'OUR PORTFOLIO // PROVEN CAPABILITIES'}
                   </span>
-                  <h2 className="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-tight">
+                  <h2 className="font-display font-black text-3xl sm:text-4xl text-[var(--white)] uppercase tracking-tight">
                     {language === 'si' ? 'අපගේ මෑතකාලීන ව්‍යාපෘති සහ සාර්ථකත්වයන්' : 'Our Recent Project Deliveries'}
                   </h2>
-                  <p className="text-sm sm:text-base text-stone-200 max-w-2xl mx-auto mt-3 leading-relaxed font-sans font-normal">
+                  <p className="text-sm sm:text-base text-stone-700 dark:text-zinc-200 max-w-2xl mx-auto mt-3 leading-relaxed font-sans font-normal">
                     {language === 'si'
                       ? 'විවිධ සේවාදායකයින් සඳහා සාර්ථකව නිම කරන ලද වගකීම් සහගත ජාල විසඳුම් සහ මෘදුකාංග පද්ධති කිහිපයක්.'
                       : 'Explore a detailed breakdown of our customized software setups, robust networks, and secure active infrastructure.'}
@@ -1338,30 +1351,30 @@ export default function App() {
                   {filteredProjects.slice(0, 4).map((proj) => (
                     <div
                       key={proj.id}
-                      className="bg-brand-charcoal border border-brand-dark-gray/40 rounded-lg overflow-hidden flex flex-col group hover:border-brand-red/30 transition-all duration-300 shadow-sm hover:shadow-[0_8px_20px_rgba(229,9,20,0.1)]"
+                      className="bg-zinc-900 border border-zinc-700/80 rounded-lg overflow-hidden flex flex-col group hover:border-[#ff333d]/50 transition-all duration-300 shadow-sm hover:shadow-[0_8px_20px_rgba(229,9,20,0.1)]"
                     >
                       <div className="relative h-44 overflow-hidden bg-black shrink-0">
                         <img
                           src={proj.image}
                           alt={proj.title}
-                          className="w-full h-full object-cover filter brightness-[0.85] contrast-105 group-hover:scale-105 transition-transform duration-305"
+                          className="w-full h-full object-cover filter brightness-[0.85] contrast-105 group-hover:scale-105 transition-transform duration-300"
                         />
-                        <div className="absolute top-3 left-3 bg-brand-red text-white text-[10px] uppercase font-mono font-bold px-2 py-1 rounded">
+                        <div className="absolute top-3 left-3 bg-[#ff333d] text-white text-[10px] uppercase font-mono font-bold px-2 py-1 rounded">
                           {proj.category}
                         </div>
                       </div>
                       <div className="p-4 flex-grow flex flex-col justify-between">
                         <div>
-                          <h4 className="font-display font-bold text-sm text-[var(--white)] group-hover:text-brand-red transition-colors mb-2">
+                          <h4 className="font-display font-bold text-sm text-zinc-100 group-hover:text-[#ff333d] transition-colors mb-2">
                             {proj.title}
                           </h4>
-                          <p className="text-[11px] text-brand-muted leading-relaxed line-clamp-3">
+                          <p className="text-[11.5px] text-zinc-300 leading-relaxed line-clamp-3">
                             {proj.description}
                           </p>
                         </div>
                         <button
                           onClick={() => setActivePage('portfolio')}
-                          className="text-[11px] text-brand-red font-bold hover:underline mt-4 text-left cursor-pointer"
+                          className="text-[11px] text-red-500 font-bold hover:underline mt-4 text-left cursor-pointer"
                         >
                           View Details Index →
                         </button>
@@ -1373,7 +1386,7 @@ export default function App() {
                 <div className="text-center mt-10">
                   <button
                     onClick={() => setActivePage('portfolio')}
-                    className="bg-white border border-neutral-300 hover:border-brand-red/30 text-stone-900 text-xs font-bold px-6 py-3 rounded tracking-wider uppercase transition-all cursor-pointer inline-flex items-center gap-2 shadow-sm"
+                    className="bg-white dark:bg-zinc-900 border border-neutral-300 dark:border-zinc-800 hover:border-brand-red/35 text-stone-900 dark:text-zinc-100 text-xs font-bold px-6 py-3 rounded tracking-wider uppercase transition-all cursor-pointer inline-flex items-center gap-2 shadow-sm"
                   >
                     View All Case Projects Portfolio
                   </button>
@@ -1388,13 +1401,13 @@ export default function App() {
             <section className="bg-gradient-black-pure py-16 px-6 relative" id="quote-section">
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-10">
-                  <span className="text-xs text-brand-red font-mono uppercase tracking-widest font-bold block mb-2">
+                  <span className="text-xs sm:text-sm text-red-500 font-sans uppercase font-extrabold tracking-wider block mb-2">
                     Consolidate Your Scope
                   </span>
-                  <h2 className="font-display font-bold text-2xl sm:text-3xl text-white">
+                  <h2 className="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-tight">
                     Request an Estimated Quote Profile
                   </h2>
-                  <p className="text-xs sm:text-sm text-brand-muted max-w-2xl mx-auto mt-2">
+                  <p className="text-sm sm:text-base text-stone-200 font-sans max-w-2xl mx-auto mt-3 leading-relaxed">
                     Submit your organization constraints. Our compliance and technology coordinators will review logs & provide preliminary BOQ configurations.
                   </p>
                 </div>
@@ -1408,44 +1421,44 @@ export default function App() {
               <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="flex flex-col gap-6">
                   <div>
-                    <span className="text-xs text-brand-red font-mono uppercase tracking-widest font-bold block mb-2">
+                    <span className="text-xs sm:text-sm text-red-500 font-sans uppercase font-extrabold tracking-wider block mb-2">
                       Reach Out Swiftly
                     </span>
-                    <h2 className="font-display font-bold text-2xl sm:text-3xl text-white">
+                    <h2 className="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-tight">
                       Let's Coordinate Your Integration
                     </h2>
-                    <p className="text-xs sm:text-sm text-brand-muted leading-relaxed mt-2">
+                    <p className="text-sm sm:text-base text-stone-200 font-sans leading-relaxed mt-3 font-normal">
                       Our main offices are strategically based in Mirihana, Nugegoda. We welcome visits, phone reviews, or direct technical advisory queries via email or active SLA hotlines.
                     </p>
                   </div>
 
                   <div className="flex flex-col gap-4">
-                    <div className="flex gap-3 bg-brand-charcoal p-4 rounded-lg border border-brand-dark-gray">
-                      <MapPin className="text-brand-red shrink-0" size={24} />
+                    <div className="flex gap-3 bg-zinc-900/90 p-5 rounded-lg border border-zinc-700/80">
+                      <MapPin className="text-red-500 shrink-0" size={24} />
                       <div>
-                        <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-brand-red">Registered Headquarters Address</h4>
-                        <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                        <h4 className="font-display font-extrabold text-xs uppercase tracking-wider text-red-500">Registered Headquarters Address</h4>
+                        <p className="text-sm text-stone-100 mt-1 leading-relaxed font-sans font-medium">
                           E-Tech Solutions, 72/10, Edirisinghe Road, Mirihana, Nugegoda, Sri Lanka
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex gap-3 bg-brand-charcoal p-4 rounded-lg border border-brand-dark-gray">
-                      <Phone className="text-brand-red shrink-0" size={24} />
+                    <div className="flex gap-3 bg-zinc-900/90 p-5 rounded-lg border border-zinc-700/80">
+                      <Phone className="text-red-500 shrink-0" size={24} />
                       <div>
-                        <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-brand-red">Active Phone Lines & support</h4>
-                        <p className="text-xs text-brand-muted mt-1 leading-relaxed">
-                          Office Landline: +94 112 819548 <br />
-                          Hotline Streams: +94 72 212 1000 / +94 777 889 734
+                        <h4 className="font-display font-extrabold text-xs uppercase tracking-wider text-red-500">Active Phone Lines & support</h4>
+                        <p className="text-sm text-stone-100 mt-1 leading-relaxed font-sans font-medium">
+                          Office Landline: <span className="text-white font-bold">+94 112 819548</span> <br />
+                          Hotline Streams: <span className="text-white font-bold">+94 72 212 1000</span> / <span className="text-white font-bold">+94 777 889 734</span>
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex gap-3 bg-brand-charcoal p-4 rounded-lg border border-brand-dark-gray">
-                      <Mail className="text-brand-red shrink-0" size={24} />
+                    <div className="flex gap-3 bg-zinc-900/90 p-5 rounded-lg border border-zinc-700/80">
+                      <Mail className="text-red-500 shrink-0" size={24} />
                       <div>
-                        <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-brand-red">Primary Email channels</h4>
-                        <p className="text-xs text-brand-muted mt-1">
+                        <h4 className="font-display font-extrabold text-xs uppercase tracking-wider text-red-500">Primary Email channels</h4>
+                        <p className="text-sm text-stone-100 mt-1 font-mono font-medium">
                           etechmultisolutions@gmail.com
                         </p>
                       </div>
@@ -1454,28 +1467,28 @@ export default function App() {
                 </div>
 
                 {/* Simulated Map Embed with high-fidelity corporate graphics */}
-                <div className="bg-brand-charcoal border border-brand-dark-gray rounded-xl p-6 relative overflow-hidden h-max flex flex-col justify-between">
+                <div className="bg-zinc-900/90 border border-zinc-700/85 rounded-xl p-6 relative overflow-hidden h-max flex flex-col justify-between">
                   <div>
-                    <h3 className="font-display font-bold text-sm text-white mb-2 uppercase tracking-wider text-brand-red">Mirihana, Nugegoda HQ Location</h3>
-                    <p className="text-xs text-brand-muted mb-6 leading-relaxed">
+                    <h3 className="font-display font-black text-sm text-red-500 mb-2 uppercase tracking-wider">Mirihana, Nugegoda HQ Location</h3>
+                    <p className="text-sm text-stone-200 mb-6 leading-relaxed font-sans">
                       Strategically located close to Nugegoda, Mirihana, providing easy access to corporate centers, governmental boards and SME enterprises in Colombo sub-regions.
                     </p>
                     {/* Visual Vector Grid representation instead of complex heavy iframe */}
-                    <div className="w-full h-48 bg-brand-black border border-brand-dark-gray rounded-lg relative flex flex-col items-center justify-center text-center p-4 overflow-hidden">
+                    <div className="w-full h-48 bg-black border border-zinc-700/80 rounded-lg relative flex flex-col items-center justify-center text-center p-4 overflow-hidden">
                       {/* Grid background */}
                       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-                      <div className="w-10 h-10 rounded-full bg-brand-red/25 border border-brand-red flex items-center justify-center animate-pulse mb-3">
-                        <MapPin className="text-brand-red" size={20} />
+                      <div className="w-10 h-10 rounded-full bg-red-650/20 border border-red-500 flex items-center justify-center animate-pulse mb-3">
+                        <MapPin className="text-red-500" size={20} />
                       </div>
-                      <span className="text-xs text-white font-semibold font-display">72/10, Edirisinghe Road, Mirihana</span>
-                      <p className="text-[10px] text-brand-muted mt-1 max-w-xs">GPS Coordinates: 6.8741° N, 79.9015° E</p>
+                      <span className="text-xs sm:text-sm text-white font-bold font-display">72/10, Edirisinghe Road, Mirihana</span>
+                      <p className="text-[11px] text-stone-300 font-mono mt-1 max-w-xs font-bold">GPS Coordinates: 6.8741° N, 79.9015° E</p>
                       <a
                         href="https://maps.google.com/?q=Edirisinghe+Road,+Mirihana,+Nugegoda,+Sri+Lanka"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-4 text-[10px] text-brand-red font-bold uppercase tracking-wider hover:underline flex items-center gap-1"
+                        className="mt-4 text-[11px] text-red-500 font-bold uppercase tracking-widest hover:underline hover:text-red-400 flex items-center gap-1.5"
                       >
-                        Navigate on Google Maps <ExternalLink size={10} />
+                        Navigate on Google Maps <ExternalLink size={11} />
                       </a>
                     </div>
                   </div>

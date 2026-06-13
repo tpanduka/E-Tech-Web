@@ -81,7 +81,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
   };
 
   return (
-    <div className="bg-brand-charcoal/95 border border-white/5 rounded-sm p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 sm:p-8 relative overflow-hidden shadow-2xl">
       <div className="absolute top-0 right-0 w-24 h-24 bg-brand-red/5 rounded-full filter blur-xl" />
       <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-red/5 rounded-full filter blur-2xl" />
 
@@ -90,16 +90,16 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
           <div className="w-16 h-16 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mb-6 border border-green-500/30">
             <CheckCircle2 size={32} />
           </div>
-          <h3 className="font-display font-bold text-2xl text-[var(--white)] mb-2">Inquiry Submitted Successfully!</h3>
-          <p className="text-sm text-brand-muted max-w-md leading-relaxed mb-6">
+          <h3 className="font-display font-bold text-2xl text-zinc-100 mb-2">Inquiry Submitted Successfully!</h3>
+          <p className="text-sm text-zinc-400 max-w-md leading-relaxed mb-6">
             Thank you, <strong>{formData.name}</strong>, from {formData.organization || 'your organization'}. Your request regarding <span className="text-brand-red font-semibold">“{formData.service}”</span> has been safely received by the E-Tech Solutions Engineering Desk.
           </p>
-          <div className="bg-brand-black border border-brand-dark-gray rounded-sm p-4 max-w-sm text-left mb-6 font-mono text-[11px] leading-relaxed">
-            <p className="text-[var(--white)] font-semibold mb-1 flex items-center gap-1.5">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-sm p-4 max-w-sm text-left mb-6 font-mono text-[11px] leading-relaxed">
+            <p className="text-zinc-150 font-semibold mb-1 flex items-center gap-1.5">
               <ShieldCheck size={12} className="text-brand-red" />
               SLA Priority Diagnostic Window:
             </p>
-            <p className="text-brand-muted">
+            <p className="text-zinc-400">
               We aim to coordinate and get back to you via your preferred selection (<strong>{formData.contactMethod}</strong>) with a technical specification draft and provisional BOQ estimation index within **24 business hours**.
             </p>
           </div>
@@ -124,15 +124,15 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          <div className="border-b border-white/5 pb-4">
+          <div className="border-b border-zinc-800 pb-4">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="font-display font-semibold text-xs tracking-widest text-brand-red font-mono">
+              <h3 className="font-display font-bold text-xs tracking-widest text-brand-red font-mono">
                 [ SERVICE / QUOTE INITIATION ]
               </h3>
-              <span className="text-[10px] text-brand-muted/50 font-mono">FORM: ET-Q-26</span>
+              <span className="text-[10px] text-zinc-500 font-mono">FORM: ET-Q-26</span>
             </div>
-            <h2 className="font-display font-bold text-lg text-[var(--white)] uppercase tracking-tight">Request technical spec Advisory</h2>
-            <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+            <h2 className="font-display font-bold text-lg text-zinc-100 uppercase tracking-tight">Request technical spec Advisory</h2>
+            <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
               Submit your corporate indices. Our engineering and compliance leads will formulate technical specifications & outline estimations.
             </p>
             {errorMsg && (
@@ -145,7 +145,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Name */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-[10px] text-brand-muted uppercase font-mono tracking-wider">
+              <label htmlFor="name" className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider">
                 Full Name / Contact Person *
               </label>
               <input
@@ -155,14 +155,14 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 font-mono text-xs"
+                className="bg-zinc-950 border border-zinc-800 hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-zinc-100 focus:outline-none transition-all placeholder:text-zinc-500 font-mono text-xs"
                 placeholder="E.g. Shanaka Perera"
               />
             </div>
 
             {/* Organization */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="organization" className="text-[10px] text-brand-muted uppercase font-mono tracking-wider">
+              <label htmlFor="organization" className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider">
                 Organization / Company
               </label>
               <input
@@ -171,7 +171,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 name="organization"
                 value={formData.organization}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 font-mono text-xs"
+                className="bg-zinc-950 border border-zinc-800 hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-zinc-100 focus:outline-none transition-all placeholder:text-zinc-500 font-mono text-xs"
                 placeholder="E.g. Apex Enterprises (Pvt) Ltd"
               />
             </div>
@@ -180,7 +180,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Phone */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="phone" className="text-[10px] text-brand-muted uppercase font-mono tracking-wider">
+              <label htmlFor="phone" className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider">
                 Phone Number *
               </label>
               <input
@@ -190,14 +190,14 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 required
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 font-mono text-xs"
+                className="bg-zinc-950 border border-zinc-800 hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-zinc-100 focus:outline-none transition-all placeholder:text-zinc-500 font-mono text-xs"
                 placeholder="E.g. +94 777 123 456"
               />
             </div>
 
             {/* Email */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-[10px] text-brand-muted uppercase font-mono tracking-wider">
+              <label htmlFor="email" className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider">
                 Email Address
               </label>
               <input
@@ -206,7 +206,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 font-mono text-xs"
+                className="bg-zinc-950 border border-zinc-800 hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-zinc-100 focus:outline-none transition-all placeholder:text-zinc-500 font-mono text-xs"
                 placeholder="E.g. info@apex.lk"
               />
             </div>
@@ -215,7 +215,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Service */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="service" className="text-[10px] text-brand-muted uppercase font-mono tracking-wider">
+              <label htmlFor="service" className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider">
                 Service Required *
               </label>
               <select
@@ -224,11 +224,11 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 required
                 value={formData.service}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray focus:border-brand-red/80 px-3 py-2.5 rounded-sm text-xs text-[var(--white)] focus:outline-none cursor-pointer font-mono"
+                className="bg-zinc-950 border border-zinc-800 focus:border-brand-red/80 px-3 py-2.5 rounded-sm text-xs text-zinc-100 focus:outline-none cursor-pointer font-mono"
               >
-                <option value="" disabled className="text-black">-- Select Service Sector --</option>
+                <option value="" disabled className="bg-zinc-900 text-zinc-300">-- Select Service Sector --</option>
                 {servicesList.map((svc) => (
-                  <option key={svc.value} value={svc.value} className="text-black">
+                  <option key={svc.value} value={svc.value} className="bg-zinc-900 text-zinc-100">
                     {svc.label}
                   </option>
                 ))}
@@ -237,7 +237,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
 
             {/* Price/Budget Range (Optional) */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="budget" className="text-[10px] text-brand-muted uppercase font-mono tracking-wider">
+              <label htmlFor="budget" className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider">
                 Provisional Budget Range (Optional)
               </label>
               <select
@@ -245,20 +245,20 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                 name="budget"
                 value={formData.budget}
                 onChange={handleInputChange}
-                className="bg-brand-black border border-brand-dark-gray focus:border-brand-red/80 px-3 py-2.5 rounded-sm text-xs text-[var(--white)] focus:outline-none cursor-pointer font-mono"
+                className="bg-zinc-950 border border-zinc-800 focus:border-brand-red/80 px-3 py-2.5 rounded-sm text-xs text-zinc-100 focus:outline-none cursor-pointer font-mono"
               >
-                <option value="" className="text-black">Choosing estimate spec...</option>
-                <option value="SME/Starter" className="text-black">Starter / SME Tier (&lt; LKR 100k)</option>
-                <option value="Standard Business" className="text-black">Standard Business Tier (LKR 100k - LKR 500k)</option>
-                <option value="Enterprise Solution" className="text-black">Advanced Mid-Tier Enterprise (LKR 500k - LKR 2M)</option>
-                <option value="Consultancy/Global" className="text-black">Full Infrastructure / Consultancy Scale (&gt; LKR 2M)</option>
+                <option value="" className="bg-zinc-900 text-zinc-300">Choosing estimate spec...</option>
+                <option value="SME/Starter" className="bg-zinc-900 text-zinc-100">Starter / SME Tier (&lt; LKR 100k)</option>
+                <option value="Standard Business" className="bg-zinc-900 text-zinc-100">Standard Business Tier (LKR 100k - LKR 500k)</option>
+                <option value="Enterprise Solution" className="bg-zinc-900 text-zinc-100">Advanced Mid-Tier Enterprise (LKR 500k - LKR 2M)</option>
+                <option value="Consultancy/Global" className="bg-zinc-900 text-zinc-100">Full Infrastructure / Consultancy Scale (&gt; LKR 2M)</option>
               </select>
             </div>
           </div>
 
           {/* Contact Method toggles */}
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] text-brand-muted uppercase font-mono tracking-wider">
+            <span className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider">
               Preferred Contact Channel
             </span>
             <div className="grid grid-cols-3 gap-2">
@@ -269,8 +269,8 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
                   onClick={() => handleContactMethodChange(method)}
                   className={`py-2 px-3 rounded-sm text-xs font-semibold border transition-all cursor-pointer font-mono text-[10px] uppercase tracking-wider ${
                     formData.contactMethod === method
-                      ? 'bg-brand-red/10 border-brand-red text-[var(--white)] font-bold'
-                      : 'bg-brand-black border-brand-dark-gray text-brand-muted hover:border-white/10'
+                      ? 'bg-brand-red/20 border-brand-red text-white font-bold'
+                      : 'bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-750 hover:text-zinc-200'
                   }`}
                 >
                   {method}
@@ -281,7 +281,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
 
           {/* Message specifics */}
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="message" className="text-[10px] text-brand-muted uppercase font-mono tracking-wider">
+            <label htmlFor="message" className="text-[10px] text-zinc-400 uppercase font-mono tracking-wider">
               Message / Specific Requirements
             </label>
             <textarea
@@ -290,7 +290,7 @@ export default function QuoteForm({ initialService = '' }: QuoteFormProps) {
               rows={4}
               value={formData.message}
               onChange={handleInputChange}
-              className="bg-brand-black border border-brand-dark-gray hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-[var(--white)] focus:outline-none transition-all placeholder:text-[var(--white)]/40 resize-none font-sans text-xs"
+              className="bg-zinc-950 border border-zinc-800 hover:border-brand-red/30 focus:border-brand-red/80 px-4 py-2.5 rounded-sm text-sm text-zinc-100 focus:outline-none transition-all placeholder:text-zinc-500 resize-none font-sans text-xs"
               placeholder="State your technical constraints, required nodes count, desired delivery targets, or specifications."
             />
           </div>

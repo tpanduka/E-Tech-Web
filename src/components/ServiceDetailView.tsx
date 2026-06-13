@@ -1,6 +1,37 @@
 import { ServiceDetail, PageId } from '../types';
 import { SERVICES_DATA, PACKAGES_DATA } from '../data';
 import { Check, ShieldAlert, ArrowLeft, Send } from 'lucide-react';
+import ParticleBackground from './ParticleBackground';
+
+const getServiceColor = (id: PageId | string): string => {
+  switch (id) {
+    case 'web-software-development':
+      return '14, 165, 233'; // Sky Blue
+    case 'hardware-solutions':
+      return '249, 115, 22'; // High-vis orange
+    case 'networking-solutions':
+      return '168, 85, 247'; // Electric purple
+    case 'cybersecurity-solutions':
+    case 'cybersecurity-consultancy':
+      return '229, 9, 20';   // Brand red / Cyber Crimson
+    case 'digital-marketing':
+      return '16, 185, 129'; // Emerald Green
+    case 'creative-media-production':
+      return '234, 179, 8';   // Gold / Yellow
+    case 'software-licensing':
+      return '99, 102, 241'; // Indigo web
+    case 'ict-procurement-consultancy':
+      return '6, 182, 212';  // Cyber Cyan
+    case 'maintenance-agreements':
+      return '20, 184, 166'; // Teal
+    case 'lectures-awareness':
+      return '34, 197, 94';  // Vibrant Green
+    case 'smart-qr-patrol':
+      return '245, 158, 11';  // Warning Amber
+    default:
+      return '229, 9, 20';   // Brand red default
+  }
+};
 
 interface ServiceDetailViewProps {
   serviceId: PageId;
@@ -43,6 +74,9 @@ export default function ServiceDetailView({ serviceId, setActivePage }: ServiceD
     <article className="pt-40 md:pt-48 pb-16 bg-brand-black min-h-screen text-[var(--white)] relative overflow-hidden">
       {/* Structural Workspace Grid Background */}
       <div className="absolute inset-0 bg-grid-mesh-gray opacity-40 pointer-events-none" />
+      
+      {/* Subtle, interactive service-specific vertical nodes background */}
+      <ParticleBackground color={getServiceColor(serviceId)} particleCount={55} />
       
       {/* Top Breadcrumb Bar */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-4 border-b border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">

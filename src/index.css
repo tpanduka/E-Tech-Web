@@ -150,6 +150,49 @@ svg {
   font-weight: 700 !important;
 }
 
+/* Compliance Gateway Immersive Dark Scoping Override */
+.compliance-gateway-dark,
+.compliance-gateway-dark div,
+.compliance-gateway-dark p,
+.compliance-gateway-dark span,
+.compliance-gateway-dark strong,
+.compliance-gateway-dark h1,
+.compliance-gateway-dark h2,
+.compliance-gateway-dark button {
+  --text-shadow-contrast: 0px 1.5px 3px rgba(0, 0, 0, 0.95), 0px 0px 5px rgba(0, 0, 0, 0.5) !important;
+  --p-shadow: 0px 1px 2.5px rgba(0, 0, 0, 0.95) !important;
+  text-shadow: 0px 1px 2.5px rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Secure dark-theme blocks to force dark text shadows to prevent unreadable fuzzy white text outer-glow in light themes */
+[class*="bg-zinc-"], 
+[class*="bg-black"], 
+[class*="bg-stone-"],
+[class*="bg-slate-9"],
+[class*="bg-neutral-9"],
+[class*="bg-[#0e0e11]"], 
+[class*="bg-[#0b"], 
+[class*="bg-[#07"], 
+[class*="bg-[#0c"], 
+[class*="bg-[#11"] {
+  --text-shadow-contrast: 0px 1px 2px rgba(0, 0, 0, 0.95), 0px 0px 3px rgba(0, 0, 0, 0.4) !important;
+  --p-shadow: 0px 0.5px 1.1px rgba(0, 0, 0, 0.85) !important;
+}
+
+[class*="bg-zinc-"] *, 
+[class*="bg-black"] *, 
+[class*="bg-stone-"] *,
+[class*="bg-slate-9"] *,
+[class*="bg-neutral-9"] *,
+[class*="bg-[#0e0e11]"] *, 
+[class*="bg-[#0b"] *, 
+[class*="bg-[#07"] *, 
+[class*="bg-[#0c"] *, 
+[class*="bg-[#11"] * {
+  --text-shadow-contrast: 0px 1px 2px rgba(0, 0, 0, 0.95), 0px 0px 3px rgba(0, 0, 0, 0.4) !important;
+  --p-shadow: 0px 0.5px 1.1px rgba(0, 0, 0, 0.85) !important;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
