@@ -51,7 +51,7 @@ async function startServer() {
   } else {
     console.warn("GEMINI_API_KEY is missing from environment. Chatbot will run in fallback advisor mode.");
   }
-  app.post("/api/compliance-chat", async (req, res) => {
+  app.post("/compliance-chat", async (req, res) => {
     try {
       const { messages } = req.body;
       if (!messages || !Array.isArray(messages)) {

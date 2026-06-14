@@ -36,7 +36,7 @@ async function startServer() {
   }
 
   // Server-side AI chat router proxying user prompts safely
-  app.post('/api/compliance-chat', async (req, res) => {
+  app.post('/compliance-chat', async (req, res) => {
     try {
       const { messages } = req.body;
 
