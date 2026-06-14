@@ -1243,7 +1243,13 @@ export default function App() {
                   {/* 3 Cards Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16">
                     {/* Package 1: Essential Readiness Review */}
-                    <div className="bg-zinc-950/80 border border-zinc-800 rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-red/50 hover:shadow-[0_10px_30px_rgba(255,51,61,0.1)] transition-all duration-300 relative group">
+                    <motion.div 
+                      className="bg-zinc-950/80 border border-zinc-800 rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-red/50 hover:shadow-[0_10px_30px_rgba(255,51,61,0.1)] transition-all duration-300 relative group"
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                    >
                       <div className="absolute top-0 left-0 w-full h-[3px] bg-zinc-800 group-hover:bg-brand-red/50 transition-all rounded-t-xl" />
                       <div>
                         <div className="mb-6">
@@ -1291,10 +1297,16 @@ export default function App() {
                       >
                         Request Essential Review
                       </button>
-                    </div>
+                    </motion.div>
 
                     {/* Package 2: Standard Self-Assessment Support (RECOMMENDED) */}
-                    <div className="bg-zinc-950/95 border-2 border-brand-red rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-[0_15px_45px_rgba(255,51,61,0.2)] transition-all duration-300 relative group transform lg:-translate-y-2 z-10">
+                    <motion.div 
+                      className="bg-zinc-950/95 border-2 border-brand-red rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-[0_15px_45px_rgba(255,51,61,0.2)] transition-all duration-300 relative group z-10"
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: -8 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                    >
                       {/* Floating Badge */}
                       <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-red border border-red-400 text-white font-mono font-black text-[9.5px] tracking-widest px-4 py-1.5 rounded-full uppercase shadow-md animate-pulse">
                         Most Popular // Recommended
@@ -1352,10 +1364,16 @@ export default function App() {
                       >
                         Start Standard Assessment Support
                       </button>
-                    </div>
+                    </motion.div>
 
                     {/* Package 3: Advanced Self-Assessment + Remediation Roadmap */}
-                    <div className="bg-zinc-950/80 border border-zinc-800 rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-red/50 hover:shadow-[0_10px_30px_rgba(255,51,61,0.1)] transition-all duration-300 relative group">
+                    <motion.div 
+                      className="bg-zinc-950/80 border border-zinc-800 rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-red/50 hover:shadow-[0_10px_30px_rgba(255,51,61,0.1)] transition-all duration-300 relative group"
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                    >
                       <div className="absolute top-0 left-0 w-full h-[3px] bg-zinc-800 group-hover:bg-brand-red/50 transition-all rounded-t-xl" />
                       <div>
                         <div className="mb-6">
@@ -1406,7 +1424,7 @@ export default function App() {
                       >
                         Request Advanced CMMC Support
                       </button>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Optional Add-On Services section */}

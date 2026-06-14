@@ -123,17 +123,70 @@ export default function Hero({ setActivePage }: HeroProps) {
         </div>
 
         {/* Hero Title with corporate authority font pairing */}
-        <h1 className="font-display font-black text-4.5xl sm:text-5.5xl md:text-7xl lg:text-[76px] text-white leading-[1.1] tracking-tight mb-6 max-w-4xl text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
+        <motion.h1 
+          className="font-display font-black text-4.5xl sm:text-5.5xl md:text-7xl lg:text-[76px] text-white leading-[1.1] tracking-tight mb-6 max-w-4xl text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+        >
           {language === 'si' ? (
             <>
-              විශ්වාසදායක <span className="text-[#ff3c45] font-black drop-shadow-[0_0_25px_rgba(229,9,20,0.7)]">තොරතුරු තාක්ෂණ පද්ධති සහ සයිබර් ආරක්ෂණ විසඳුම්</span>
+              විශ්වාසදායක{' '}
+              <motion.span 
+                className="inline-block text-[#ff3c45] font-black drop-shadow-[0_0_25px_rgba(229,9,20,0.7)]"
+                animate={{ 
+                  textShadow: [
+                    "0 0 20px rgba(229,9,20,0.3)",
+                    "0 0 35px rgba(229,9,20,0.8)",
+                    "0 0 20px rgba(229,9,20,0.3)"
+                  ]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                තොරතුරු තාක්ෂණ පද්ධති සහ සයිබර් ආරක්ෂණ විසඳුම්
+              </motion.span>
             </>
           ) : (
             <>
-              Enterprise-Grade <span className="text-[#ff3c45] font-black drop-shadow-[0_0_25px_rgba(229,9,20,0.7)]">IT Infrastructure & Cybersecurity</span>
+              <motion.span
+                className="inline-block mr-2"
+                initial={{ opacity: 0, x: -15 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+              >
+                Enterprise-Grade
+              </motion.span>
+              <motion.span 
+                className="inline-block text-[#ff3c45] font-black drop-shadow-[0_0_25px_rgba(229,9,20,0.7)]"
+                initial={{ opacity: 0, filter: "blur(4px)" }}
+                animate={{ 
+                  opacity: 1, 
+                  filter: "blur(0px)",
+                  textShadow: [
+                    "0 0 20px rgba(229,9,20,0.4)",
+                    "0 0 35px rgba(229,9,20,0.85)",
+                    "0 0 20px rgba(229,9,20,0.4)"
+                  ]
+                }}
+                transition={{
+                  opacity: { duration: 1, delay: 0.6 },
+                  filter: { duration: 0.8, delay: 0.6 },
+                  textShadow: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+              >
+                IT Infrastructure & Cybersecurity
+              </motion.span>
             </>
           )}
-        </h1>
+        </motion.h1>
 
         {/* Brand Voice with high contrast text sizing */}
         <p className="text-lg sm:text-xl md:text-[21px] text-zinc-50 font-semibold leading-relaxed mb-8 max-w-3.5xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] font-sans">
