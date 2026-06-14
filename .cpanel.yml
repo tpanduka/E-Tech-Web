@@ -2,5 +2,8 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/etechmu1/public_html/
-    - /bin/rm -rf $DEPLOYPATH/*
-    - /bin/cp -R dist/* $DEPLOYPATH
+    - /bin/find $DEPLOYPATH -mindepth 1 -maxdepth 1 ! -name api -exec /bin/rm -rf {} \;
+    - /bin/cp dist/index.html $DEPLOYPATH
+    - /bin/cp -R dist/assets $DEPLOYPATH
+  
+    
