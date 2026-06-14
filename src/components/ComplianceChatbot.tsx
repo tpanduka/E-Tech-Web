@@ -103,9 +103,10 @@ export default function ComplianceChatbot({ language }: ComplianceChatbotProps) 
       ]);
     } catch (err: any) {
       console.error(err);
+      const displayMsg = err?.message || 'Failed to fetch response from E-Tech compliance supervisor.';
       setError(language === 'si' 
         ? 'සම්බන්ධතා දෝෂයකි. කරුණාකර නැවත උත්සාහ කරන්න.' 
-        : 'Failed to fetch response. Please ensure backend dev server or API key is active.'
+        : displayMsg
       );
     } finally {
       setIsLoading(false);

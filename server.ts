@@ -8,7 +8,7 @@ dotenv.config();
 
 async function startServer() {
   const app = express();
-  const PORT = process.env.PORT || 3000;
+  const PORT = 3000;
 
   // Body parsing middleware
   app.use(express.json());
@@ -36,7 +36,7 @@ async function startServer() {
   }
 
   // Server-side AI chat router proxying user prompts safely
-  app.post('/compliance-chat', async (req, res) => {
+  app.post('/api/compliance-chat', async (req, res) => {
     try {
       const { messages } = req.body;
 
@@ -81,16 +81,35 @@ async function startServer() {
       const contextualPrompt = dialogueFlow.join('\n');
 
       // Call Gemini 3.5 Flash Model safely
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
-        contents: contextualPrompt,
-        config: {
-          systemInstruction,
-          temperature: 0.7,
+      let responseText = '';
+      try {
+        const response = await ai.models.generateContent({
+          model: 'gemini-3.5-flash',
+          contents: contextualPrompt,
+          config: {
+            systemInstruction,
+            temperature: 0.7,
+          }
+        });
+        responseText = response.text || 'I could not synthesize an advisor response. Please rephrase your query.';
+      } catch (genError: any) {
+        console.error('Gemini generateContent error, activating local advisory fallback:', genError);
+        
+        // Serve offline/heuristic response instead of crashing with a 500 status!
+        const lastMessage = messages[messages.length - 1]?.content?.toLowerCase() || '';
+        responseText = 'Thank you for consulting the E-Tech Compliance Advisory. Currently, our AI is operating in standalone offline backup mode. Under Sri Lanka PDPA Framework No. 9 of 2022 and CMMC 2.0 readiness assessments, please ensure all corporate records are encrypted at rest with robust multi-factor access protocols. Contact E-Tech Solutions directly for custom engineering support.';
+        
+        if (lastMessage.includes('pdpa') || lastMessage.includes('ශ්‍රී ලංකා') || lastMessage.includes('data') || lastMessage.includes('දත්ත')) {
+          responseText = 'Under the Sri Lanka Personal Data Protection Act, No. 9 of 2022 (PDPA), organizations must audit active data holdings, formulate system security policies (WISP), and encrypt user databases with TLS 1.3 standards. E-Tech Solutions provides thorough PDPA audits, gap discovery assessments, and staff awareness training to ensure total alignment.';
+        } else if (lastMessage.includes('cmmc') || lastMessage.includes('nist') || lastMessage.includes('level') || lastMessage.includes('control')) {
+          responseText = 'CMMC 2.0 (Cybersecurity Maturity Model Certification) applies to all defense sector contractors. Level 2 demands complete compliance across 110 rigorous controls mapped to the 14 NIST SP 800-171 security domains. E-Tech Solutions assists with gap analysis, System Security Plan (SSP) compilation, and Plan of Action and Milestones (POA&M) creation.';
+        } else if (lastMessage.includes('pfsense') || lastMessage.includes('firewall')) {
+          responseText = 'Integrating enterprise pfSense firewalls facilitates micro-segmentation, compliant access controls, and logs auditing. This directly fulfills major NIST security directives under both CMMC Level 2 and robust corporate database protections recommended for Sri Lankan institutions.';
+        } else if (lastMessage.includes('audit') || lastMessage.includes('service') || lastMessage.includes('විගණන')) {
+          responseText = 'E-Tech Solutions compiles detailed system security blueprints, policy drafts, gap analyses, and actionable remediation roadmaps to prepare your business for verified third-party audits and compliance representations.';
         }
-      });
+      }
 
-      const responseText = response.text || 'I could not synthesize a compliance response. Please rephrase your query.';
       res.json({ text: responseText });
     } catch (err: any) {
       console.error('Compliance Chat Handler Error:', err);
@@ -115,9 +134,9 @@ async function startServer() {
     console.log('Production static files mapped inside Express.');
   }
 
-  app.listen(PORT, () => {
-  console.log(`E-Tech Fullstack Server launched successfully on port ${PORT}`);
-});
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`E-Tech Fullstack Server launched successfully at http://localhost:${PORT}`);
+  });
 }
 
 startServer().catch((error) => {
