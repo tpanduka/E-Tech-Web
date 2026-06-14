@@ -8,7 +8,7 @@ dotenv.config();
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = process.env.PORT || 3000;
 
   // Body parsing middleware
   app.use(express.json());
@@ -115,9 +115,9 @@ async function startServer() {
     console.log('Production static files mapped inside Express.');
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`E-Tech Fullstack Server launched successfully at http://localhost:${PORT}`);
-  });
+  app.listen(PORT, () => {
+  console.log(`E-Tech Fullstack Server launched successfully on port ${PORT}`);
+});
 }
 
 startServer().catch((error) => {

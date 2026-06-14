@@ -30,7 +30,7 @@ var import_dotenv = __toESM(require("dotenv"), 1);
 import_dotenv.default.config();
 async function startServer() {
   const app = (0, import_express.default)();
-  const PORT = 3e3;
+  const PORT = process.env.PORT || 3e3;
   app.use(import_express.default.json());
   let ai = null;
   const apiKey = process.env.GEMINI_API_KEY;
@@ -117,8 +117,8 @@ async function startServer() {
     });
     console.log("Production static files mapped inside Express.");
   }
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`E-Tech Fullstack Server launched successfully at http://localhost:${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`E-Tech Fullstack Server launched successfully on port ${PORT}`);
   });
 }
 startServer().catch((error) => {
